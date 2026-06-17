@@ -1,0 +1,508 @@
+<?php
+require_once 'access_check.php';
+checkAccess('inventory.html');
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="Icon/MoonClaveLogo3.svg">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="Inventory.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="role-based-menu.js?v=18" defer></script>
+    <script src="auto_logout.js" defer></script>
+    <script src="cancellation-notification.js?v=15" defer></script>
+
+    <style>
+        .header-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #222;
+            font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+            margin-top: 0px;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Mobile hamburger button -->
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <div class="split-container">
+        <div class="left-panel" id="leftPanel">
+            <button class="sidebar-collapse-btn" id="collapseBtn" onclick="toggleSidebarMinimize()">
+                <img id="collapseIcon" src="Icon/left-arrow_minimize.svg" alt="Minimize"
+                    style="width: 24px; height: 18px;">
+                <span class="collapse-tooltip" id="collapseTooltip">Minimize</span>
+            </button>
+            <img src="Icon/MoonClave_Logo.svg" alt="Luna Group Logo" class="logo-img">
+            <nav class="sidebar-menu">
+                <ul>
+                    <li class="sidebar-menu-item" style="display: none;" data-page="Createuser.php"
+                        onclick="navigateToPage('Createuser.php')">
+                        <img src="Icon/createaccounticon_system.svg" class="sidebar-icon" alt="Create User">
+                        <span>Create User</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Report.php" onclick="navigateToPage('Report.php')">
+                        <img src="Icon/dashboardicon_system.svg" class="sidebar-icon" alt="Dashboard">
+                        <span>Dashboard</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Booking.html" onclick="navigateToPage('Booking.html')">
+                        <img src="Icon/bookingicon_system.svg" class="sidebar-icon" alt="Booking">
+                        <span>Booking</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Modification.php"
+                        onclick="navigateToPage('Modification.php')">
+                        <img src="Icon/modicon_system.svg" class="sidebar-icon" alt="Modification">
+                        <span>Modification</span>
+                    </li>
+
+
+                      <li class="sidebar-menu-item" data-page="CashDeposit.php"
+                        onclick="navigateToPage('CashDeposit.php')">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            style="display: inline-block; vertical-align: middle; margin-right: 12px; width: 20px; height: 20px;">
+                            <rect x="2" y="5" width="20" height="14" rx="2"/>
+                            <line x1="2" y1="10" x2="22" y2="10"/>
+                        </svg>
+                        <span>Running Cash</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Reservationlist.php"
+                        onclick="navigateToPage('Reservationlist.php')">
+                        <img src="Icon/reservationicon_system.svg" class="sidebar-icon" alt="Reservation">
+                        <span>Reservation List</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Cancelpage.php" onclick="navigateToPage('Cancelpage.php')">
+                        <img src="Icon/cancelicon_system.svg" class="sidebar-icon" alt="Cancellation Approval">
+                        <span>Cancellation</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Roomlist.html" onclick="navigateToPage('Roomlist.html')">
+                        <img src="Icon/roomlisticon_system.svg" class="sidebar-icon" alt="Room List">
+                        <span>Room List</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Promo.html" onclick="navigateToPage('Promo.html')">
+                        <img src="Icon/promoicon_system.svg" class="sidebar-icon" alt="Promo">
+                        <span>Promo</span>
+                    </li>
+                    <li class="sidebar-menu-item collapsible-menu" id="systemMaintenanceMenu">
+                        <div class="menu-header" onclick="toggleSystemMaintenance()">
+                            <img src="Icon/systemmaitenanceicon_system.svg" class="sidebar-icon" alt="Maintenance">
+                            <span>Maintenance</span>
+                            <svg class="menu-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <ul class="submenu" id="systemMaintenanceSubmenu">
+                            <li class="submenu-item active" data-page="inventory.html"
+                                onclick="navigateToPage('inventory.html')">
+                                <img src="Icon/inventoryicon_system.svg" class="sidebar-icon" alt="Inventory">
+                                <span>Inventory</span>
+                            </li>
+                            <li class="submenu-item" data-page="PurchaseOrder.html"
+                                onclick="navigateToPage('PurchaseOrder.html')">
+                                <img src="Icon/purchaseordericon_system.svg" class="sidebar-icon" alt="Purchase Order">
+                                <span>Purchase Order</span>
+                            </li>
+                            <li class="submenu-item" data-page="AddItem.php" onclick="navigateToPage('AddItem.php')">
+                                <img src="Icon/additemicon_system.svg" class="sidebar-icon" alt="Add Item">
+                                <span>Add Item</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Receive.html" onclick="navigateToPage('Receive.html')">
+                        <img src="Icon/receiveicon_system.svg" class="sidebar-icon" alt="Receive">
+                        <span>Receive</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Breakfast.html" onclick="navigateToPage('Breakfast.html')">
+                        <img src="Icon/breakfasticon_system.svg" class="sidebar-icon" alt="Breakfast">
+                        <span>Meal</span>
+                    </li>
+                    <!-- <li class="sidebar-menu-item" data-page="Message.html" onclick="navigateToPage('Message.html')">
+                        <img src="Icon/messageicon_system.svg" class="sidebar-icon" alt="Message">
+                        <span>Message</span>
+                    </li>   
+                    -->
+                    <li class="sidebar-menu-item" onclick="window.location.href='logout.php'">
+                        <img src="Icon/logouticon_system.svg" class="sidebar-icon" alt="Logout">
+                        <span>Logout</span>
+                    </li>
+                    <!-- Old minimize button - replaced with new DingTalk-style collapse tab
+                    <li class="sidebar-menu-item" id="minimizeBtn" onclick="toggleSidebarMinimize()">
+                        <svg class="sidebar-icon" id="minimizeIcon" width="20" height="20" viewBox="0 0 20 20"
+                            fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s ease;">
+                            <path d="M12 5L7 10L12 15M17 5L12 10L17 15" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span id="minimizeText">Minimize</span>
+                    </li>
+                    -->
+                </ul>
+            </nav>
+        </div>
+        <div class="right-panel">
+            <div class="header-bar">
+                <div class="user-profile">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div class="user-info">
+                        <div class="user-name" id="userName">Loading...</div>
+                        <div class="user-role" id="userRole">User</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-container">
+                <h2 class="header-title">Inventory</h2>
+                <div class="calendar-addroom-container">
+                    <div class="search-bar-container">
+                        <input type="text" id="searchInput" class="search-bar-input" placeholder="Search"
+                            oninput="filterInventory()">
+                        <button class="search-bar-btn" onclick="filterInventory()">
+                            <img src="Icon/searchicon_system.svg" alt="Search" class="search-bar-icon">
+                        </button>
+                    </div>
+                    <div class="types-dropdown-wrapper">
+                        <button class="types-dropdown-btn" onclick="toggleTypesDropdown()">
+                            <span id="selectedType">All Types</span>
+                            <span class="types-arrow">&#9662;</span>
+                        </button>
+                        <div id="typesDropdown" class="types-dropdown-menu" style="display: none;">
+                            <div class="types-dropdown-item" onclick="selectType('All Types')">All Types</div>
+                            <div class="types-dropdown-item" onclick="selectType('Low Stock')">Low Stock</div>
+                            <div class="types-dropdown-item" onclick="selectType('In Stock')">In Stock</div>
+                            <div class="types-dropdown-item" onclick="selectType('Out of Stock')">Out of Stock</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="inventory-table">
+                        <thead>
+                            <tr>
+                                <th>Product Image</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTableBody">
+                            <!-- Inventory items will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Viewer Modal -->
+    <div id="imageViewerModal" class="image-viewer-overlay" onclick="closeImageViewer()">
+        <div class="image-viewer-container" onclick="event.stopPropagation()">
+            <button class="image-viewer-close" onclick="closeImageViewer()">&times;</button>
+            <img id="viewerImage" src="" alt="Product Image" class="viewer-image">
+        </div>
+    </div>
+
+    <script>
+        let allInventoryItems = [];
+        let currentFilterType = 'All Types';
+
+        async function loadInventory() {
+            try {
+                const response = await fetch('get_inventory.php');
+                const result = await response.json();
+
+                if (result.success) {
+                    allInventoryItems = result.items;
+                    filterInventory();
+                } else {
+                    showInventoryError(result.message || 'Unable to load inventory.');
+                }
+            } catch (error) {
+                console.error('Error loading inventory:', error);
+                showInventoryError('Error loading inventory. Please refresh the page.');
+            }
+        }
+
+        function showInventoryError(message) {
+            const tbody = document.getElementById('inventoryTableBody');
+            tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:20px; color:red;">${message}</td></tr>`;
+        }
+
+        function filterInventory() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            const tbody = document.getElementById('inventoryTableBody');
+            tbody.innerHTML = '';
+
+            let filteredItems = allInventoryItems;
+
+            if (currentFilterType !== 'All Types') {
+                filteredItems = filteredItems.filter(item => {
+                    if (currentFilterType === 'Low Stock') {
+                        return item.stock < 10 && item.stock > 0;
+                    }
+                    if (currentFilterType === 'In Stock') {
+                        return item.stock > 0;
+                    }
+                    if (currentFilterType === 'Out of Stock') {
+                        return item.stock === 0;
+                    }
+                    return true;
+                });
+            }
+
+            if (searchQuery) {
+                filteredItems = filteredItems.filter(item => {
+                    const productName = String(item.product_name || '').toLowerCase();
+                    return productName.includes(searchQuery);
+                });
+            }
+
+            if (filteredItems.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:20px;">No items found matching your criteria.</td></tr>';
+                return;
+            }
+
+
+
+
+            filteredItems.forEach(item => {
+                const row = document.createElement('tr');
+                const escapeForJS = (str) => {
+                    return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"');
+                };
+
+                const imageUrl = item.product_image || '';
+                const stockClass = item.stock === 0 ? 'out-of-stock' : (item.stock < 10 ? 'low-stock' : 'in-stock');
+
+                row.innerHTML = `
+                    <td>
+                        ${imageUrl ? `<img src="${escapeForJS(imageUrl)}" alt="Product Image" class="product-image clickable-image" onclick="openImageViewer('${escapeForJS(imageUrl)}')" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="cursor: pointer;">` : ''}
+                        <span style="display:${imageUrl ? 'none' : 'block'}; color:#999; font-size:12px;">No Image</span>
+                    </td>
+                    <td>${escapeForJS(item.product_name || '-')}</td>
+                    <td>₱${parseFloat(item.price || 0).toFixed(2)}</td>
+                    <td>
+                        <span class="stock-badge ${stockClass}">${item.stock}</span>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function toggleTypesDropdown() {
+            const dropdown = document.getElementById('typesDropdown');
+            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+        }
+
+
+
+        function toggleSidebarMinimize() {
+            const panel = document.getElementById('leftPanel');
+            const icon = document.getElementById('collapseIcon');
+            const tooltip = document.getElementById('collapseTooltip');
+            if (!panel) return;
+
+            if (panel.classList.contains('minimized')) {
+                panel.classList.remove('minimized');
+                if (icon) icon.src = 'Icon/left-arrow_minimize.svg';
+                if (tooltip) tooltip.textContent = 'Minimize';
+            } else {
+                panel.classList.add('minimized');
+                if (icon) icon.src = 'Icon/right-arrow_minimize.svg';
+                if (tooltip) tooltip.textContent = 'Expand';
+            }
+        }
+
+        function selectType(type) {
+            currentFilterType = type;
+            document.getElementById('selectedType').textContent = type;
+            document.getElementById('typesDropdown').style.display = 'none';
+            filterInventory();
+        }
+
+        document.addEventListener('click', function (event) {
+            const dropdown = document.getElementById('typesDropdown');
+            const dropdownBtn = document.querySelector('.types-dropdown-btn');
+            if (dropdown && !dropdown.contains(event.target) && !dropdownBtn.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        function openImageViewer(imageSrc) {
+            document.getElementById('viewerImage').src = imageSrc;
+            document.getElementById('imageViewerModal').style.display = 'flex';
+        }
+
+        function closeImageViewer() {
+            document.getElementById('imageViewerModal').style.display = 'none';
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeImageViewer();
+            }
+        });
+
+        function navigateToPage(page) {
+            // Close sidebar on mobile when navigating
+            if (window.innerWidth <= 1024) {
+                const panel = document.querySelector('.left-panel');
+                if (panel) {
+                    panel.classList.remove('open');
+                }
+            }
+            window.location.href = page;
+        }
+
+        // Toggle Sidebar Minimize
+        function toggleSidebar() {
+            const leftPanel = document.querySelector('.left-panel');
+            const minimizeText = document.getElementById('minimizeText');
+            const minimizeIcon = document.getElementById('minimizeIcon');
+
+            if (leftPanel.classList.contains('minimized')) {
+                leftPanel.classList.remove('minimized');
+                if (minimizeText) minimizeText.textContent = 'Minimize';
+                if (minimizeIcon) {
+                    minimizeIcon.innerHTML = '<path d="M12 5L7 10L12 15M17 5L12 10L17 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+                }
+            } else {
+                leftPanel.classList.add('minimized');
+                if (minimizeText) minimizeText.textContent = 'Expand';
+                if (minimizeIcon) {
+                    minimizeIcon.innerHTML = '<path d="M8 5L13 10L8 15M3 5L8 10L3 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+                }
+            }
+        }
+
+        // Toggle Maintenance menu
+        function toggleSystemMaintenance() {
+            const submenu = document.getElementById('systemMaintenanceSubmenu');
+            const menuItem = document.getElementById('systemMaintenanceMenu');
+            const isOpen = submenu.classList.contains('open');
+
+            if (isOpen) {
+                submenu.classList.remove('open');
+                menuItem.classList.remove('expanded');
+            } else {
+                submenu.classList.add('open');
+                menuItem.classList.add('expanded');
+            }
+        }
+
+        function setActiveMenuItem() {
+            const currentPage = window.location.pathname.split('/').pop() || 'inventory.html';
+            const menuItems = document.querySelectorAll('.sidebar-menu-item:not(.collapsible-menu)');
+            const submenuItems = document.querySelectorAll('.submenu-item');
+
+            // Check if current page is in Maintenance submenu
+            const isSystemMaintenancePage = ['inventory.html', 'PurchaseOrder.html', 'AddItem.php'].includes(currentPage);
+
+            if (isSystemMaintenancePage) {
+                // Expand Maintenance menu
+                const submenu = document.getElementById('systemMaintenanceSubmenu');
+                const menuItem = document.getElementById('systemMaintenanceMenu');
+                if (submenu && menuItem) {
+                    submenu.classList.add('open');
+                    menuItem.classList.add('expanded');
+                }
+
+                // Set active submenu item
+                submenuItems.forEach(item => {
+                    const pageName = item.getAttribute('data-page');
+                    if (pageName === currentPage) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            } else {
+                // Set active regular menu item
+                menuItems.forEach(item => {
+                    const pageName = item.getAttribute('data-page');
+                    if (pageName === currentPage) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // Toggle sidebar on mobile (hamburger button)
+        function toggleSidebar() {
+            const panel = document.querySelector('.left-panel');
+            if (panel) {
+                panel.classList.toggle('open');
+            }
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function (event) {
+            if (window.innerWidth <= 1024) {
+                const panel = document.querySelector('.left-panel');
+                const toggleBtn = document.querySelector('.mobile-menu-toggle');
+
+                if (panel && panel.classList.contains('open')) {
+                    // Check if click is outside the sidebar and not on the toggle button
+                    if (!panel.contains(event.target) && !toggleBtn.contains(event.target)) {
+                        panel.classList.remove('open');
+                    }
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setActiveMenuItem();
+            loadInventory();
+            loadUserInfo();
+        });
+
+        // Load user profile information
+        async function loadUserInfo() {
+            try {
+                const response = await fetch('get_user_info.php');
+                const result = await response.json();
+
+                if (result.success) {
+                    const displayName = result.display_name || result.first_name || result.username || 'User';
+                    const accessLevel = result.access_level || 'user';
+
+                    // Update avatar with first letter
+                    const avatarEl = document.getElementById('userAvatar');
+                    if (avatarEl) {
+                        avatarEl.textContent = displayName.charAt(0).toUpperCase();
+                    }
+
+                    // Update username
+                    const nameEl = document.getElementById('userName');
+                    if (nameEl) {
+                        nameEl.textContent = displayName;
+                    }
+
+                    // Update role (format: super_admin -> Super Admin)
+                    const roleEl = document.getElementById('userRole');
+                    if (roleEl) {
+                        const formattedRole = accessLevel.split('_').map(word =>
+                            word.charAt(0).toUpperCase() + word.slice(1)
+                        ).join(' ');
+                        roleEl.textContent = formattedRole;
+                    }
+                } else {
+                    console.error('Failed to load user info');
+                }
+            } catch (error) {
+                console.error('Error loading user info:', error);
+            }
+        }
+    </script>
+</body>
+
+</html>

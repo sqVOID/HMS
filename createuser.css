@@ -1,0 +1,1238 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+/* ── HEADER BAR ─────────────────────────────────────── */
+.header-bar {
+    width: 100%;
+    height: 90px;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 32px;
+    box-sizing: border-box;
+}
+
+/* ── USER PROFILE SECTION ─────────────────────────────── */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #222;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #ef4444;
+    color: #fff;
+    border-radius: 50%;
+    min-width: 10px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 0 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1.5px solid #fff;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.user-name {
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.2;
+}
+
+.user-role {
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.2;
+}
+
+/* ── LAYOUT ─────────────────────────────────────────── */
+.split-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* ── LEFT PANEL (Sidebar) ────────────────────────────── */
+.left-panel {
+    width: 240px;
+    min-width: 220px;
+    max-width: 280px;
+    background: linear-gradient(to right, #fcffd6 0%, #ffffff 100%);
+    height: 100vh;
+    border-right: 1px solid #e0e0e0;
+    position: relative;
+    /* keeps tab in normal flow context */
+    flex-shrink: 0;
+    overflow: visible;
+    /* let the tab poke out on the right */
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.left-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 2px;
+    height: 90px;
+    background: #fff;
+    z-index: 2;
+}
+
+/* ── DingTalk-style collapse tab ──────────────────── */
+.sidebar-collapse-btn {
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 250px;
+    background: #e4dfb0;
+    border: 1px solid #d4cf9e;
+    border-left: none;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    /* Always visible */
+    opacity: 1;
+    pointer-events: auto;
+    transition: background 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 300;
+    padding: 0;
+    user-select: none;
+}
+
+.sidebar-collapse-btn img {
+    width: 10px;
+    height: 10px;
+    display: block;
+    pointer-events: none;
+}
+
+/* Tooltip popup shown on hover */
+.sidebar-collapse-btn .collapse-tooltip {
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 12px;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 5px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 400;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Tooltip left arrow */
+.sidebar-collapse-btn .collapse-tooltip::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-right-color: #1a1a1a;
+}
+
+.sidebar-collapse-btn:hover .collapse-tooltip {
+    opacity: 1;
+}
+
+.sidebar-collapse-btn:hover {
+    background: #d4cf9e;
+}
+
+/* ── Minimized sidebar ───────────────────────────── */
+.left-panel.minimized {
+    width: 70px;
+    min-width: 70px;
+    max-width: 70px;
+}
+
+.left-panel.minimized .logo-img {
+    display: none;
+}
+
+.left-panel.minimized .sidebar-menu span {
+    display: none;
+}
+
+.left-panel.minimized .sidebar-menu li {
+    justify-content: center;
+    padding-left: 0;
+}
+
+.left-panel.minimized .sidebar-icon {
+    margin-right: 0;
+}
+
+.left-panel.minimized .menu-arrow {
+    display: none;
+}
+
+.left-panel.minimized .submenu {
+    display: none !important;
+}
+
+.left-panel.minimized .sidebar-menu-item.collapsible-menu .menu-header {
+    justify-content: center;
+    padding-left: 0;
+}
+
+/* ── RIGHT PANEL ─────────────────────────────────────── */
+.right-panel {
+    flex: 1;
+    background: #f7f7f7;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-width: 0;
+}
+
+/* ── LOGO ────────────────────────────────────────────── */
+.logo-img {
+    display: block;
+    margin: 15px auto 0 0px;
+    width: 100%;
+    max-width: 285px;
+    height: auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* ── SIDEBAR MENU ────────────────────────────────────── */
+.sidebar-menu {
+    margin-top: 24px;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
+    padding: 10px 0 10px 50px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #222;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-weight: 500;
+    transition: background 0.2s, border 0.2s;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background: transparent;
+}
+
+.sidebar-menu li.active,
+.sidebar-menu li:hover {
+    background: #fff;
+    border: 2px solid #e6e5a2;
+    color: #222;
+    font-weight: 600;
+    box-sizing: border-box;
+}
+
+.sidebar-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Collapsible Maintenance Menu */
+.sidebar-menu-item.collapsible-menu {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    margin: 0 10px;
+}
+
+.sidebar-menu-item.collapsible-menu .menu-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 50px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #222;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background: transparent;
+    box-sizing: border-box;
+    min-height: 44px;
+    width: 100%;
+}
+
+.left-panel.minimized .sidebar-menu-item.collapsible-menu .menu-header {
+    justify-content: center;
+    padding-left: 0;
+}
+
+.sidebar-menu-item.collapsible-menu .menu-header:hover,
+.sidebar-menu-item.collapsible-menu.expanded .menu-header {
+    background: #fff;
+    border: 2px solid #e6d6a2;
+    color: #222;
+    font-weight: 600;
+}
+
+.sidebar-menu-item.collapsible-menu .menu-arrow {
+    margin-left: auto;
+    margin-right: 12px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #222;
+    flex-shrink: 0;
+}
+
+.sidebar-menu-item.collapsible-menu.expanded .menu-arrow {
+    transform: rotate(180deg);
+}
+
+.sidebar-menu-item.collapsible-menu .submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
+}
+
+.sidebar-menu-item.collapsible-menu .submenu.open {
+    max-height: 300px;
+    opacity: 1;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.sidebar-menu-item.collapsible-menu .submenu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 80px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #555;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-weight: 500;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background: transparent;
+    margin: 2px 0;
+    position: relative;
+}
+
+.sidebar-menu-item.collapsible-menu .submenu-item:hover {
+    background: #f9f9ed;
+    color: #6d5425;
+    font-weight: 600;
+    padding-left: 85px;
+}
+
+.sidebar-menu-item.collapsible-menu .submenu-item.active {
+    background: #fff;
+    border: 2px solid #e6d6a2;
+    color: #6d5425;
+    font-weight: 600;
+}
+
+.sidebar-menu span {
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+
+
+
+/* ── CONTENT ─────────────────────────────────────────── */
+.content-container {
+    margin: 0;
+    padding: 10px;
+    background: #f7f7f7;
+    min-height: calc(100vh - 90px);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    margin: 0 0 16px 0;
+}
+
+/* ── ALERTS ──────────────────────────────────────────── */
+.alert-box {
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+.alert-success {
+    background: #ebffe3;
+    border-left: 4px solid #a8e19a;
+    color: #256d27;
+    margin: 0 0 14px 0;
+}
+
+.alert-error {
+    background: #ffeaea;
+    border-left: 4px solid #ffb3b3;
+    color: #c62828;
+    padding-left: 32px;
+}
+
+/* ── CREATE ACCOUNT BUTTON ────────────────────────────── */
+.create-account-btn {
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 22px;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 16px;
+    transition: background 0.2s;
+    display: inline-block;
+}
+
+.create-account-btn:hover {
+    background: #444;
+}
+
+/* ── FORM CARD ────────────────────────────────────────── */
+.form-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    padding: 24px 28px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group select:focus {
+    border-color: #c8b87e;
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+    font-size: 13px;
+}
+
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+    color: #555;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-btn {
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 36px;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.create-btn:hover {
+    background: #444;
+}
+
+/* ── TABLE CARD ──────────────────────────────────────── */
+.table-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    padding: 20px 20px 0 20px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.table-toolbar {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 16px;
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0 8px 0 16px;
+    height: 40px;
+    min-width: 140px;
+}
+
+.search-bar-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    color: #222;
+    width: 150px;
+}
+
+.search-bar-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+/* ── table-responsive-wrapper (matches Roomlist exactly) */
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ── USER TABLE ──────────────────────────────────────── */
+.user-table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    background: #fff;
+    table-layout: fixed;
+}
+
+/* Fixed equal-width columns */
+.user-table th:nth-child(1),
+.user-table td:nth-child(1) {
+    width: 25%;
+}
+
+.user-table th:nth-child(2),
+.user-table td:nth-child(2) {
+    width: 20%;
+}
+
+.user-table th:nth-child(3),
+.user-table td:nth-child(3) {
+    width: 20%;
+}
+
+.user-table th:nth-child(4),
+.user-table td:nth-child(4) {
+    width: 35%;
+}
+
+.user-table th {
+    background: #F7E1B0;
+    color: #222;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid #b4b4b4;
+    padding: 10px 8px;
+    text-align: center;
+}
+
+.user-table td {
+    background: #fff;
+    color: #222;
+    font-size: 14px;
+    border: 1px solid #b4b4b4;
+    padding: 10px 8px;
+    text-align: center;
+    vertical-align: middle;
+    height: 50px;
+}
+
+/* ── STATUS BADGE (button-style like Roomlist) ─────── */
+.status-badge {
+    display: inline-block;
+    padding: 5px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    cursor: default;
+    border: none;
+    white-space: nowrap;
+}
+
+.badge-active {
+    background: #256d27;
+    color: #fff;
+}
+
+.badge-inactive {
+    background: #ff6b6b;
+    color: #fff;
+}
+
+/* ── ACTION BUTTONS (matches Roomlist .action-btn) ─── */
+.action-btn {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    cursor: pointer;
+    color: #fff;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
+
+.action-btn:hover {
+    opacity: 0.85;
+}
+
+.btn-toggle {
+    background: #4a9eff;
+    margin-right: 6px;
+}
+
+.btn-edit {
+    background: #28a745;
+    margin-right: 6px;
+}
+
+.btn-delete {
+    background: #ff4444;
+}
+
+/* ── EDIT MODAL ──────────────────────────────────────── */
+.edit-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.edit-modal-overlay.visible {
+    display: flex;
+}
+
+.edit-modal-box {
+    background: #fff;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 460px;
+    padding: 32px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+}
+
+.edit-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #f2f2f2;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.edit-modal-close:hover {
+    background: #e0e0e0;
+}
+
+.edit-modal-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 20px 0;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.edit-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.edit-form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.edit-form-group input[type="text"],
+.edit-form-group input[type="password"],
+.edit-form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.edit-form-group input:focus,
+.edit-form-group select:focus {
+    border-color: #c8b87e;
+}
+
+.edit-form-group input::placeholder {
+    color: #aaa;
+    font-size: 13px;
+}
+
+.edit-form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+}
+
+.edit-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.edit-cancel-btn {
+    background: #f0f0f0;
+    color: #555;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.edit-cancel-btn:hover {
+    background: #e0e0e0;
+}
+
+.edit-save-btn {
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.edit-save-btn:hover {
+    background: #444;
+}
+
+
+
+/* ── MOBILE TOGGLE ───────────────────────────────────── */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 22px;
+    left: 16px;
+    z-index: 1100;
+    background: #6d5425;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 9px 13px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 8px 18px rgba(109, 84, 37, 0.35);
+}
+
+@media screen and (min-width: 1366px) and (max-width: 1920px) {
+    .left-panel {
+        width: 16%;
+        min-width: 220px;
+        max-width: 280px;
+    }
+
+    .logo-img {
+        max-width: 150%;
+    }
+
+    .content-container {
+        margin: 24px;
+        width: calc(100% - 48px);
+    }
+
+    .booking-table {
+        font-size: 14px;
+    }
+
+    .booking-table th,
+    .booking-table td {
+        padding: 6px 4px;
+        font-size: 13px;
+    }
+
+    .booking-table th:nth-child(1),
+    .booking-table td:nth-child(1) {
+        width: 60px;
+        min-width: 60px;
+    }
+
+    .booking-table th:nth-child(2),
+    .booking-table td:nth-child(2) {
+        width: 60px;
+        min-width: 80px;
+    }
+
+    .booking-table th:nth-child(3),
+    .booking-table td:nth-child(3) {
+        width: 120px;
+        min-width: 120px;
+    }
+
+    .booking-table th:nth-child(4),
+    .booking-table td:nth-child(4) {
+        width: 100px;
+        min-width: 100px;
+    }
+
+    .booking-table th:nth-child(5),
+    .booking-table td:nth-child(5) {
+        width: 80px;
+        min-width: 80px;
+    }
+
+    .booking-table th:nth-child(6),
+    .booking-table td:nth-child(6) {
+        width: 70px;
+        min-width: 70px;
+    }
+
+    .booking-table th:nth-child(7),
+    .booking-table td:nth-child(7) {
+        width: 80px;
+        min-width: 80px;
+    }
+
+    .booking-table th:nth-child(8),
+    .booking-table td:nth-child(8) {
+        width: 100px;
+        min-width: 105px;
+    }
+
+    .booking-table th:nth-child(9),
+    .booking-table td:nth-child(9) {
+        width: 100px;
+        min-width: 110px;
+    }
+
+    .booking-table th:nth-child(10),
+    .booking-table td:nth-child(10) {
+        width: 100px;
+        min-width: 130px;
+    }
+
+    .booking-table th:nth-child(11),
+    .booking-table td:nth-child(11) {
+        width: 15px;
+        min-width: 20px;
+    }
+
+    .table-datetime-input {
+        font-size: 11px;
+        max-width: 160px;
+    }
+
+    .duration-input-wrapper {
+        max-width: 100%;
+    }
+
+    .duration-number-input {
+        width: 45px;
+    }
+
+    .duration-unit-select {
+        width: 65px;
+    }
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media screen and (max-width: 1024px) {
+    .left-panel {
+        position: fixed !important;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Hide collapse tab on mobile */
+    .sidebar-collapse-btn {
+        display: none !important;
+    }
+
+    .left-panel.open {
+        transform: translateX(0);
+    }
+
+    .right-panel {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .content-container {
+        padding: 20px;
+    }
+
+    .mobile-menu-toggle {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .header-bar {
+        padding-left: 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content-container {
+        padding: 16px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .user-table {
+        font-size: 12px;
+        min-width: 480px;
+    }
+
+    .user-table th,
+    .user-table td {
+        padding: 8px 6px;
+        font-size: 12px;
+    }
+
+    .action-btn {
+        padding: 5px 10px;
+        font-size: 11px;
+        margin-right: 3px;
+    }
+}
+
+/* Scrollbar styling */
+.table-responsive-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-responsive-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-responsive-wrapper::-webkit-scrollbar-thumb {
+    background: #e6d6a2;
+    border-radius: 4px;
+}
+
+.table-responsive-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #c8b87e;
+}
+
+/* Notification Panel Styles */
+.notification-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 360px;
+    max-height: 500px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    overflow: hidden;
+    animation: slideDown 0.2s ease-out;
+    border: 1px solid rgb(219, 219, 219);
+
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notification-header {
+    padding: 16px 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.notification-header h3 {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #212529;
+}
+
+.notification-body {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.notification-loading,
+.notification-empty,
+.notification-error {
+    padding: 40px 20px;
+    text-align: center;
+    color: #6c757d;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f3f5;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.notification-item:hover {
+    background: #f8f9fa;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgb(56, 56, 56);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.notification-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #212529;
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+
+.notification-text strong {
+    font-weight: 600;
+}
+
+.notification-time {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.notification-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.notification-body::-webkit-scrollbar-track {
+    background: #f1f3f5;
+}
+
+.notification-body::-webkit-scrollbar-thumb {
+    background: #adb5bd;
+    border-radius: 3px;
+}
+
+.notification-body::-webkit-scrollbar-thumb:hover {
+    background: #868e96;
+}
+
+@media (max-width: 768px) {
+    .notification-panel {
+        width: 320px;
+        right: -10px;
+    }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Extension Payment Logic</title>
+</head>
+<body>
+    <h1>Extension Payment Logic Test</h1>
+    <div id="results"></div>
+
+    <script>
+        // Test scenarios
+        const scenarios = [
+            {
+                name: "Reservation with ₱500 downpayment + ₱200 extension",
+                roomRate: 1500,
+                downpaymentAmount: 500,
+                deposit: 1000,
+                extendSubtotal: 200,
+                expectedSubtotal: 200,
+                expectedPaidStatus: "Unpaid"
+            },
+            {
+                name: "Reservation with ₱500 downpayment + ₱500 extension",
+                roomRate: 1500,
+                downpaymentAmount: 500,
+                deposit: 1000,
+                extendSubtotal: 500,
+                expectedSubtotal: 500,
+                expectedPaidStatus: "Unpaid"
+            },
+            {
+                name: "Reservation with ₱500 downpayment + ₱600 extension",
+                roomRate: 1500,
+                downpaymentAmount: 500,
+                deposit: 1000,
+                extendSubtotal: 600,
+                expectedSubtotal: 600,
+                expectedPaidStatus: "Unpaid"
+            },
+            {
+                name: "Walk-in with ₱1500 payment + ₱200 extension (no downpayment)",
+                roomRate: 1500,
+                downpaymentAmount: 0,
+                deposit: 1500,
+                extendSubtotal: 200,
+                expectedSubtotal: 200,
+                expectedPaidStatus: "Unpaid"
+            },
+            {
+                name: "Walk-in with ₱1500 payment, no extension",
+                roomRate: 1500,
+                downpaymentAmount: 0,
+                deposit: 1500,
+                extendSubtotal: 0,
+                expectedSubtotal: 0,
+                expectedPaidStatus: "Paid"
+            }
+        ];
+
+        let resultsHTML = '<table border="1" cellpadding="10"><tr><th>Scenario</th><th>Expected Subtotal</th><th>Calculated Subtotal</th><th>Expected Status</th><th>Calculated Status</th><th>Result</th></tr>';
+
+        scenarios.forEach(scenario => {
+            const { roomRate, downpaymentAmount, deposit, extendSubtotal, expectedSubtotal, expectedPaidStatus } = scenario;
+            
+            // Calculate using the fixed logic
+            const breakfastRate = 0;
+            const guestRate = 0;
+            const petRate = 0;
+            const additionalItemsTotal = 0;
+            const discountAmount = 0;
+            const additionalServiceCharges = guestRate + petRate + additionalItemsTotal;
+            
+            const totalCharges = roomRate + breakfastRate + guestRate + petRate + additionalItemsTotal + extendSubtotal;
+            const totalPayments = downpaymentAmount + deposit;
+            
+            const baseBookingCostWithoutExtend = (roomRate + breakfastRate - discountAmount) + additionalServiceCharges;
+            
+            // FIXED LOGIC: For reservations with downpayment, extension is ALWAYS unpaid
+            const hasDownpayment = downpaymentAmount > 0;
+            const extensionHappenedAfterPayment = extendSubtotal > 0 && !hasDownpayment && totalPayments >= baseBookingCostWithoutExtend;
+            
+            const baseCharges = roomRate + breakfastRate + extendSubtotal;
+            const baseChargesAfterDiscount = baseCharges - discountAmount;
+            const chargesAfterDiscount = baseChargesAfterDiscount + additionalServiceCharges;
+            
+            const hasUnpaidExtension = extendSubtotal > 0 && hasDownpayment;
+            const shouldForceSubtotalZero = (totalPayments >= chargesAfterDiscount && !extensionHappenedAfterPayment && !hasUnpaidExtension);
+            
+            let subtotal;
+            if (shouldForceSubtotalZero) {
+                subtotal = 0;
+            } else {
+                subtotal = Math.max(0, chargesAfterDiscount - totalPayments);
+            }
+            
+            const calculatedPaidStatus = subtotal > 0 ? "Unpaid" : "Paid";
+            
+            const subtotalMatch = Math.abs(subtotal - expectedSubtotal) < 0.01;
+            const statusMatch = calculatedPaidStatus === expectedPaidStatus;
+            const passed = subtotalMatch && statusMatch;
+            
+            resultsHTML += `<tr>
+                <td>${scenario.name}</td>
+                <td>₱${expectedSubtotal.toFixed(2)}</td>
+                <td style="color: ${subtotalMatch ? 'green' : 'red'}">₱${subtotal.toFixed(2)}</td>
+                <td>${expectedPaidStatus}</td>
+                <td style="color: ${statusMatch ? 'green' : 'red'}">${calculatedPaidStatus}</td>
+                <td style="font-weight: bold; color: ${passed ? 'green' : 'red'}">${passed ? 'PASS' : 'FAIL'}</td>
+            </tr>`;
+        });
+
+        resultsHTML += '</table>';
+        document.getElementById('results').innerHTML = resultsHTML;
+    </script>
+</body>
+</html>

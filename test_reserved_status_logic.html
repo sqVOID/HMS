@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Reserved Status Logic - FIXED</title>
+    <style>
+        .container { margin: 20px; padding: 20px; border: 2px solid #ccc; border-radius: 8px; }
+        .correct { border-color: #10b981; background-color: #f0fdf4; }
+        .section-title { font-weight: bold; color: #333; margin-bottom: 10px; }
+        .deposit-section { padding: 12px; border: 1px solid #e5e7eb; margin: 5px 0; display: flex; justify-content: space-between; align-items: center; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <h1>Test: Reserved Status Logic - FIXED ✅</h1>
+    
+    <div class="container correct">
+        <h2>✅ CORRECT: Edit Charges Breakdown for Reserved Status</h2>
+        <p><strong>Should show "Payment" (because reservation was already paid separately)</strong></p>
+        
+        <div class="section-title">Payment Section (VISIBLE for Reserved):</div>
+        <div class="deposit-section" id="editBreakdownDepositContainer">
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <img src="Icon/Deposit2.0icon.svg" alt="Payment" width="20" height="20">
+                <span>Payment</span>
+            </span>
+            <span id="editBreakdownDeposit" style="font-weight: 600;">- ₱1000.00</span>
+        </div>
+
+        <div class="section-title">Reservation Section (HIDDEN for Reserved):</div>
+        <div class="deposit-section hidden" id="editBreakdownDownpaymentContainer">
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <img src="Icon/Deposit2.0icon.svg" alt="Reservation" width="20" height="20">
+                <span>Reservation</span>
+            </span>
+            <span id="editBreakdownDownpayment" style="font-weight: 600;">- ₱1000.00</span>
+        </div>
+    </div>
+
+    <div class="container correct">
+        <h2>✅ CORRECT: Checkout Modal for Reserved Status</h2>
+        <p><strong>Should show "Reservation" (to indicate the reservation payment made)</strong></p>
+        
+        <div class="section-title">Payment Section (HIDDEN for Reserved):</div>
+        <div class="deposit-section hidden" id="checkoutDepositContainer">
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <img src="Icon/Deposit2.0icon.svg" alt="Payment" width="20" height="20">
+                <span>Payment</span>
+            </span>
+            <span id="checkoutDeposit" style="font-weight: 600;">- ₱1000.00</span>
+        </div>
+        
+        <div class="section-title">Reservation Section (VISIBLE for Reserved):</div>
+        <div class="deposit-section" id="checkoutDownpaymentContainer">
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <img src="Icon/Deposit2.0icon.svg" alt="Reservation" width="20" height="20">
+                <span>Reservation</span>
+            </span>
+            <span id="checkoutDownpayment" style="font-weight: 600;">- ₱1000.00</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>📋 Logic Summary (FIXED)</h2>
+        <table border="1" style="border-collapse: collapse; width: 100%;">
+            <tr style="background-color: #f5f5f5;">
+                <th style="padding: 8px;">Booking Status</th>
+                <th style="padding: 8px;">Edit Charges Breakdown</th>
+                <th style="padding: 8px;">Checkout Modal</th>
+                <th style="padding: 8px;">Reason</th>
+            </tr>
+            <tr>
+                <td style="padding: 8px;"><strong>Reserved</strong></td>
+                <td style="padding: 8px; color: #10b981;"><strong>Payment</strong></td>
+                <td style="padding: 8px; color: #3b82f6;"><strong>Reservation</strong></td>
+                <td style="padding: 8px;">Reservation already paid separately</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">Non-Reserved + Downpayment</td>
+                <td style="padding: 8px; color: #3b82f6;">Reservation</td>
+                <td style="padding: 8px; color: #3b82f6;">Reservation</td>
+                <td style="padding: 8px;">Has downpayment methods</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">Regular Booking</td>
+                <td style="padding: 8px; color: #10b981;">Payment</td>
+                <td style="padding: 8px; color: #10b981;">Payment</td>
+                <td style="padding: 8px;">Standard payment</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="container correct">
+        <h2>✅ Key Fix Applied</h2>
+        <p><strong>Changed condition from:</strong></p>
+        <code style="background: #fee; padding: 4px;">if (booking.status === 'Reserved' || hasDownpaymentMethod)</code>
+        
+        <p><strong>To:</strong></p>
+        <code style="background: #efe; padding: 4px;">if (booking.status !== 'Reserved' && hasDownpaymentMethod)</code>
+        
+        <p><strong>Result:</strong> Reserved bookings now show "Payment" in Edit Charges Breakdown ✅</p>
+    </div>
+</body>
+</html>

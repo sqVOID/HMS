@@ -1,0 +1,14 @@
+# BACKUP - Original .htaccess before case-insensitive fixes
+# If the new .htaccess causes issues, restore this version
+
+# Enable PHP processing in HTML files
+AddType application/x-httpd-php .html .htm
+
+# Prevent directory listing
+Options -Indexes
+
+# Security: Prevent access to sensitive files
+<FilesMatch "^(config\.php|auth\.php|access_check\.php|\.htaccess)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

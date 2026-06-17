@@ -1,0 +1,61 @@
+═══════════════════════════════════════════════════════════════════
+  PAYMENT BREAKDOWN FIX - QUICK START GUIDE
+═══════════════════════════════════════════════════════════════════
+
+STEP 1: Run the Populate Script
+────────────────────────────────────────────────────────────────────
+Open your browser and go to:
+
+    http://localhost/HMS/populate_payment_history.php
+
+This will populate payment history columns for all existing bookings.
+Wait for the script to complete (you'll see a success message).
+
+
+STEP 2: Test the Excel Export
+────────────────────────────────────────────────────────────────────
+1. Go to: http://localhost/HMS/Report.php
+2. Select date range: 11/05/2026 (or your test date)
+3. Click "Export Daily Sales"
+4. Open the Excel file
+
+VERIFY:
+✓ Detailed report shows ONE row for 11/05/2026
+✓ Cash column shows ₱800.00
+✓ G-Cash column shows ₱300.00
+✓ Daily Sales Breakdown shows Cash=800, G-Cash=300
+✓ Grand Total shows Cash=800, G-Cash=300
+
+
+STEP 3: Test the PDF Export
+────────────────────────────────────────────────────────────────────
+1. Go to: http://localhost/HMS/Report.php
+2. Select same date range
+3. Click "Export Daily Sales PDF"
+
+VERIFY:
+✓ Payment Method column shows "Cash & G-Cash"
+✓ Total Amount is correct (₱1,100.00)
+
+
+WHAT WAS FIXED:
+────────────────────────────────────────────────────────────────────
+✓ Payment breakdown now accurate for multiple payments on same date
+✓ Grand Total shows correct amounts per payment method
+✓ Daily Sales Breakdown shows correct amounts per payment method
+✓ Payment method separator changed to " & " (e.g., "Cash & G-Cash")
+✓ All payment methods supported (Cash, G-Cash, Maya, Instapay, etc.)
+
+
+FILES MODIFIED:
+────────────────────────────────────────────────────────────────────
+1. populate_payment_history.php - Script to populate history columns
+2. export_daily_sales.php - Excel export with accurate breakdown
+3. export_daily_sales_pdf.php - PDF export with accurate breakdown
+
+
+NEED HELP?
+────────────────────────────────────────────────────────────────────
+See PAYMENT_BREAKDOWN_FIX_SUMMARY.md for detailed technical info.
+
+═══════════════════════════════════════════════════════════════════

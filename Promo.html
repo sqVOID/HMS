@@ -1,0 +1,771 @@
+<?php
+require_once 'access_check.php';
+checkAccess('Promo.html');
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="Icon/MoonClaveLogo3.svg">
+    <title>Promo</title>
+    <link rel="stylesheet" href="Promo.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="role-based-menu.js?v=18" defer></script>
+    <script src="auto_logout.js" defer></script>
+    <script src="cancellation-notification.js?v=15" defer></script>
+</head>
+
+<style>
+    .header-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #222;
+        font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+        margin-top: 0px;
+        margin-bottom: 8px;
+    }
+</style>
+
+<body>
+    <!-- Mobile hamburger button -->
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <div class="split-container">
+        <div class="left-panel" id="leftPanel">
+            <!-- DingTalk-style collapse tab -->
+            <button class="sidebar-collapse-btn" id="collapseBtn" onclick="toggleSidebarMinimize()">
+                <img id="collapseIcon" src="Icon/left-arrow_minimize.svg" alt="Minimize"
+                    style="width: 24px; height: 18px;">
+                <span class="collapse-tooltip" id="collapseTooltip">Minimize</span>
+            </button>
+            <img src="Icon/MoonClave_Logo.svg" alt="Luna Group Logo" class="logo-img">
+            <nav class="sidebar-menu">
+                <ul>
+                    <li class="sidebar-menu-item" style="display: none;" data-page="Createuser.php"
+                        onclick="navigateToPage('Createuser.php')">
+                        <img src="Icon/createaccounticon_system.svg" class="sidebar-icon" alt="Create User">
+                        <span>Create User</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Report.php" onclick="navigateToPage('Report.php')">
+                        <img src="Icon/dashboardicon_system.svg" class="sidebar-icon" alt="Dashboard">
+                        <span>Dashboard</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Booking.html" onclick="navigateToPage('Booking.html')">
+                        <img src="Icon/bookingicon_system.svg" class="sidebar-icon" alt="Booking">
+                        <span>Booking</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Modification.php"
+                        onclick="navigateToPage('Modification.php')">
+                        <img src="Icon/modicon_system.svg" class="sidebar-icon" alt="Modification">
+                        <span>Modification</span>
+                    </li>
+      <li class="sidebar-menu-item" data-page="CashDeposit.php"
+                        onclick="navigateToPage('CashDeposit.php')">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            style="display: inline-block; vertical-align: middle; margin-right: 12px; width: 20px; height: 20px;">
+                            <rect x="2" y="5" width="20" height="14" rx="2"/>
+                            <line x1="2" y1="10" x2="22" y2="10"/>
+                        </svg>
+                        <span>Running Cash</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Reservationlist.php"
+                        onclick="navigateToPage('Reservationlist.php')">
+                        <img src="Icon/reservationicon_system.svg" class="sidebar-icon" alt="Reservation">
+                        <span>Reservation List</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Cancelpage.php" onclick="navigateToPage('Cancelpage.php')">
+                        <img src="Icon/cancelicon_system.svg" class="sidebar-icon" alt="Cancellation Approval">
+                        <span>Cancellation</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Roomlist.html" onclick="navigateToPage('Roomlist.html')">
+                        <img src="Icon/roomlisticon_system.svg" class="sidebar-icon" alt="Room List">
+                        <span>Room List</span>
+                    </li>
+                    <li class="sidebar-menu-item active" data-page="Promo.html" onclick="navigateToPage('Promo.html')">
+                        <img src="Icon/promoicon_system.svg" class="sidebar-icon" alt="Promo">
+                        <span>Promo</span>
+                    </li>
+                    <li class="sidebar-menu-item collapsible-menu" id="systemMaintenanceMenu">
+                        <div class="menu-header" onclick="toggleSystemMaintenance()">
+                            <img src="Icon/systemmaitenanceicon_system.svg" class="sidebar-icon" alt="Maintenance">
+                            <span>Maintenance</span>
+                            <svg class="menu-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <ul class="submenu" id="systemMaintenanceSubmenu">
+                            <li class="submenu-item" data-page="inventory.html"
+                                onclick="navigateToPage('inventory.html')">
+                                <img src="Icon/inventoryicon_system.svg" class="sidebar-icon" alt="Inventory">
+                                <span>Inventory</span>
+                            </li>
+                            <li class="submenu-item" data-page="PurchaseOrder.html"
+                                onclick="navigateToPage('PurchaseOrder.html')">
+                                <img src="Icon/purchaseordericon_system.svg" class="sidebar-icon" alt="Purchase Order">
+                                <span>Purchase Order</span>
+                            </li>
+                            <li class="submenu-item" data-page="AddItem.php" onclick="navigateToPage('AddItem.php')">
+                                <img src="Icon/additemicon_system.svg" class="sidebar-icon" alt="Add Item">
+                                <span>Add Item</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Receive.html" onclick="navigateToPage('Receive.html')">
+                        <img src="Icon/receiveicon_system.svg" class="sidebar-icon" alt="Receive">
+                        <span>Receive</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Breakfast.html" onclick="navigateToPage('Breakfast.html')">
+                        <img src="Icon/breakfasticon_system.svg" class="sidebar-icon" alt="Breakfast">
+                        <span>Meal</span>
+                    </li>
+                    <!-- <li class="sidebar-menu-item" data-page="Message.html" onclick="navigateToPage('Message.html')">
+                        <img src="Icon/messageicon_system.svg" class="sidebar-icon" alt="Message">
+                        <span>Message</span>
+                    </li>
+                    -->
+                    <li class="sidebar-menu-item" onclick="window.location.href='logout.php'">
+                        <img src="Icon/logouticon_system.svg" class="sidebar-icon" alt="Logout">
+                        <span>Logout</span>
+                    </li>
+                    <!-- <li class="sidebar-menu-item" id="minimizeBtn" onclick="toggleSidebarMinimize()">
+                        <svg class="sidebar-icon" id="minimizeIcon" width="20" height="20" viewBox="0 0 20 20"
+                            fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s ease;">
+                            <path d="M12 5L7 10L12 15M17 5L12 10L17 15" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span id="minimizeText">Minimize</span>
+                    </li> -->
+                </ul>
+            </nav>
+        </div>
+        <div class="right-panel">
+            <div class="header-bar">
+                <div class="user-profile">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div class="user-info">
+                        <div class="user-name" id="userName">Loading...</div>
+                        <div class="user-role" id="userRole">User</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-container">
+                <div class="header-section">
+                    <div class="title-section">
+                        <h2 class="header-title">Promo</h2>
+                        <p class="header-subtitle">All-Day Breakfast + Free Coffee Deals for 12 hrs & 24 hrs</p>
+                    </div>
+                    <div class="search-add-container">
+                        <div class="search-bar-container">
+                            <input type="text" id="searchInput" class="search-bar-input" placeholder="Search"
+                                oninput="filterPromos()">
+                            <button class="search-bar-btn" onclick="filterPromos()">
+                                <img src="Icon/searchicon_system.svg" alt="Search" class="search-bar-icon">
+                            </button>
+                        </div>
+                        <button class="add-promo-btn" onclick="openAddPromoModal()">
+                            <span style="font-size:18px;vertical-align:middle;margin-right:8px;">+</span>
+                            Add Promo
+                        </button>
+                    </div>
+                </div>
+                <div class="promo-grid" id="promoGrid">
+                    <!-- Promo cards will be loaded dynamically -->
+                </div>
+                <div class="promo-grid-message" id="promoGridMessage">Loading promos...</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="addPromoModal" class="modal-overlay" style="display: none;">
+        <div class="modal-container">
+            <div class="modal-title-row">
+                <h2 class="modal-title" id="modalTitle">Add Promo</h2>
+                <button type="button" class="modal-close-btn" onclick="closeAddPromoModal()">×</button>
+            </div>
+            <form id="addPromoForm" enctype="multipart/form-data">
+                <input type="hidden" id="promoId" name="promo_id">
+                <div class="modal-form-grid">
+                    <div class="modal-form-group">
+                        <label for="promoTitle">Promo Name *</label>
+                        <input type="text" id="promoTitle" name="title" placeholder="e.g. Deluxe Room" required>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="promoSize">Room Size (sqm)</label>
+                        <input type="text" id="promoSize" name="room_size" placeholder="e.g. 45 m²">
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="promoBed">Bed Type</label>
+                        <input type="text" id="promoBed" name="bed_type" placeholder="e.g. Queen Bed">
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="promoGuests">Guest Capacity</label>
+                        <input type="text" id="promoGuests" name="guest_capacity" placeholder="e.g. 3 Guests">
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="price12">Price (12 hrs) *</label>
+                        <input type="number" step="0.01" min="0" id="price12" name="price_12hrs" placeholder="e.g. 1199"
+                            required>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="price24">Price (24 hrs) *</label>
+                        <input type="number" step="0.01" min="0" id="price24" name="price_24hrs" placeholder="e.g. 1699"
+                            required>
+                    </div>
+                </div>
+                <div class="modal-form-group full-width">
+                    <label for="promoDescription">Description *</label>
+                    <textarea id="promoDescription" name="description" rows="3" placeholder="Brief summary of the promo"
+                        required></textarea>
+                </div>
+                <div class="modal-form-group full-width">
+                    <label for="promoFacilities">Facilities (comma separated)</label>
+                    <textarea id="promoFacilities" name="facilities" rows="2"
+                        placeholder="WiFi, Hot & Cold Shower, Balcony View"></textarea>
+                </div>
+                <div class="modal-form-group full-width">
+                    <label for="promoImage">Promo Image</label>
+                    <input type="file" id="promoImage" name="promo_image" accept="image/*">
+                    <small class="input-hint">Supported: JPG, PNG, GIF, WEBP. Max 5MB.</small>
+                </div>
+                <p class="form-feedback" id="addPromoFeedback"></p>
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn-delete" id="deletePromoBtn" style="display: none;">Delete
+                        Promo</button>
+                    <button type="button" class="modal-btn-back" onclick="closeAddPromoModal()">Cancel</button>
+                    <button type="submit" class="modal-btn-next" id="submitPromoBtn">
+                        <span id="submitPromoBtnText">Save Promo</span>
+                        <span class="btn-loader" id="submitPromoLoader" style="display:none;"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Global variable to store user access level
+        let userAccessLevel = 'user';
+
+        let allPromos = [];
+        const promoGrid = document.getElementById('promoGrid');
+        const promoGridMessage = document.getElementById('promoGridMessage');
+        const addPromoForm = document.getElementById('addPromoForm');
+        const addPromoFeedback = document.getElementById('addPromoFeedback');
+        const submitPromoBtn = document.getElementById('submitPromoBtn');
+        const submitPromoBtnText = document.getElementById('submitPromoBtnText');
+        const submitPromoLoader = document.getElementById('submitPromoLoader');
+        const promoIdInput = document.getElementById('promoId');
+        const modalTitle = document.getElementById('modalTitle');
+        const promoImageInput = document.getElementById('promoImage');
+        const deletePromoBtn = document.getElementById('deletePromoBtn');
+
+        function navigateToPage(page) {
+            // Close sidebar on mobile when navigating
+            if (window.innerWidth <= 1024) {
+                const panel = document.querySelector('.left-panel');
+                if (panel) {
+                    panel.classList.remove('open');
+                }
+            }
+            window.location.href = page;
+        }
+
+        // Toggle Sidebar Minimize
+        function toggleSidebar() {
+            const leftPanel = document.querySelector('.left-panel');
+            const minimizeText = document.getElementById('minimizeText');
+            const minimizeIcon = document.getElementById('minimizeIcon');
+
+            if (leftPanel.classList.contains('minimized')) {
+                leftPanel.classList.remove('minimized');
+                if (minimizeText) minimizeText.textContent = 'Minimize';
+                if (minimizeIcon) {
+                    minimizeIcon.innerHTML = '<path d="M12 5L7 10L12 15M17 5L12 10L17 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+                }
+            } else {
+                leftPanel.classList.add('minimized');
+                if (minimizeText) minimizeText.textContent = 'Expand';
+                if (minimizeIcon) {
+                    minimizeIcon.innerHTML = '<path d="M8 5L13 10L8 15M3 5L8 10L3 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+                }
+            }
+        }
+
+        // Toggle sidebar on mobile (hamburger button)
+        function toggleSidebar() {
+            const panel = document.querySelector('.left-panel');
+            if (panel) {
+                panel.classList.toggle('open');
+            }
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function (event) {
+            if (window.innerWidth <= 1024) {
+                const panel = document.querySelector('.left-panel');
+                const toggleBtn = document.querySelector('.mobile-menu-toggle');
+
+                if (panel && panel.classList.contains('open')) {
+                    if (!panel.contains(event.target) && !toggleBtn.contains(event.target)) {
+                        panel.classList.remove('open');
+                    }
+                }
+            }
+        });
+
+        // Toggle Maintenance menu
+        function toggleSystemMaintenance() {
+            const submenu = document.getElementById('systemMaintenanceSubmenu');
+            const menuItem = document.getElementById('systemMaintenanceMenu');
+            const isOpen = submenu.classList.contains('open');
+
+            if (isOpen) {
+                submenu.classList.remove('open');
+                menuItem.classList.remove('expanded');
+            } else {
+                submenu.classList.add('open');
+                menuItem.classList.add('expanded');
+            }
+        }
+
+        function setActiveMenuItem() {
+            const currentPage = window.location.pathname.split('/').pop() || 'Promo.html';
+            const menuItems = document.querySelectorAll('.sidebar-menu-item:not(.collapsible-menu)');
+            const submenuItems = document.querySelectorAll('.submenu-item');
+
+            // Check if current page is in Maintenance submenu
+            const isSystemMaintenancePage = ['inventory.html', 'PurchaseOrder.html', 'AddItem.php'].includes(currentPage);
+
+            if (isSystemMaintenancePage) {
+                // Expand Maintenance menu
+                const submenu = document.getElementById('systemMaintenanceSubmenu');
+                const menuItem = document.getElementById('systemMaintenanceMenu');
+                if (submenu && menuItem) {
+                    submenu.classList.add('open');
+                    menuItem.classList.add('expanded');
+                }
+
+                // Set active submenu item
+                submenuItems.forEach(item => {
+                    const pageName = item.getAttribute('data-page');
+                    if (pageName === currentPage) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            } else {
+                // Set active regular menu item
+                menuItems.forEach(item => {
+                    const pageName = item.getAttribute('data-page');
+                    if (pageName === currentPage) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        function setGridMessage(message = '', show = true) {
+            if (!promoGridMessage) return;
+            promoGridMessage.textContent = message;
+            promoGridMessage.style.display = show && message ? 'block' : 'none';
+        }
+
+        function filterPromos() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            const filtered = allPromos.filter(promo => {
+                return (
+                    promo.title.toLowerCase().includes(searchQuery) ||
+                    (promo.description && promo.description.toLowerCase().includes(searchQuery)) ||
+                    (Array.isArray(promo.facilities) && promo.facilities.some(facility => facility.toLowerCase().includes(searchQuery)))
+                );
+            });
+            renderPromos(filtered);
+        }
+
+        function createFacilityItems(facilities = []) {
+            if (!Array.isArray(facilities) || facilities.length === 0) return '<span class="muted-text">No facilities listed</span>';
+            return facilities.map(facility => `
+                <div class="facility-item">
+                    <img src="Icon/checkboxicon_system.svg" alt="Check" class="facility-check-icon">
+                    <span>${facility}</span>
+                </div>
+            `).join('');
+        }
+
+        function formatPrice(value) {
+            const numericValue = Number(value);
+            if (Number.isNaN(numericValue)) {
+                return '0.00';
+            }
+            return numericValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function createPromoCard(promo) {
+            const imageSrc = promo.image_path && promo.image_path.trim() !== '' ? promo.image_path : 'Icon/deluxe-room-king-1-2000px.jpg';
+
+            // Check if user is auditor to disable edit button
+            const isAuditor = userAccessLevel === 'auditor';
+            const editButtonHtml = isAuditor ? `
+                <button class="promo-card-edit-btn" 
+                    style="opacity: 0.5; cursor: not-allowed; pointer-events: none;" 
+                    disabled 
+                    title="Auditors cannot edit promos">
+                    <img src="Icon/editbreakfastlogo.svg" alt="Edit promo" style="opacity: 0.5;">
+                </button>
+            ` : `
+                <button class="promo-card-edit-btn" data-promo-id="${promo.id}" title="Edit promo">
+                    <img src="Icon/editbreakfastlogo.svg" alt="Edit promo">
+                </button>
+            `;
+
+            return `
+                <div class="promo-card" data-promo-id="${promo.id}">
+                    <div class="promo-card-header">
+                        <h3 class="promo-card-title">${promo.title}</h3>
+                        ${editButtonHtml}
+                    </div>
+                    <div class="promo-card-image-container">
+                        <img src="${imageSrc}" alt="${promo.title}" class="promo-card-image">
+                    </div>
+                    <div class="promo-card-details">
+                        <div class="detail-item">
+                            <span class="detail-icon"><img src="Icon/sizeicon_system.svg" alt="Size icon"></span>
+                            <span class="detail-text">${promo.room_size || '—'}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon"><img src="Icon/bedsizeicon_system.svg" alt="Bed icon"></span>
+                            <span class="detail-text">${promo.bed_type || '—'}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon"><img src="Icon/availableguesticon_system.svg" alt="Guest icon"></span>
+                            <span class="detail-text">${promo.guest_capacity || '—'}</span>
+                        </div>
+                    </div>
+                    <p class="promo-card-description">${promo.description || 'No description provided.'}</p>
+                    <div class="promo-card-facilities">
+                        <h3 class="promo-card-title">Facilities</h3>
+                        ${createFacilityItems(promo.facilities)}
+                    </div>
+                    <div class="promo-card-pricing">
+                        <button class="pricing-btn">₱${formatPrice(promo.price_12hrs)} / 12 hrs</button>
+                        <button class="pricing-btn">₱${formatPrice(promo.price_24hrs)} / 24 hrs</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPromos(promos = []) {
+            if (!promoGrid) return;
+
+            if (!promos.length) {
+                promoGrid.innerHTML = '';
+                setGridMessage('No promos found. Click "Add Promo" to create one.');
+                return;
+            }
+
+            setGridMessage('', false);
+            promoGrid.innerHTML = promos.map(createPromoCard).join('');
+        }
+
+        async function loadPromos() {
+            setGridMessage('Loading promos...', true);
+            try {
+                const response = await fetch('get_promos.php');
+                const data = await response.json();
+
+                if (!data.success) {
+                    throw new Error(data.message || 'Failed to load promos');
+                }
+
+                allPromos = data.promos || [];
+                filterPromos();
+            } catch (error) {
+                setGridMessage(error.message || 'An error occurred while loading promos.');
+                console.error(error);
+            }
+        }
+
+        function resetAddPromoState() {
+            addPromoFeedback.textContent = '';
+            addPromoFeedback.classList.remove('error', 'success');
+            submitPromoBtn.disabled = false;
+            submitPromoLoader.style.display = 'none';
+        }
+
+        function getFormMode() {
+            return promoIdInput && promoIdInput.value ? 'edit' : 'add';
+        }
+
+        function setModalMode(mode = 'add') {
+            const isEdit = mode === 'edit';
+            if (modalTitle) {
+                modalTitle.textContent = isEdit ? 'Edit Promo' : 'Add Promo';
+            }
+            if (submitPromoBtnText) {
+                submitPromoBtnText.textContent = isEdit ? 'Update Promo' : 'Save Promo';
+            }
+            if (deletePromoBtn) {
+                deletePromoBtn.style.display = isEdit ? 'inline-flex' : 'none';
+            }
+        }
+
+        function populatePromoForm(promo) {
+            document.getElementById('promoTitle').value = promo.title || '';
+            document.getElementById('promoSize').value = promo.room_size || '';
+            document.getElementById('promoBed').value = promo.bed_type || '';
+            document.getElementById('promoGuests').value = promo.guest_capacity || '';
+            document.getElementById('price12').value = promo.price_12hrs || '';
+            document.getElementById('price24').value = promo.price_24hrs || '';
+            document.getElementById('promoDescription').value = promo.description || '';
+            const facilitiesValue = Array.isArray(promo.facilities)
+                ? promo.facilities.join(', ')
+                : (promo.facilities || '');
+            document.getElementById('promoFacilities').value = facilitiesValue;
+            if (promoImageInput) {
+                promoImageInput.value = '';
+            }
+        }
+
+        function openAddPromoModal(promo = null) {
+            // Prevent auditors from adding/editing promos
+            if (userAccessLevel === 'auditor') {
+                alert('Auditors cannot add or edit promos. This action is restricted to Staff, Admin, and Super Admin only.');
+                return;
+            }
+
+            if (promoIdInput) {
+                promoIdInput.value = promo ? promo.id : '';
+            }
+            if (promo) {
+                populatePromoForm(promo);
+                setModalMode('edit');
+            } else {
+                addPromoForm.reset();
+                setModalMode('add');
+            }
+            resetAddPromoState();
+            document.getElementById('addPromoModal').style.display = 'flex';
+        }
+        function closeAddPromoModal() {
+            document.getElementById('addPromoModal').style.display = 'none';
+            addPromoForm.reset();
+            if (promoIdInput) {
+                promoIdInput.value = '';
+            }
+            setModalMode('add');
+            resetAddPromoState();
+        }
+
+        function toggleSidebarMinimize() {
+            const panel = document.getElementById('leftPanel');
+            const icon = document.getElementById('collapseIcon');
+            const tooltip = document.getElementById('collapseTooltip');
+            if (!panel) return;
+
+            if (panel.classList.contains('minimized')) {
+                panel.classList.remove('minimized');
+                if (icon) icon.src = 'Icon/left-arrow_minimize.svg';
+                if (tooltip) tooltip.textContent = 'Minimize';
+            } else {
+                panel.classList.add('minimized');
+                if (icon) icon.src = 'Icon/right-arrow_minimize.svg';
+                if (tooltip) tooltip.textContent = 'Expand';
+            }
+        }
+
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('addPromoModal');
+            if (event.target == modal) {
+                closeAddPromoModal();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            setActiveMenuItem();
+            // Load user info first, then load promos
+            await loadUserInfo();
+            loadPromos();
+        });
+
+        // Load user profile information
+        async function loadUserInfo() {
+            try {
+                const response = await fetch('get_user_info.php');
+                const result = await response.json();
+
+                if (result.success) {
+                    const displayName = result.display_name || result.first_name || result.username || 'User';
+                    const accessLevel = result.access_level || 'user';
+
+                    // Store access level globally
+                    userAccessLevel = accessLevel;
+
+                    // Update Add Promo button visibility based on access level
+                    updateAddPromoButtonVisibility();
+
+                    // Update avatar with first letter
+                    const avatarEl = document.getElementById('userAvatar');
+                    if (avatarEl) {
+                        avatarEl.textContent = displayName.charAt(0).toUpperCase();
+                    }
+
+                    // Update username
+                    const nameEl = document.getElementById('userName');
+                    if (nameEl) {
+                        nameEl.textContent = displayName;
+                    }
+
+                    // Update role (format: super_admin -> Super Admin)
+                    const roleEl = document.getElementById('userRole');
+                    if (roleEl) {
+                        const formattedRole = accessLevel.split('_').map(word =>
+                            word.charAt(0).toUpperCase() + word.slice(1)
+                        ).join(' ');
+                        roleEl.textContent = formattedRole;
+                    }
+                } else {
+                    console.error('Failed to load user info');
+                }
+            } catch (error) {
+                console.error('Error loading user info:', error);
+            }
+        }
+
+        // Update Add Promo button visibility
+        function updateAddPromoButtonVisibility() {
+            const addPromoBtn = document.querySelector('.add-promo-btn');
+            if (addPromoBtn && userAccessLevel === 'auditor') {
+                addPromoBtn.style.opacity = '0.5';
+                addPromoBtn.style.cursor = 'not-allowed';
+                addPromoBtn.style.pointerEvents = 'none';
+                addPromoBtn.title = 'Auditors cannot add promos';
+            }
+        }
+        if (addPromoForm) {
+            addPromoForm.addEventListener('submit', async function (event) {
+                event.preventDefault();
+                submitPromoBtn.disabled = true;
+                submitPromoBtnText.textContent = getFormMode() === 'edit' ? 'Updating...' : 'Saving...';
+                submitPromoLoader.style.display = 'inline-block';
+                addPromoFeedback.textContent = '';
+                addPromoFeedback.classList.remove('error', 'success');
+
+                const formData = new FormData(addPromoForm);
+                const isEditMode = getFormMode() === 'edit';
+                const endpoint = isEditMode ? 'update_promo.php' : 'add_promo.php';
+
+                try {
+                    const response = await fetch(endpoint, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await response.json();
+
+                    if (!data.success) {
+                        throw new Error(data.message || 'Failed to save promo.');
+                    }
+
+                    addPromoFeedback.textContent = isEditMode ? 'Promo updated successfully!' : 'Promo added successfully!';
+                    addPromoFeedback.classList.add('success');
+                    if (!isEditMode) {
+                        addPromoForm.reset();
+                    } else {
+                        promoImageInput.value = '';
+                    }
+
+                    await loadPromos();
+                    setTimeout(() => {
+                        closeAddPromoModal();
+                    }, 800);
+                } catch (error) {
+                    addPromoFeedback.textContent = error.message || 'Something went wrong.';
+                    addPromoFeedback.classList.add('error');
+                } finally {
+                    submitPromoBtn.disabled = false;
+                    setModalMode(getFormMode());
+                    submitPromoLoader.style.display = 'none';
+                }
+            });
+        }
+
+        if (promoGrid) {
+            promoGrid.addEventListener('click', function (event) {
+                const editButton = event.target.closest('.promo-card-edit-btn');
+                if (!editButton) return;
+
+                // Prevent auditors from editing promos
+                if (userAccessLevel === 'auditor') {
+                    alert('Auditors cannot edit promos. This action is restricted to Staff, Admin, and Super Admin only.');
+                    return;
+                }
+
+                const promoId = editButton.getAttribute('data-promo-id');
+                const promo = allPromos.find(item => String(item.id) === String(promoId));
+                if (promo) {
+                    openAddPromoModal(promo);
+                }
+            });
+        }
+
+        if (deletePromoBtn) {
+            deletePromoBtn.addEventListener('click', async function () {
+                const promoId = promoIdInput ? promoIdInput.value : '';
+                if (!promoId) return;
+
+                const promo = allPromos.find(item => String(item.id) === String(promoId));
+                const confirmation = confirm(`Are you sure you want to delete "${promo ? promo.title : 'this promo'}"? This action cannot be undone.`);
+                if (!confirmation) return;
+
+                deletePromoBtn.disabled = true;
+                const originalText = deletePromoBtn.textContent;
+                deletePromoBtn.textContent = 'Deleting...';
+                addPromoFeedback.textContent = '';
+                addPromoFeedback.classList.remove('error', 'success');
+
+                const formData = new FormData();
+                formData.append('promo_id', promoId);
+
+                try {
+                    const response = await fetch('delete_promo.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await response.json();
+
+                    if (!data.success) {
+                        throw new Error(data.message || 'Failed to delete promo.');
+                    }
+
+                    addPromoFeedback.textContent = 'Promo deleted successfully.';
+                    addPromoFeedback.classList.add('success');
+
+                    await loadPromos();
+                    setTimeout(() => {
+                        closeAddPromoModal();
+                    }, 600);
+                } catch (error) {
+                    addPromoFeedback.textContent = error.message || 'Something went wrong.';
+                    addPromoFeedback.classList.add('error');
+                } finally {
+                    deletePromoBtn.disabled = false;
+                    deletePromoBtn.textContent = originalText;
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

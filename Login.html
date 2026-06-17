@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="Icon/MoonClaveLogo3.svg">
+    <title>Luna Group - Hotel Management System</title>
+    <link rel="stylesheet" href="Login.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-section">
+            <div class="login-wrapper">
+                <div class="logo-section">
+                    <div class="logo-header">
+                        <img src="Icon/MoonClave_Logo.svg" alt="Luna Group Logo" class="logo-img">
+                    </div>
+                    <div class="header-text">
+                        <h1 class="main-title">Login</h1>
+                    </div>
+                </div>
+
+                <form id="loginForm" class="login-form" method="POST" action="login.php">
+                    <div id="errorMessage" class="error-message"
+                        style="display: none; background: #fee; color: #c33; padding: 12px; border-radius: 6px; margin-bottom: 0px; border: 1px solid #fcc;">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-input"
+                            placeholder="Enter your username" required autocomplete="username" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-input"
+                            placeholder="Enter your password" required autocomplete="current-password" />
+                    </div>
+
+                    <!--
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe" class="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+-->
+                    <button type="submit" class="login-button">
+                        Login
+                    </button>
+                    <!--    <p class="signup-text">
+                        Not registered yet?
+                        <a href="Signup.html" class="signup-link">Create an Account</a>
+                    </p>
+                    -->
+                </form>
+            </div>
+        </div>
+
+        <div class="showcase-section">
+            <div class="showcase-wrapper">
+
+                <div class="image-grid" id="imageGrid">
+                    <div class="mobile-image">
+                        <img id="mobileMainImage" src="" alt="Hotel room" />
+                    </div>
+
+                    <div class="desktop-grid">
+                        <div class="image-large">
+                            <img id="mainImage" src="" alt="Hotel room" />
+                        </div>
+
+                        <div class="image-small">
+                            <img id="smallImage1" src="" alt="Hotel view 2" />
+                        </div>
+                        <div class="image-small">
+                            <img id="smallImage2" src="" alt="Hotel view 3" />
+                        </div>
+                        <div class="image-small">
+                            <img id="smallImage3" src="" alt="Hotel view 4" />
+                        </div>
+                        <div class="image-small">
+                            <img id="smallImage4" src="" alt="Hotel view 5" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel-info" id="hotelInfo">
+                    <h2 class="hotel-name" id="hotelName">Castle Bernardina Hotel</h2>
+                    <p class="hotel-description" id="hotelDescription">
+                        Experience luxury and comfort in our elegantly designed rooms with stunning city views, modern
+                        amenities, and exceptional service.
+                    </p>
+
+                    <div class="carousel-navigation">
+                        <button class="nav-button" id="prevButton" aria-label="Previous hotel">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <div class="carousel-dots" id="carouselDots">
+                            <button class="dot active" data-index="0" aria-label="Go to hotel 1"></button>
+                            <button class="dot" data-index="1" aria-label="Go to hotel 2"></button>
+                            <button class="dot" data-index="2" aria-label="Go to hotel 3"></button>
+                        </div>
+
+                        <button class="nav-button" id="nextButton" aria-label="Next hotel">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const logout = urlParams.get('logout');
+
+            const errorDiv = document.getElementById('errorMessage');
+
+            if (error && errorDiv) {
+                errorDiv.textContent = decodeURIComponent(error);
+                errorDiv.style.display = 'block';
+                errorDiv.style.background = '#fee';
+                errorDiv.style.color = '#c33';
+                errorDiv.style.border = '1px solid #fcc';
+            } else if (logout === 'success' && errorDiv) {
+                errorDiv.textContent = 'You have been successfully logged out.';
+                errorDiv.style.display = 'block';
+                errorDiv.style.background = '#EDE9D4';
+                errorDiv.style.color = '#545715';
+                errorDiv.style.border = '1px solid #E4E6C3';
+
+            }
+
+
+            if (error || logout) {
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+
+            // Ensure form submits to login.php
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function (e) {
+                    // Let the form submit naturally - don't prevent default
+                    // Server-side validation will handle authentication
+                    const username = document.getElementById('username').value.trim();
+                    const password = document.getElementById('password').value;
+
+                    if (!username || !password) {
+                        e.preventDefault();
+                        alert('Please enter both username and password.');
+                        return false;
+                    }
+                });
+            }
+        });
+
+        const hotels = [
+            {
+                name: 'MOONCLAVE HOTEL',
+                description: 'Experience luxury and comfort in our elegantly designed rooms with comfortable room, modern amenities, and exceptional service.',
+                images: [
+                    'front/front1.JPG',
+                    'back/back6.PNG',
+                    'back/back2.JPG',
+                    'back/back7.JPG',
+                    'back/back3.JPG',
+                ],
+            },
+            {
+                name: 'MOONCLAVE HOTEL',
+                description: 'Offering a peaceful retreat with stylish accommodations, contemporary facilities, and hospitality that feels personal and genuine..',
+                images: [
+                    'front/front2.JPG',
+                    'back/back6.PNG',
+                    'back/back2.JPG',
+                    'back/back7.JPG',
+                    'back/back3.JPG',
+                ],
+            },
+
+        ];
+
+        // Current hotel index
+        let currentHotelIndex = 0;
+        let isAnimating = false;
+
+        // Get DOM elements
+        const loginForm = document.getElementById('loginForm');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const hotelName = document.getElementById('hotelName');
+        const hotelDescription = document.getElementById('hotelDescription');
+        const mobileMainImage = document.getElementById('mobileMainImage');
+        const mainImage = document.getElementById('mainImage');
+        const smallImage1 = document.getElementById('smallImage1');
+        const smallImage2 = document.getElementById('smallImage2');
+        const smallImage3 = document.getElementById('smallImage3');
+        const smallImage4 = document.getElementById('smallImage4');
+        const imageGrid = document.getElementById('imageGrid');
+        const hotelInfo = document.getElementById('hotelInfo');
+        const carouselDots = document.querySelectorAll('.dot');
+
+        // Update hotel display
+        function updateHotelDisplay() {
+            const currentHotel = hotels[currentHotelIndex];
+
+            // Add fade transition class
+            imageGrid.classList.remove('fade-transition');
+            hotelInfo.classList.remove('fade-transition');
+
+            // Trigger reflow to restart animation
+            void imageGrid.offsetWidth;
+            void hotelInfo.offsetWidth;
+
+            // Add transition class back
+            imageGrid.classList.add('fade-transition');
+            hotelInfo.classList.add('fade-transition');
+
+            // Update text content
+            hotelName.textContent = currentHotel.name;
+            hotelDescription.textContent = currentHotel.description;
+
+            // Update images
+            mobileMainImage.src = currentHotel.images[0];
+            mainImage.src = currentHotel.images[0];
+            smallImage1.src = currentHotel.images[1];
+            smallImage2.src = currentHotel.images[2];
+            smallImage3.src = currentHotel.images[3];
+            smallImage4.src = currentHotel.images[4];
+
+            // Update dots
+            carouselDots.forEach((dot, index) => {
+                if (index === currentHotelIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            // Reset animation flag after animation completes
+            setTimeout(() => {
+                isAnimating = false;
+                prevButton.disabled = false;
+                nextButton.disabled = false;
+            }, 500);
+        }
+
+        // Previous hotel
+        function prevHotel() {
+            if (isAnimating) return;
+            isAnimating = true;
+            prevButton.disabled = true;
+            nextButton.disabled = true;
+            currentHotelIndex = (currentHotelIndex - 1 + hotels.length) % hotels.length;
+            updateHotelDisplay();
+        }
+
+        // Next hotel
+        function nextHotel() {
+            if (isAnimating) return;
+            isAnimating = true;
+            prevButton.disabled = true;
+            nextButton.disabled = true;
+            currentHotelIndex = (currentHotelIndex + 1) % hotels.length;
+            updateHotelDisplay();
+        }
+
+        // Go to specific hotel
+        function goToHotel(index) {
+            if (isAnimating || index === currentHotelIndex) return;
+            isAnimating = true;
+            prevButton.disabled = true;
+            nextButton.disabled = true;
+            currentHotelIndex = index;
+            updateHotelDisplay();
+        }
+
+        // Form submission - Let the form submit naturally to login.php
+        // No need to prevent default or handle manually since we're using server-side authentication
+
+        if (prevButton) {
+            prevButton.addEventListener('click', prevHotel);
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', nextHotel);
+        }
+
+        // Add click listeners to dots
+        carouselDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToHotel(index));
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevHotel();
+            } else if (e.key === 'ArrowRight') {
+                nextHotel();
+            }
+        });
+
+        // Initialize display
+        updateHotelDisplay();
+
+
+    </script>
+</body>
+
+</html>

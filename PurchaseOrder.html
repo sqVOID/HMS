@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="Icon/MoonClaveLogo3.svg">
+    <title>Purchase Order</title>
+    <link rel="stylesheet" href="PurchaseOrder.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="role-based-menu.js?v=18" defer></script>
+    <script src="auto_logout.js" defer></script>
+    <script src="cancellation-notification.js?v=15" defer></script>
+    <style>
+        .header-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #222;
+            font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+            margin-top: 0px;
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Mobile hamburger button -->
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <div class="split-container">
+        <div class="left-panel" id="leftPanel">
+            <button class="sidebar-collapse-btn" id="collapseBtn" onclick="toggleSidebarMinimize()">
+                <img id="collapseIcon" src="Icon/left-arrow_minimize.svg" alt="Minimize"
+                    style="width: 24px; height: 18px;">
+                <span class="collapse-tooltip" id="collapseTooltip">Minimize</span>
+            </button>
+            <img src="Icon/MoonClave_Logo.svg" alt="Luna Group Logo" class="logo-img">
+            <nav class="sidebar-menu">
+                <ul>
+                    <li class="sidebar-menu-item" style="display: none;" data-page="Createuser.php"
+                        onclick="navigateToPage('Createuser.php')">
+                        <img src="Icon/createaccounticon_system.svg" class="sidebar-icon" alt="Create User">
+                        <span>Create User</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Report.php" onclick="navigateToPage('Report.php')">
+                        <img src="Icon/dashboardicon_system.svg" class="sidebar-icon" alt="Dashboard">
+                        <span>Dashboard</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Booking.html" onclick="navigateToPage('Booking.html')">
+                        <img src="Icon/bookingicon_system.svg" class="sidebar-icon" alt="Booking">
+                        <span>Booking</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Modification.php"
+                        onclick="navigateToPage('Modification.php')">
+                        <img src="Icon/modicon_system.svg" class="sidebar-icon" alt="Modification">
+                        <span>Modification</span>
+                    </li>
+
+
+                        <li class="sidebar-menu-item" data-page="CashDeposit.php"
+                        onclick="navigateToPage('CashDeposit.php')">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            style="display: inline-block; vertical-align: middle; margin-right: 12px; width: 20px; height: 20px;">
+                            <rect x="2" y="5" width="20" height="14" rx="2"/>
+                            <line x1="2" y1="10" x2="22" y2="10"/>
+                        </svg>
+                        <span>Running Cash</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Reservationlist.php"
+                        onclick="navigateToPage('Reservationlist.php')">
+                        <img src="Icon/reservationicon_system.svg" class="sidebar-icon" alt="Reservation">
+                        <span>Reservation List</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Cancelpage.php" onclick="navigateToPage('Cancelpage.php')">
+                        <img src="Icon/cancelicon_system.svg" class="sidebar-icon" alt="Cancellation Approval">
+                        <span>Cancellation</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Roomlist.html" onclick="navigateToPage('Roomlist.html')">
+                        <img src="Icon/roomlisticon_system.svg" class="sidebar-icon" alt="Room List">
+                        <span>Room List</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Promo.html" onclick="navigateToPage('Promo.html')">
+                        <img src="Icon/promoicon_system.svg" class="sidebar-icon" alt="Promo">
+                        <span>Promo</span>
+                    </li>
+                    <li class="sidebar-menu-item collapsible-menu" id="systemMaintenanceMenu">
+                        <div class="menu-header" onclick="toggleSystemMaintenance()">
+                            <img src="Icon/systemmaitenanceicon_system.svg" class="sidebar-icon" alt="Maintenance">
+                            <span>Maintenance</span>
+                            <svg class="menu-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <ul class="submenu" id="systemMaintenanceSubmenu">
+                            <li class="submenu-item" data-page="inventory.html"
+                                onclick="navigateToPage('inventory.html')">
+                                <img src="Icon/inventoryicon_system.svg" class="sidebar-icon" alt="Inventory">
+                                <span>Inventory</span>
+                            </li>
+                            <li class="submenu-item active" data-page="PurchaseOrder.html"
+                                onclick="navigateToPage('PurchaseOrder.html')">
+                                <img src="Icon/purchaseordericon_system.svg" class="sidebar-icon" alt="Purchase Order">
+                                <span>Purchase Order</span>
+                            </li>
+                            <li class="submenu-item" data-page="AddItem.php" onclick="navigateToPage('AddItem.php')">
+                                <img src="Icon/additemicon_system.svg" class="sidebar-icon" alt="Add Item">
+                                <span>Add Item</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Receive.html" onclick="navigateToPage('Receive.html')">
+                        <img src="Icon/receiveicon_system.svg" class="sidebar-icon" alt="Receive">
+                        <span>Receive</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Breakfast.html" onclick="navigateToPage('Breakfast.html')">
+                        <img src="Icon/breakfasticon_system.svg" class="sidebar-icon" alt="Breakfast">
+                        <span>Meal</span>
+                    </li>
+                    <!-- <li class="sidebar-menu-item" data-page="Message.html" onclick="navigateToPage('Message.html')">
+                        <img src="Icon/messageicon_system.svg" class="sidebar-icon" alt="Message">
+                        <span>Message</span>
+                    </li>       
+                    -->
+
+                    <li class="sidebar-menu-item" onclick="window.location.href='logout.php'">
+                        <img src="Icon/logouticon_system.svg" class="sidebar-icon" alt="Logout">
+                        <span>Logout</span>
+                    </li>
+                    <!-- Old minimize button - replaced with new DingTalk-style collapse tab
+                    <li class="sidebar-menu-item" id="minimizeBtn" onclick="toggleSidebarMinimize()">
+                        <svg class="sidebar-icon" id="minimizeIcon" width="20" height="20" viewBox="0 0 20 20"
+                            fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s ease;">
+                            <path d="M12 5L7 10L12 15M17 5L12 10L17 15" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span id="minimizeText">Minimize</span>
+                    </li>
+                    -->
+
+                </ul>
+            </nav>
+        </div>
+        <div class="right-panel">
+            <div class="header-bar">
+                <div class="user-profile">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div class="user-info">
+                        <div class="user-name" id="userName">Loading...</div>
+                        <div class="user-role" id="userRole">User</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-wrapper">
+                <div class="content-container">
+                    <h2 class="header-title">Purchase Order</h2>
+                    <div class="action-bar">
+                        <div class="action-left">
+                            <button class="add-po-btn" onclick="openAddPOModal()">
+                                <span style="font-size:18px;vertical-align:middle;margin-right:8px;">+</span>
+                                Add PO
+                            </button>
+                            <div class="search-bar-container">
+                                <input type="text" id="searchInput" class="search-bar-input" placeholder="Search"
+                                    oninput="filterPOs()">
+                                <button class="search-bar-btn" onclick="filterPOs()">
+                                    <img src="Icon/searchicon_system.svg" alt="Search" class="search-bar-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="action-right">
+                            <div class="date-filter-wrapper">
+                                <button class="date-filter-btn" onclick="toggleDateFilterDropdown(event)">
+                                    <img src="Icon/calendaricon_system.svg" alt="Calendar" class="calendar-icon">
+                                    <span id="selectedDateFilterLabel">Today</span>
+                                    <span class="calendar-arrow">&#9662;</span>
+                                </button>
+                                <div id="dateFilterDropdown" class="date-filter-menu" style="display: none;"
+                                    onclick="event.stopPropagation();">
+                                    <div class="date-filter-item" onclick="selectDateFilter('today', event)">Today</div>
+                                    <div class="date-filter-item" onclick="selectDateFilter('lastWeek', event)">Last 7
+                                        Days</div>
+                                    <div class="date-filter-item" onclick="selectDateFilter('oneMonth', event)">Last 30
+                                        Days</div>
+                                    <div class="date-filter-item" onclick="selectDateFilter('custom', event)">Custom
+                                        Date</div>
+                                    <div id="customDateRange" class="custom-date-range" style="display: none;">
+                                        <label>
+                                            <span>From</span>
+                                            <input type="date" id="customStartDate">
+                                        </label>
+                                        <label>
+                                            <span>To</span>
+                                            <input type="date" id="customEndDate">
+                                        </label>
+                                        <button class="custom-apply-btn"
+                                            onclick="applyCustomDateRange(event)">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="po-list-container" id="poListContainer">
+                        <!-- Purchase orders will be loaded dynamically -->
+                    </div>
+                </div>
+                <div class="po-details-panel" id="poDetailsPanel" style="display: none;">
+                    <h3 class="po-details-panel-title">Purchase Order</h3>
+                    <button class="print-btn" onclick="printPO()">Print</button>
+                    <div id="poDetailsContent">
+                        <p style="text-align: center; color: #999; padding: 40px;">Select a purchase order to view
+                            details</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="addPOModal" class="modal-overlay">
+        <div class="modal-container">
+            <h2 class="modal-title">Add Purchase Order</h2>
+            <form id="addPOForm">
+                <div class="modal-content">
+                    <div class="form-group">
+                        <label for="poRequestor" class="form-label">Requestor</label>
+                        <input type="text" id="poRequestor" name="requestor" class="form-input"
+                            placeholder="Enter requestor name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="poDate" class="form-label">Date</label>
+                        <input type="date" id="poDate" name="po_date" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="poAddress" class="form-label">Address</label>
+                        <input type="text" id="poAddress" name="address" class="form-input" placeholder="Enter address">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Items</label>
+                        <div id="poItemsContainer"></div>
+                        <button type="button" class="add-item-btn" onclick="addItemRow()">+ Add Item</button>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn-back" onclick="closeAddPOModal()">Back</button>
+                    <button type="submit" class="modal-btn-next">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit PO Modal -->
+    <div id="editPOModal" class="modal-overlay">
+        <div class="modal-container">
+            <h2 class="modal-title">Edit Purchase Order</h2>
+            <form id="editPOForm">
+                <input type="hidden" id="editPOId" name="id">
+                <div class="modal-content">
+                    <div class="form-group">
+                        <label for="editPORequestor" class="form-label">Requestor</label>
+                        <input type="text" id="editPORequestor" name="requestor" class="form-input"
+                            placeholder="Enter requestor name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editPODate" class="form-label">Date</label>
+                        <input type="date" id="editPODate" name="po_date" class="form-input" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="editPOAddress" class="form-label">Address</label>
+                        <input type="text" id="editPOAddress" name="address" class="form-input"
+                            placeholder="Enter address">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Items *</label>
+                        <div id="editPOItemsContainer">
+                            <!-- Items will be populated dynamically -->
+                        </div>
+                        <button type="button" class="add-item-btn" onclick="addEditItemRow()">+ Add Item</button>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn-back" onclick="closeEditPOModal()">Back</button>
+                    <button type="submit" class="modal-btn-next">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let allPOs = [];
+        let selectedPOId = null;
+        let addItems = [];
+        let addItemsLoading = false;
+        let currentDateFilter = null;
+
+        function toggleSidebarMinimize() {
+            const panel = document.getElementById('leftPanel');
+            const icon = document.getElementById('collapseIcon');
+            const tooltip = document.getElementById('collapseTooltip');
+            if (!panel) return;
+
+            if (panel.classList.contains('minimized')) {
+                panel.classList.remove('minimized');
+                if (icon) icon.src = 'Icon/left-arrow_minimize.svg';
+                if (tooltip) tooltip.textContent = 'Minimize';
+            } else {
+                panel.classList.add('minimized');
+                if (icon) icon.src = 'Icon/right-arrow_minimize.svg';
+                if (tooltip) tooltip.textContent = 'Expand';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('poDate').valueAsDate = new Date();
+            setActiveMenuItem();
+            resetPOItemsContainer();
+            initializeDateFilter();
+            loadAddItems();
+            loadUserInfo();
+        });
+
+        // Load user profile information
+        async function loadUserInfo() {
+            try {
+                const response = await fetch('get_user_info.php');
+                const result = await response.json();
+
+                if (result.success) {
+                    const displayName = result.display_name || result.first_name || result.username || 'User';
+                    const accessLevel = result.access_level || 'user';
+
+                    // Update avatar with first letter
+                    const avatarEl = document.getElementById('userAvatar');
+                    if (avatarEl) {
+                        avatarEl.textContent = displayName.charAt(0).toUpperCase();
+                    }
+
+                    // Update username
+                    const nameEl = document.getElementById('userName');
+                    if (nameEl) {
+                        nameEl.textContent = displayName;
+                    }
+
+                    // Update role (format: super_admin -> Super Admin)
+                    const roleEl = document.getElementById('userRole');
+                    if (roleEl) {
+                        const formattedRole = accessLevel.split('_').map(word =>
+                            word.charAt(0).toUpperCase() + word.slice(1)
+                        ).join(' ');
+                        roleEl.textContent = formattedRole;
+                    }
+                } else {
+                    console.error('Failed to load user info');
+                }
+            } catch (error) {
+                console.error('Error loading user info:', error);
+            }
+        }
+
+        // Navigation function
+        function navigateToPage(page) {
+            if (window.innerWidth <= 1024) {
+                const panel = document.querySelector('.left-panel');
+                if (panel) {
+                    panel.classList.remove('open');
+                }
+            }
+            window.location.href = page;
+        }
+
+        // Toggle sidebar on mobile (hamburger button)
+        function toggleSidebar() {
+            const panel = document.querySelector('.left-panel');
+            if (panel) {
+                panel.classList.toggle('open');
+            }
+        }
+
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function (event) {
+            if (window.innerWidth <= 1024) {
+                const panel = document.querySelector('.left-panel');
+                const toggleBtn = document.querySelector('.mobile-menu-toggle');
+                if (panel && panel.classList.contains('open')) {
+                    if (!panel.contains(event.target) && !toggleBtn.contains(event.target)) {
+                        panel.classList.remove('open');
+                    }
+                }
+            }
+        });
+
+        // Toggle Maintenance menu
+        function toggleSystemMaintenance() {
+            const submenu = document.getElementById('systemMaintenanceSubmenu');
+            const menuItem = document.getElementById('systemMaintenanceMenu');
+            const isOpen = submenu.classList.contains('open');
+
+            if (isOpen) {
+                submenu.classList.remove('open');
+                menuItem.classList.remove('expanded');
+            } else {
+                submenu.classList.add('open');
+                menuItem.classList.add('expanded');
+            }
+        }
+
+        // Set active menu item
+        function setActiveMenuItem() {
+            const currentPage = window.location.pathname.split('/').pop() || 'PurchaseOrder.html';
+            const menuItems = document.querySelectorAll('.sidebar-menu-item:not(.collapsible-menu)');
+            const submenuItems = document.querySelectorAll('.submenu-item');
+
+            // Check if current page is in Maintenance submenu
+            const isSystemMaintenancePage = ['inventory.html', 'PurchaseOrder.html', 'AddItem.php'].includes(currentPage);
+
+            if (isSystemMaintenancePage) {
+                // Expand Maintenance menu
+                const submenu = document.getElementById('systemMaintenanceSubmenu');
+                const menuItem = document.getElementById('systemMaintenanceMenu');
+                if (submenu && menuItem) {
+                    submenu.classList.add('open');
+                    menuItem.classList.add('expanded');
+                }
+
+                // Set active submenu item
+                submenuItems.forEach(item => {
+                    const pageName = item.getAttribute('data-page');
+                    if (pageName === currentPage) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            } else {
+                // Set active regular menu item
+                menuItems.forEach(item => {
+                    const pageName = item.getAttribute('data-page');
+                    if (pageName === currentPage) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // Load purchase orders
+        function formatCurrency(value) {
+            const number = Number(value);
+            const safeNumber = isNaN(number) ? 0 : number;
+            return safeNumber.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function initializeDateFilter() {
+            setDateFilter('today', false);
+            loadPOs();
+        }
+
+        function toggleDateFilterDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('dateFilterDropdown');
+            if (!dropdown) return;
+            const isOpen = dropdown.classList.contains('open');
+            if (isOpen) {
+                closeDateFilterDropdown();
+            } else {
+                dropdown.classList.add('open');
+                dropdown.style.display = 'block';
+            }
+        }
+
+        function closeDateFilterDropdown() {
+            const dropdown = document.getElementById('dateFilterDropdown');
+            if (!dropdown) return;
+            dropdown.classList.remove('open');
+            dropdown.style.display = 'none';
+            toggleCustomDateSection(false);
+        }
+
+        function setDateFilter(rangeKey, shouldLoad = true, customRange = null) {
+            const range = customRange || getDateRange(rangeKey);
+            if (!range) return;
+            currentDateFilter = {
+                key: rangeKey,
+                startDate: range.startDate || null,
+                endDate: range.endDate || null,
+                label: range.label
+            };
+            const labelEl = document.getElementById('selectedDateFilterLabel');
+            if (labelEl) {
+                labelEl.textContent = range.label;
+            }
+            closeDateFilterDropdown();
+            if (shouldLoad) {
+                loadPOs();
+            }
+        }
+
+
+
+        function getDateRange(rangeKey) {
+            const today = new Date();
+            const format = (date) => date.toISOString().split('T')[0];
+            switch (rangeKey) {
+                case 'today': {
+                    const dateStr = format(today);
+                    return { startDate: dateStr, endDate: dateStr, label: 'Today' };
+                }
+                case 'lastWeek': {
+                    const start = new Date(today);
+                    start.setDate(start.getDate() - 6);
+                    return { startDate: format(start), endDate: format(today), label: 'Last 7 Days' };
+                }
+                case 'oneMonth': {
+                    const start = new Date(today);
+                    start.setDate(start.getDate() - 29);
+                    return { startDate: format(start), endDate: format(today), label: 'Last 30 Days' };
+                }
+                default:
+                    return null;
+            }
+        }
+
+        function selectDateFilter(rangeKey, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            if (rangeKey === 'custom') {
+                toggleCustomDateSection(true);
+                return;
+            }
+            toggleCustomDateSection(false);
+            setDateFilter(rangeKey);
+        }
+
+        function toggleCustomDateSection(show) {
+            const customSection = document.getElementById('customDateRange');
+            if (!customSection) return;
+            customSection.style.display = show ? 'block' : 'none';
+        }
+
+        function applyCustomDateRange(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const startInput = document.getElementById('customStartDate');
+            const endInput = document.getElementById('customEndDate');
+            const startDate = startInput ? startInput.value : '';
+            const endDate = endInput ? endInput.value : '';
+
+            if (!startDate && !endDate) {
+                alert('Please select at least one date.');
+                return;
+            }
+            if (startDate && endDate && startDate > endDate) {
+                alert('Start date must be earlier than end date.');
+                return;
+            }
+
+            const labelParts = [];
+            if (startDate) labelParts.push(new Date(startDate).toLocaleDateString());
+            if (endDate) labelParts.push(new Date(endDate).toLocaleDateString());
+            const label = labelParts.length ? `Custom (${labelParts.join(' - ')})` : 'Custom';
+
+            setDateFilter('custom', true, {
+                startDate: startDate || null,
+                endDate: endDate || null,
+                label
+            });
+        }
+
+        async function loadPOs() {
+            try {
+                const params = new URLSearchParams();
+                if (currentDateFilter && currentDateFilter.startDate) {
+                    params.append('start_date', currentDateFilter.startDate);
+                }
+                if (currentDateFilter && currentDateFilter.endDate) {
+                    params.append('end_date', currentDateFilter.endDate);
+                }
+                const query = params.toString() ? `?${params.toString()}` : '';
+                const response = await fetch(`get_purchase_orders.php${query}`);
+                const result = await response.json();
+
+                if (result.success) {
+                    allPOs = result.purchase_orders || [];
+                    filterPOs();
+                    if (selectedPOId) {
+                        const currentSelection = allPOs.find(p => p.id == selectedPOId);
+                        if (currentSelection) {
+                            showPODetails(currentSelection);
+                        } else {
+                            hidePODetailsPanel();
+                        }
+                    }
+                } else {
+                    console.error('Error loading purchase orders:', result.message);
+                    const container = document.getElementById('poListContainer');
+                    if (container) {
+                        container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">Unable to load purchase orders.</p>';
+                    }
+                    hidePODetailsPanel();
+                }
+            } catch (error) {
+                console.error('Error loading purchase orders:', error);
+                const container = document.getElementById('poListContainer');
+                if (container) {
+                    container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">Error loading purchase orders.</p>';
+                }
+                hidePODetailsPanel();
+            }
+        }
+
+        async function loadAddItems() {
+            addItemsLoading = true;
+            try {
+                const response = await fetch('get_additems.php');
+                const result = await response.json();
+
+                if (result.success && Array.isArray(result.items)) {
+                    addItems = result.items;
+                } else {
+                    addItems = [];
+                    console.error('Unable to load add items:', result.message);
+                }
+            } catch (error) {
+                console.error('Error loading add items:', error);
+                addItems = [];
+            } finally {
+                addItemsLoading = false;
+                refreshAddItemSelects();
+            }
+        }
+
+        function refreshAddItemSelects() {
+            const selects = document.querySelectorAll('.inventory-select');
+            selects.forEach(select => {
+                const previousValue = select.value;
+                populateAddItemSelect(select, previousValue);
+                const row = select.closest('.po-item-row');
+                if (!row) return;
+                const quantityInput = row.querySelector('input[name="quantities[]"]');
+                const unitCostInput = row.querySelector('.unit-cost-display');
+                const amountInput = row.querySelector('.amount-display');
+                const hiddenPriceInput = row.querySelector('input[name="prices[]"]');
+                const hiddenImageInput = row.querySelector('input[name="images[]"]');
+                const storedPrice = hiddenPriceInput ? hiddenPriceInput.value : '';
+                const storedImage = hiddenImageInput ? hiddenImageInput.value : '';
+                handleAddItemSelection(select, quantityInput, unitCostInput, amountInput, hiddenPriceInput, hiddenImageInput, storedPrice, storedImage);
+            });
+        }
+
+        function populateAddItemSelect(selectElement, selectedValue = '') {
+            if (!selectElement) return;
+            selectElement.innerHTML = '';
+
+            if (addItemsLoading && addItems.length === 0) {
+                const loadingOption = document.createElement('option');
+                loadingOption.value = '';
+                loadingOption.textContent = 'Loading items...';
+                loadingOption.disabled = true;
+                loadingOption.selected = true;
+                selectElement.appendChild(loadingOption);
+                selectElement.disabled = true;
+                return;
+            }
+
+            selectElement.disabled = false;
+
+            if (!addItems.length) {
+                const emptyOption = document.createElement('option');
+                emptyOption.value = '';
+                emptyOption.textContent = 'No items available';
+                emptyOption.disabled = true;
+                emptyOption.selected = true;
+                selectElement.appendChild(emptyOption);
+                return;
+            }
+
+            const placeholderOption = document.createElement('option');
+            placeholderOption.value = '';
+            placeholderOption.textContent = 'Select item';
+            placeholderOption.disabled = true;
+            placeholderOption.selected = !selectedValue;
+            selectElement.appendChild(placeholderOption);
+
+            let matchedSelection = false;
+            addItems.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.product_name || '';
+                option.dataset.addItemId = item.id;
+                option.dataset.addItemPrice = item.price ?? '';
+                option.dataset.addItemImage = item.image_path || '';
+                option.textContent = item.product_name || 'Unnamed Item';
+                if (selectedValue && option.value === selectedValue) {
+                    option.selected = true;
+                    placeholderOption.selected = false;
+                    matchedSelection = true;
+                }
+                selectElement.appendChild(option);
+            });
+
+            if (selectedValue && !matchedSelection) {
+                const customOption = document.createElement('option');
+                customOption.value = selectedValue;
+                customOption.textContent = `${selectedValue} (unavailable)`;
+                customOption.selected = true;
+                selectElement.appendChild(customOption);
+            }
+        }
+
+        function createPOItemRow(selectedItem = '', quantityValue = '', priceValue = '') {
+            return buildItemRow(selectedItem, quantityValue, priceValue, removeItemRow);
+        }
+
+        function createEditPOItemRow(selectedItem = '', quantityValue = '', priceValue = '', imageValue = '') {
+            return buildItemRow(selectedItem, quantityValue, priceValue, imageValue, removeEditItemRow);
+        }
+
+        function buildItemRow(selectedItem = '', quantityValue = '', priceValue = '', imageValue = '', removeHandler) {
+            const row = document.createElement('div');
+            row.className = 'po-item-row';
+
+            const itemSelect = document.createElement('select');
+            itemSelect.name = 'items[]';
+            itemSelect.className = 'form-input inventory-select';
+            itemSelect.required = true;
+            populateAddItemSelect(itemSelect, selectedItem);
+
+            const quantityInput = document.createElement('input');
+            quantityInput.type = 'number';
+            quantityInput.name = 'quantities[]';
+            quantityInput.className = 'form-input';
+            quantityInput.placeholder = 'Qty';
+            quantityInput.min = '1';
+            quantityInput.required = true;
+            if (quantityValue) {
+                quantityInput.value = quantityValue;
+            }
+
+            const unitCostInput = document.createElement('input');
+            unitCostInput.type = 'text';
+            unitCostInput.className = 'form-input readonly-display unit-cost-display';
+            unitCostInput.placeholder = 'Unit Cost';
+            unitCostInput.readOnly = true;
+
+            const amountInput = document.createElement('input');
+            amountInput.type = 'text';
+            amountInput.className = 'form-input readonly-display amount-display';
+            amountInput.placeholder = 'Amount';
+            amountInput.readOnly = true;
+
+            const hiddenPriceInput = document.createElement('input');
+            hiddenPriceInput.type = 'hidden';
+            hiddenPriceInput.name = 'prices[]';
+            if (priceValue || priceValue === 0) {
+                hiddenPriceInput.value = priceValue;
+            }
+
+            const hiddenImageInput = document.createElement('input');
+            hiddenImageInput.type = 'hidden';
+            hiddenImageInput.name = 'images[]';
+            hiddenImageInput.className = 'hidden-image-input';
+            if (imageValue) {
+                hiddenImageInput.value = imageValue;
+            }
+
+            itemSelect.addEventListener('change', () => {
+                handleAddItemSelection(itemSelect, quantityInput, unitCostInput, amountInput, hiddenPriceInput, hiddenImageInput);
+            });
+
+            quantityInput.addEventListener('input', () => {
+                updateAmountField(quantityInput, unitCostInput, amountInput, hiddenPriceInput);
+            });
+
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.className = 'remove-item-btn';
+            removeBtn.innerHTML = '×';
+            removeBtn.addEventListener('click', () => removeHandler(removeBtn));
+
+            row.appendChild(itemSelect);
+            row.appendChild(quantityInput);
+            row.appendChild(unitCostInput);
+            row.appendChild(amountInput);
+            row.appendChild(hiddenPriceInput);
+            row.appendChild(hiddenImageInput);
+            row.appendChild(removeBtn);
+
+            handleAddItemSelection(itemSelect, quantityInput, unitCostInput, amountInput, hiddenPriceInput, hiddenImageInput, selectedItem ? priceValue : '', imageValue || '');
+
+            return row;
+        }
+
+        function handleAddItemSelection(selectElement, quantityInput, unitCostInput, amountInput, hiddenPriceInput, hiddenImageInput, selectedPrice = '', selectedImage = '') {
+            if (!selectElement) return;
+            const selectedOption = selectElement.selectedOptions[0];
+            let unitCost = parseFloat(hiddenPriceInput?.value || '0') || 0;
+            let imagePath = '';
+
+            if (selectedOption && selectedOption.dataset.addItemPrice !== undefined) {
+                const numericPrice = parseFloat(selectedOption.dataset.addItemPrice);
+                if (!isNaN(numericPrice)) {
+                    unitCost = numericPrice;
+                }
+                imagePath = selectedOption.dataset.addItemImage || '';
+            } else if (!selectedOption && selectedPrice) {
+                const numericPrice = parseFloat(selectedPrice);
+                if (!isNaN(numericPrice)) {
+                    unitCost = numericPrice;
+                }
+                imagePath = selectedImage || '';
+            }
+
+            if (hiddenPriceInput) {
+                hiddenPriceInput.value = unitCost || '';
+            }
+
+            if (hiddenImageInput) {
+                hiddenImageInput.value = imagePath || '';
+            }
+
+            if (unitCostInput) {
+                unitCostInput.value = unitCost ? `₱${formatCurrency(unitCost)}` : '';
+            }
+
+            updateAmountField(quantityInput, unitCostInput, amountInput, hiddenPriceInput);
+        }
+
+        function updateAmountField(quantityInput, unitCostInput, amountInput, hiddenPriceInput) {
+            if (!quantityInput || !amountInput || !hiddenPriceInput) return;
+            const quantity = parseFloat(quantityInput.value) || 0;
+            const unitCost = parseFloat(hiddenPriceInput.value) || 0;
+            const amount = quantity * unitCost;
+
+            if (amountInput) {
+                amountInput.value = amount ? `₱${formatCurrency(amount)}` : '';
+            }
+            if (unitCostInput && !unitCostInput.value && unitCost) {
+                unitCostInput.value = `₱${formatCurrency(unitCost)}`;
+            }
+        }
+
+        function resetPOItemsContainer() {
+            const container = document.getElementById('poItemsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            container.appendChild(createPOItemRow());
+            updateRemoveButtons();
+        }
+
+        // Filter purchase orders
+        function filterPOs() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            const container = document.getElementById('poListContainer');
+            container.innerHTML = '';
+
+            let filteredPOs = allPOs;
+
+            if (searchQuery) {
+                filteredPOs = filteredPOs.filter(po => {
+                    const poNumber = String(po.po_number || '').toLowerCase();
+                    const requestor = String(po.requestor || '').toLowerCase();
+                    return poNumber.includes(searchQuery) ||
+                        requestor.includes(searchQuery);
+                });
+            }
+
+            if (filteredPOs.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">No purchase orders found.</p>';
+            } else {
+                filteredPOs.forEach(po => {
+                    const poCard = createPOCard(po);
+                    container.appendChild(poCard);
+                });
+            }
+        }
+
+        // Create PO card with two-column layout
+        function createPOCard(po) {
+            const card = document.createElement('div');
+            card.className = 'po-card';
+            card.setAttribute('data-po-id', po.id);
+            if (selectedPOId == po.id) {
+                card.classList.add('selected');
+            }
+
+            const total = parseFloat(po.total || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            // Format date as MM/DD/YYYY
+            let date = '';
+            if (po.po_date) {
+                const dateObj = new Date(po.po_date);
+                const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+                const day = String(dateObj.getDate()).padStart(2, '0');
+                const year = dateObj.getFullYear();
+                date = `${month}/${day}/${year}`;
+            }
+
+            card.innerHTML = `
+                <div class="po-card-edit" onclick="event.stopPropagation(); openEditPOModal(${po.id})">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                </div>
+                <div class="po-card-header">
+                    <h3 class="po-card-number">${po.po_number || 'MO - 0000'}</h3>
+                </div>
+                <div class="po-card-body">
+                    <div class="po-card-details">
+                        <div class="po-detail-row">
+                            <span class="po-detail-label">Requestor:</span>
+                            <span class="po-detail-value"><strong>${po.requestor || 'N/A'}</strong></span>
+                        </div>
+                        <div class="po-detail-row">
+                            <span class="po-detail-label">Date:</span>
+                            <span class="po-detail-value"><strong>${date}</strong></span>
+                        </div>
+                            <div class="po-detail-row">
+                            <span class="po-detail-label">Total:</span>
+                            <span class="po-detail-value"><strong>₱${total}</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="po-card-actions">
+                    <button class="po-btn approve" onclick="event.stopPropagation(); approvePO(${po.id})" ${po.status === 'Approved' ? 'disabled' : ''}>Approve</button>
+                    <button class="po-btn decline" onclick="event.stopPropagation(); declinePO(${po.id})" ${po.status === 'Declined' ? 'disabled' : ''}>Decline</button>
+                </div>
+            `;
+
+            card.onclick = (e) => {
+                if (!e.target.closest('.po-card-edit') && !e.target.closest('.po-btn')) {
+                    selectPO(po.id, card);
+                }
+            };
+
+            return card;
+        }
+
+        // Select PO and show details
+        function selectPO(poId, cardElement = null) {
+            selectedPOId = poId;
+            const po = allPOs.find(p => p.id == poId);
+            if (!po) return;
+
+            // Update selected card
+            document.querySelectorAll('.po-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            if (cardElement) {
+                cardElement.classList.add('selected');
+            } else {
+                const cards = document.querySelectorAll('.po-card');
+                cards.forEach(card => {
+                    const cardPOId = parseInt(card.getAttribute('data-po-id') || '0');
+                    if (cardPOId === poId) {
+                        card.classList.add('selected');
+                    }
+                });
+            }
+
+            // Show details
+            showPODetails(po);
+        }
+
+        // Show PO details in right panel
+        function showPODetails(po) {
+            const detailsPanel = document.getElementById('poDetailsPanel');
+            const detailsContent = document.getElementById('poDetailsContent');
+
+            // Show the details panel
+            detailsPanel.style.display = 'flex';
+
+            const date = po.po_date ? new Date(po.po_date).toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }) : '';
+            const dateApproved = po.date_approved ? new Date(po.date_approved).toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }) : 'N/A';
+
+            let itemsHTML = '';
+            if (po.items && Array.isArray(po.items)) {
+                itemsHTML = po.items.map(item => {
+                    const quantity = parseFloat(item.quantity || 0) || 0;
+                    const unitCost = parseFloat(item.price || 0) || 0;
+                    const amount = quantity * unitCost;
+                    return `
+                        <tr>
+                            <td>${item.name || ''}</td>
+                            <td>${quantity || 0}</td>
+                            <td>₱${formatCurrency(unitCost)}</td>
+                            <td>₱${formatCurrency(amount)}</td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            detailsContent.innerHTML = `
+                <div class="po-details-content">
+                    <h3 class="po-details-number">${po.po_number || 'MO - 0000'}</h3>
+                    <div class="po-details-info">
+                        <p><strong>Requestor:</strong> ${po.requestor || 'N/A'}</p>
+                        <p><strong>Date:</strong> ${date}</p>
+                        <p><strong>Address:</strong> ${po.address || 'N/A'}</p>
+                        <p><strong>Date Approved:</strong> ${dateApproved}</p>
+                    </div>
+                    <div class="po-items-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Items</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Cost</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${itemsHTML}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        function hidePODetailsPanel() {
+            const detailsPanel = document.getElementById('poDetailsPanel');
+            if (detailsPanel) {
+                detailsPanel.style.display = 'none';
+            }
+            selectedPOId = null;
+            document.querySelectorAll('.po-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+        }
+
+        // Add PO Modal Functions
+        function openAddPOModal() {
+            document.getElementById('addPOModal').style.display = 'flex';
+        }
+
+        function closeAddPOModal() {
+            document.getElementById('addPOModal').style.display = 'none';
+            document.getElementById('addPOForm').reset();
+            document.getElementById('poDate').valueAsDate = new Date();
+            resetPOItemsContainer();
+        }
+
+        function addItemRow() {
+            const container = document.getElementById('poItemsContainer');
+            container.appendChild(createPOItemRow());
+            updateRemoveButtons();
+        }
+
+        function removeItemRow(btn) {
+            const container = document.getElementById('poItemsContainer');
+            if (container.children.length > 1) {
+                btn.closest('.po-item-row').remove();
+                updateRemoveButtons();
+            }
+        }
+
+        function updateRemoveButtons() {
+            const container = document.getElementById('poItemsContainer');
+            const rows = container.querySelectorAll('.po-item-row');
+            rows.forEach((row, index) => {
+                const removeBtn = row.querySelector('.remove-item-btn');
+                if (rows.length > 1) {
+                    removeBtn.style.display = 'block';
+                } else {
+                    removeBtn.style.display = 'none';
+                }
+            });
+        }
+
+        // Add PO Form submission
+        document.getElementById('addPOForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const items = [];
+            const itemNames = formData.getAll('items[]');
+            const quantities = formData.getAll('quantities[]');
+            const prices = formData.getAll('prices[]');
+
+            for (let i = 0; i < itemNames.length; i++) {
+                if (itemNames[i] && quantities[i] && prices[i]) {
+                    items.push({
+                        name: itemNames[i],
+                        quantity: parseInt(quantities[i]),
+                        price: parseFloat(prices[i])
+                    });
+                }
+            }
+
+            if (items.length === 0) {
+                alert('Please add at least one item!');
+                return;
+            }
+
+            const data = {
+                requestor: formData.get('requestor'),
+                po_date: formData.get('po_date'),
+                description: '',
+                address: formData.get('address') || '',
+                items: items
+            };
+
+            try {
+                const response = await fetch('add_purchase_order.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(result.message || 'Purchase order added successfully!');
+                    closeAddPOModal();
+                    await loadPOs();
+                } else {
+                    alert(result.message || 'Error adding purchase order!');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        });
+
+        // Edit PO Modal Functions
+        async function openEditPOModal(poId) {
+            const po = allPOs.find(p => p.id == poId);
+            if (!po) return;
+
+            document.getElementById('editPOId').value = poId;
+            document.getElementById('editPORequestor').value = po.requestor || '';
+            document.getElementById('editPODate').value = po.po_date ? po.po_date.split(' ')[0] : '';
+            document.getElementById('editPOAddress').value = po.address || '';
+
+            const container = document.getElementById('editPOItemsContainer');
+            container.innerHTML = '';
+
+            if (po.items && Array.isArray(po.items) && po.items.length > 0) {
+                po.items.forEach(item => {
+                    container.appendChild(createEditPOItemRow(item.name || '', item.quantity || 1, item.price || 0, item.image_path || ''));
+                });
+            } else {
+                container.appendChild(createEditPOItemRow());
+            }
+
+            updateEditRemoveButtons();
+            document.getElementById('editPOModal').style.display = 'flex';
+        }
+
+        function closeEditPOModal() {
+            document.getElementById('editPOModal').style.display = 'none';
+        }
+
+        function addEditItemRow() {
+            const container = document.getElementById('editPOItemsContainer');
+            container.appendChild(createEditPOItemRow());
+            updateEditRemoveButtons();
+        }
+
+        function removeEditItemRow(btn) {
+            const container = document.getElementById('editPOItemsContainer');
+            if (container.children.length > 1) {
+                btn.closest('.po-item-row').remove();
+                updateEditRemoveButtons();
+            }
+        }
+
+        function updateEditRemoveButtons() {
+            const container = document.getElementById('editPOItemsContainer');
+            const rows = container.querySelectorAll('.po-item-row');
+            rows.forEach((row, index) => {
+                const removeBtn = row.querySelector('.remove-item-btn');
+                if (rows.length > 1) {
+                    removeBtn.style.display = 'block';
+                } else {
+                    removeBtn.style.display = 'none';
+                }
+            });
+        }
+
+        // Edit PO Form submission
+        document.getElementById('editPOForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const items = [];
+            const itemNames = formData.getAll('items[]');
+            const quantities = formData.getAll('quantities[]');
+            const prices = formData.getAll('prices[]');
+            const images = formData.getAll('images[]');
+
+            for (let i = 0; i < itemNames.length; i++) {
+                if (itemNames[i] && quantities[i] && prices[i]) {
+                    items.push({
+                        name: itemNames[i],
+                        quantity: parseInt(quantities[i]),
+                        price: parseFloat(prices[i]),
+                        image_path: images[i] || ''
+                    });
+                }
+            }
+
+            if (items.length === 0) {
+                alert('Please add at least one item!');
+                return;
+            }
+
+            const data = {
+                id: parseInt(formData.get('id')),
+                requestor: formData.get('requestor'),
+                po_date: formData.get('po_date'),
+                description: '',
+                address: formData.get('address') || '',
+                items: items
+            };
+
+            try {
+                const response = await fetch('update_purchase_order.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(result.message || 'Purchase order updated successfully!');
+                    closeEditPOModal();
+                    await loadPOs();
+                    if (selectedPOId == data.id) {
+                        selectPO(data.id);
+                    }
+                } else {
+                    alert(result.message || 'Error updating purchase order!');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        });
+
+        // Approve/Decline PO
+        async function approvePO(poId) {
+            if (!confirm('Are you sure you want to approve this purchase order?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch('update_purchase_order.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: poId,
+                        status: 'Approved'
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('Purchase order approved!');
+                    await loadPOs();
+                    if (selectedPOId == poId) {
+                        const po = allPOs.find(p => p.id == poId);
+                        if (po) showPODetails(po);
+                    }
+                } else {
+                    alert(result.message || 'Error approving purchase order!');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        async function declinePO(poId) {
+            if (!confirm('Are you sure you want to decline this purchase order?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch('update_purchase_order.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: poId,
+                        status: 'Declined'
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('Purchase order declined!');
+                    await loadPOs();
+                    if (selectedPOId == poId) {
+                        const po = allPOs.find(p => p.id == poId);
+                        if (po) showPODetails(po);
+                    }
+                } else {
+                    alert(result.message || 'Error declining purchase order!');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Print PO
+        function printPO() {
+            if (!selectedPOId) {
+                alert('Please select a purchase order to print.');
+                return;
+            }
+
+            const po = allPOs.find(p => p.id == selectedPOId);
+            if (!po) return;
+
+            const printWindow = window.open('', '_blank');
+            const date = po.po_date ? new Date(po.po_date).toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }) : '';
+            const dateApproved = po.date_approved ? new Date(po.date_approved).toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }) : 'N/A';
+
+            let itemsHTML = '';
+            if (po.items && Array.isArray(po.items)) {
+                itemsHTML = po.items.map(item => {
+                    const quantity = parseFloat(item.quantity || 0) || 0;
+                    const unitCost = parseFloat(item.price || 0) || 0;
+                    const amount = quantity * unitCost;
+                    return `
+                        <tr>
+                            <td>${item.name || ''}</td>
+                            <td>${quantity}</td>
+                            <td>₱${formatCurrency(unitCost)}</td>
+                            <td>₱${formatCurrency(amount)}</td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            const total = parseFloat(po.total || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Purchase Order - ${po.po_number}</title>
+                        <style>
+                            @page { margin: 20mm; size: auto; }
+                            @media print {
+                                body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                            }
+                            body { font-family: Arial, sans-serif; padding: 20px; margin: 0; }
+                            h1 { color: #256d27; }
+                            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                            th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+                            th { background-color: #b6e6a2!important; color: #222 !important; border-color: #ccc !important; }
+                            .total { font-size: 18px; font-weight: bold; margin-top: 20px; }
+                            .signature-section { margin-top: 40px; }
+                            .signature-label { font-weight: bold; margin-bottom: 12px; }
+                            .signature-line { width: 240px; border-bottom: 2px solid #222; margin-top: 40px; padding-bottom: 4px; }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Purchase Order: ${po.po_number || 'MO - 0000'}</h1>
+                        <p><strong>Requestor:</strong> ${po.requestor || 'N/A'}</p>
+                        <p><strong>Date:</strong> ${date}</p>
+                        <p><strong>Address:</strong> ${po.address || 'N/A'}</p>
+                        <p><strong>Date Approved:</strong> ${dateApproved}</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Items</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Cost</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${itemsHTML}
+                            </tbody>
+                        </table>
+                        <div class="total">Total: ₱${total}</div>
+                        <div class="signature-section">
+                            <div class="signature-label">Signature By:</div>
+                            <div class="signature-line"></div>
+                        </div>
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            const addModal = document.getElementById('addPOModal');
+            const editModal = document.getElementById('editPOModal');
+            if (event.target == addModal) {
+                closeAddPOModal();
+            }
+            if (event.target == editModal) {
+                closeEditPOModal();
+            }
+        }
+
+        // Close details panel when clicking outside
+        document.addEventListener('click', function (event) {
+            const detailsPanel = document.getElementById('poDetailsPanel');
+            const isClickOnCard = event.target.closest('.po-card');
+            const isClickOnDetailsPanel = event.target.closest('.po-details-panel');
+            const isClickOnModal = event.target.closest('.modal-overlay');
+
+            if (detailsPanel && detailsPanel.style.display !== 'none' && !isClickOnCard && !isClickOnDetailsPanel && !isClickOnModal) {
+                hidePODetailsPanel();
+            }
+
+            const dropdown = document.getElementById('dateFilterDropdown');
+            if (dropdown && dropdown.classList.contains('open') && !event.target.closest('.date-filter-wrapper')) {
+                closeDateFilterDropdown();
+            }
+        });
+    </script>
+</body>
+
+</html>

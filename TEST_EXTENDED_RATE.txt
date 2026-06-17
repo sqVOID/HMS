@@ -1,0 +1,18 @@
+Test the extended rate display:
+
+1. Open your browser and go to the Booking page
+2. Find a booking that has extend_hours and extend_price values in the database
+3. Click the Checkout button for that booking
+4. The Charges Breakdown should show "Extended Rate (X Hours) ₱XXX.XX"
+
+If you don't see it, it's because the booking doesn't have extend_hours and extend_price values yet.
+
+To test:
+1. Click the extend duration icon on any booking
+2. Enter additional hours (e.g., 3)
+3. Click Submit
+4. Then click Checkout on that same booking
+5. You should now see the Extended Rate in the Charges Breakdown
+
+Debug: Check the browser console for these logs:
+- "Found booking:" should show the booking object with extend_hours and extend_price

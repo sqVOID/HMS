@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="Icon/MoonClaveLogo3.svg">
+    <title>Breakfast</title>
+    <link rel="stylesheet" href="Breakfast.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="role-based-menu.js?v=18"></script>
+    <script src="auto_logout.js" defer></script>
+    <script src="cancellation-notification.js?v=15" defer></script>
+    <style>
+        .header-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #222;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <div class="split-container">
+        <div class="left-panel" id="leftPanel">
+            <button class="sidebar-collapse-btn" id="collapseBtn" onclick="toggleSidebarMinimize()">
+                <img id="collapseIcon" src="Icon/left-arrow_minimize.svg" alt="Minimize"
+                    style="width: 24px; height: 18px;">
+                <span class="collapse-tooltip" id="collapseTooltip">Minimize</span>
+            </button>
+            <img src="Icon/MoonClave_Logo.svg" alt="Luna Group Logo" class="logo-img">
+            <nav class="sidebar-menu">
+                <ul>
+                    <li class="sidebar-menu-item" style="display: none;" data-page="Createuser.php"
+                        onclick="navigateToPage('Createuser.php')">
+                        <img src="Icon/createaccounticon_system.svg" class="sidebar-icon" alt="Create User">
+                        <span>Create User</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Report.php" onclick="navigateToPage('Report.php')">
+                        <img src="Icon/dashboardicon_system.svg" class="sidebar-icon" alt="Dashboard">
+                        <span>Dashboard</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Booking.html" onclick="navigateToPage('Booking.html')">
+                        <img src="Icon/bookingicon_system.svg" class="sidebar-icon" alt="Booking">
+                        <span>Booking</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Modification.php"
+                        onclick="navigateToPage('Modification.php')">
+                        <img src="Icon/modicon_system.svg" class="sidebar-icon" alt="Modification">
+                        <span>Modification</span>
+                    </li>
+
+      <li class="sidebar-menu-item" data-page="CashDeposit.php"
+                        onclick="navigateToPage('CashDeposit.php')">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            style="display: inline-block; vertical-align: middle; margin-right: 12px; width: 20px; height: 20px;">
+                            <rect x="2" y="5" width="20" height="14" rx="2"/>
+                            <line x1="2" y1="10" x2="22" y2="10"/>
+                        </svg>
+                        <span>Running Cash</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Reservationlist.php"
+                        onclick="navigateToPage('Reservationlist.php')">
+                        <img src="Icon/reservationicon_system.svg" class="sidebar-icon" alt="Reservation">
+                        <span>Reservation List</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Cancelpage.php" onclick="navigateToPage('Cancelpage.php')">
+                        <img src="Icon/cancelicon_system.svg" class="sidebar-icon" alt="Cancellation Approval">
+                        <span>Cancellation</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Roomlist.html" onclick="navigateToPage('Roomlist.html')">
+                        <img src="Icon/roomlisticon_system.svg" class="sidebar-icon" alt="Room List">
+                        <span>Room List</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Promo.html" onclick="navigateToPage('Promo.html')">
+                        <img src="Icon/promoicon_system.svg" class="sidebar-icon" alt="Promo">
+                        <span>Promo</span>
+                    </li>
+                    <li class="sidebar-menu-item collapsible-menu" id="systemMaintenanceMenu">
+                        <div class="menu-header" onclick="toggleSystemMaintenance()">
+                            <img src="Icon/systemmaitenanceicon_system.svg" class="sidebar-icon" alt="Maintenance">
+                            <span>Maintenance</span>
+                            <svg class="menu-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <ul class="submenu" id="systemMaintenanceSubmenu">
+                            <li class="submenu-item" data-page="inventory.html"
+                                onclick="navigateToPage('inventory.html')">
+                                <img src="Icon/inventoryicon_system.svg" class="sidebar-icon" alt="Inventory">
+                                <span>Inventory</span>
+                            </li>
+
+                            <li class="submenu-item" data-page="PurchaseOrder.html"
+                                onclick="navigateToPage('PurchaseOrder.html')">
+                                <img src="Icon/purchaseordericon_system.svg" class="sidebar-icon" alt="Purchase Order">
+                                <span>Purchase Order</span>
+                            </li>
+                            <li class="submenu-item" data-page="AddItem.php" onclick="navigateToPage('AddItem.php')">
+                                <img src="Icon/additemicon_system.svg" class="sidebar-icon" alt="Add Item">
+                                <span>Add Item</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Receive.html" onclick="navigateToPage('Receive.html')">
+                        <img src="Icon/receiveicon_system.svg" class="sidebar-icon" alt="Receive">
+                        <span>Receive</span>
+                    </li>
+                    <li class="sidebar-menu-item active" data-page="Breakfast.html"
+                        onclick="navigateToPage('Breakfast.html')">
+                        <img src="Icon/breakfasticon_system.svg" class="sidebar-icon" alt="Breakfast">
+                        <span>Meal</span>
+                    </li>
+                    <!-- <li class="sidebar-menu-item" data-page="Message.html" onclick="navigateToPage('Message.html')">
+                        <img src="Icon/messageicon_system.svg" class="sidebar-icon" alt="Message">
+                        <span>Message</span>
+                    </li>
+                    -->
+                    <li class="sidebar-menu-item" onclick="window.location.href='logout.php'">
+                        <img src="Icon/logouticon_system.svg" class="sidebar-icon" alt="Logout">
+                        <span>Logout</span>
+                    </li>
+                    <!-- Old minimize button - replaced with new DingTalk-style collapse tab
+                    <li class="sidebar-menu-item" id="minimizeBtn" onclick="toggleSidebarMinimize()">
+                        <svg class="sidebar-icon" id="minimizeIcon" width="20" height="20" viewBox="0 0 20 20"
+                            fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s ease;">
+                            <path d="M12 5L7 10L12 15M17 5L12 10L17 15" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span id="minimizeText">Minimize</span>
+                    </li>
+                    -->
+                </ul>
+            </nav>
+        </div>
+        <div class="right-panel">
+            <div class="header-bar">
+                <div class="user-profile">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div class="user-info">
+                        <div class="user-name" id="userName">Loading...</div>
+                        <div class="user-role" id="userRole">User</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-container">
+                <div class="header-section">
+                    <h2 class="header-title">Meal</h2>
+                    <div class="search-add-container">
+                        <div class="search-bar-container">
+                            <input type="text" id="searchInput" class="search-bar-input" placeholder="Search"
+                                oninput="filterBreakfast()">
+                            <button class="search-bar-btn" onclick="filterBreakfast()">
+                                <img src="Icon/searchicon_system.svg" alt="Search" class="search-bar-icon">
+                            </button>
+                        </div>
+                        <button class="add-food-btn" onclick="openAddFoodModal()">
+                            <span style="font-size:18px;vertical-align:middle;margin-right:8px;">+</span>
+                            Add Food
+                        </button>
+                    </div>
+                </div>
+                <div class="breakfast-grid" id="breakfastGrid">
+                    <!-- Breakfast items will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Food Modal -->
+    <div id="addFoodModal" class="modal-overlay">
+        <div class="modal-container">
+            <h2 class="modal-title">Add Food</h2>
+
+            <form id="addFoodForm" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <div class="upload-section">
+                        <label class="upload-label">Upload a photo:</label>
+                        <div class="upload-placeholder" id="uploadPlaceholder"
+                            onclick="document.getElementById('food_image').click()">
+                            <img id="imagePreview" src="" alt="Preview"
+                                style="display:none; width:100%; height:100%; object-fit:cover; border-radius:8px;">
+                            <svg class="upload-icon" id="uploadIcon" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 18h18l-5-10-3 6-2-4-3 6-2-4-2 6z" fill="#888" opacity="0.6" />
+                                <path d="M5 18h14M3 18l2-4 3 6 2-4 3 6 5-10 2 4" stroke="#666" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M21 18H3" stroke="#666" stroke-width="1.5" />
+                            </svg>
+                            <input type="file" id="food_image" name="food_image" accept="image/*" style="display:none;"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foodName" class="form-label">Food Name</label>
+                        <input type="text" id="foodName" name="food_name" class="form-input" placeholder="Food Name"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foodDescription" class="form-label">Description</label>
+                        <input type="text" id="foodDescription" name="description" class="form-input"
+                            placeholder="Description" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foodPrice" class="form-label">Price</label>
+                        <input type="number" id="foodPrice" name="price" class="form-input" placeholder="0.00"
+                            step="0.01" min="0" required>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn-back" onclick="closeAddFoodModal()">Back</button>
+                    <button type="submit" class="modal-btn-next">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="editFoodModal" class="modal-overlay">
+        <div class="modal-container">
+            <h2 class="modal-title">Edit Food</h2>
+
+            <form id="editFoodForm" enctype="multipart/form-data">
+                <input type="hidden" id="edit_food_id" name="id">
+
+                <div class="modal-content">
+                    <div class="upload-section">
+                        <label class="upload-label">Upload a photo:</label>
+                        <div class="upload-placeholder" id="editUploadPlaceholder"
+                            onclick="document.getElementById('edit_food_image').click()">
+                            <img id="editImagePreview" src="" alt="Preview"
+                                style="display:block; width:100%; height:100%; object-fit:cover; border-radius:8px;">
+                            <svg class="upload-icon" id="editUploadIcon" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                                <path d="M3 18h18l-5-10-3 6-2-4-3 6-2-4-2 6z" fill="#888" opacity="0.6" />
+                                <path d="M5 18h14M3 18l2-4 3 6 2-4 3 6 5-10 2 4" stroke="#666" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M21 18H3" stroke="#666" stroke-width="1.5" />
+                            </svg>
+                            <input type="file" id="edit_food_image" name="food_image" accept="image/*"
+                                style="display:none;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editFoodName" class="form-label">Food Name</label>
+                        <input type="text" id="editFoodName" name="food_name" class="form-input" placeholder="Food Name"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editFoodDescription" class="form-label">Description</label>
+                        <input type="text" id="editFoodDescription" name="description" class="form-input"
+                            placeholder="Description" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editFoodPrice" class="form-label">Price</label>
+                        <input type="number" id="editFoodPrice" name="price" class="form-input" placeholder="0.00"
+                            step="0.01" min="0" required>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn-back" onclick="closeEditFoodModal()">Back</button>
+                    <button type="button" class="modal-btn-delete" onclick="deleteFoodFromModal()">Delete</button>
+                    <button type="submit" class="modal-btn-next">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Global variable to store user access level
+        let userAccessLevel = 'user';
+
+        function openAddFoodModal() {
+            // Prevent auditors from adding food
+            if (userAccessLevel === 'auditor') {
+                alert('Auditors cannot add food items. This action is restricted to Staff, Admin, and Super Admin only.');
+                return;
+            }
+
+            document.getElementById('addFoodModal').style.display = 'flex';
+        }
+
+        function closeAddFoodModal() {
+            document.getElementById('addFoodModal').style.display = 'none';
+            document.getElementById('addFoodForm').reset();
+            document.getElementById('imagePreview').style.display = 'none';
+            document.getElementById('uploadIcon').style.display = 'block';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            const addModal = document.getElementById('addFoodModal');
+            const editModal = document.getElementById('editFoodModal');
+            if (event.target == addModal) {
+                closeAddFoodModal();
+            }
+            if (event.target == editModal) {
+                closeEditFoodModal();
+            }
+        }
+
+        // Image preview functionality (Add Food)
+        document.getElementById('food_image').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                    document.getElementById('uploadIcon').style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Image preview functionality (Edit Food)
+        document.getElementById('edit_food_image').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('editImagePreview').src = e.target.result;
+                    document.getElementById('editImagePreview').style.display = 'block';
+                    document.getElementById('editUploadIcon').style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Form submission
+        document.getElementById('addFoodForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            try {
+                const response = await fetch('add_breakfast_item.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                // Check if response is JSON
+                const contentType = response.headers.get('content-type');
+                let result;
+                if (!contentType || !contentType.includes('application/json')) {
+                    const text = await response.text();
+                    console.error('Non-JSON response:', text);
+                    throw new Error('Server returned non-JSON response. Please check the PHP file.');
+                } else {
+                    result = await response.json();
+                }
+
+                if (result.success) {
+                    alert(result.message);
+                    closeAddFoodModal();
+                    await loadBreakfast(); // Reload the breakfast list
+                    filterBreakfast(); // Apply current filters
+                } else {
+                    alert(result.message || 'Error adding food!');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+
+        // Store all breakfast items globally for filtering
+        let allBreakfastItems = [];
+
+        // Load breakfast items from database
+        async function loadBreakfast() {
+            try {
+                const response = await fetch('get_breakfast.php');
+
+                // Check if response is JSON
+                const contentType = response.headers.get('content-type');
+                let result;
+                if (!contentType || !contentType.includes('application/json')) {
+                    const text = await response.text();
+                    console.error('Non-JSON response:', text);
+                    throw new Error('Server returned non-JSON response. Please check the PHP file.');
+                } else {
+                    result = await response.json();
+                }
+
+                if (result.success) {
+                    allBreakfastItems = result.items || [];
+                    filterBreakfast();
+                } else {
+                    const grid = document.getElementById('breakfastGrid');
+                    grid.innerHTML = '<div style="text-align:center; padding:20px; color:red;">' + (result.message || 'Error loading breakfast items.') + '</div>';
+                }
+            } catch (error) {
+                console.error('Error loading breakfast:', error);
+                const grid = document.getElementById('breakfastGrid');
+                grid.innerHTML = '<div style="text-align:center; padding:20px; color:red;">Error loading breakfast items: ' + error.message + '. Please refresh the page.</div>';
+            }
+        }
+
+        // Filter breakfast based on search
+        function filterBreakfast() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            const grid = document.getElementById('breakfastGrid');
+            grid.innerHTML = '';
+
+            let filteredItems = allBreakfastItems;
+
+            // Filter by search query (food name or description)
+            if (searchQuery) {
+                filteredItems = filteredItems.filter(item => {
+                    const foodName = String(item.food_name || '').toLowerCase();
+                    const description = String(item.description || '').toLowerCase();
+                    return foodName.includes(searchQuery) || description.includes(searchQuery);
+                });
+            }
+
+            // Display filtered items
+            if (filteredItems.length === 0) {
+                grid.innerHTML = '<div style="text-align:center; padding:20px; color:#999;">No breakfast items found matching your criteria.</div>';
+            } else {
+                filteredItems.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'breakfast-card';
+
+                    // Escape single quotes and backslashes for JavaScript string
+                    const escapeForJS = (str) => {
+                        return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"');
+                    };
+
+                    const imageUrl = item.food_image || '';
+                    const price = parseFloat(item.price || 0).toFixed(2);
+
+                    // Check if user is auditor to disable edit button
+                    const isAuditor = userAccessLevel === 'auditor';
+                    const editIconHtml = isAuditor ? `
+                        <img src="Icon/editbreakfastlogo.svg" alt="Edit" class="edit-icon" 
+                            style="cursor: not-allowed; opacity: 0.5; pointer-events: none;" 
+                            title="Auditors cannot edit food items">
+                    ` : `
+                        <img src="Icon/editbreakfastlogo.svg" alt="Edit" class="edit-icon" 
+                            onclick="openEditFoodModal(${item.id}, '${escapeForJS(item.food_name)}', '${escapeForJS(item.description)}', ${item.price}, '${escapeForJS(imageUrl)}')" 
+                            style="cursor: pointer;">
+                    `;
+
+                    card.innerHTML = `
+                        <div class="card-stripe"></div>
+                        <div class="card-icon-left">
+                            <img src="Icon/forkspoonlogo.svg" alt="Breakfast Icon" class="fork-knife-icon">
+                        </div>
+                        <div class="card-icon-right">
+                            ${editIconHtml}
+                        </div>
+                        <div class="card-image-container">
+                            ${imageUrl ? `<img src="${escapeForJS(imageUrl)}" alt="${escapeForJS(item.food_name)}" class="card-food-image" onerror="this.style.display='none';">` : '<div class="card-food-image-placeholder">No Image</div>'}
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">${escapeForJS(item.food_name || '-')}</h3>
+                            <p class="card-description">${escapeForJS(item.description || '-')}</p>
+                            <p class="card-price">₱${price}</p>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        // Store current editing food ID for delete function
+        let currentEditingFoodId = null;
+
+        // Edit Food Modal Functions
+        function openEditFoodModal(id, foodName, description, price, foodImage) {
+            // Prevent auditors from editing food
+            if (userAccessLevel === 'auditor') {
+                alert('Auditors cannot edit food items. This action is restricted to Staff, Admin, and Super Admin only.');
+                return;
+            }
+
+            currentEditingFoodId = id;
+            document.getElementById('edit_food_id').value = id;
+            document.getElementById('editFoodName').value = foodName;
+            document.getElementById('editFoodDescription').value = description;
+            document.getElementById('editFoodPrice').value = price;
+            document.getElementById('editImagePreview').src = foodImage;
+            document.getElementById('editImagePreview').style.display = 'block';
+            document.getElementById('editUploadIcon').style.display = 'none';
+
+            document.getElementById('editFoodModal').style.display = 'flex';
+        }
+
+        function closeEditFoodModal() {
+            currentEditingFoodId = null;
+            document.getElementById('editFoodModal').style.display = 'none';
+            document.getElementById('editFoodForm').reset();
+            document.getElementById('editImagePreview').style.display = 'block';
+            document.getElementById('editUploadIcon').style.display = 'none';
+        }
+
+        // Delete food from modal
+        async function deleteFoodFromModal() {
+            if (!currentEditingFoodId) {
+                alert('No food item selected!');
+                return;
+            }
+
+            if (confirm('Are you sure you want to delete this food item? This action cannot be undone.')) {
+                try {
+                    const formData = new FormData();
+                    formData.append('id', currentEditingFoodId);
+
+                    const response = await fetch('delete_breakfast_item.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    // Check if response is JSON
+                    const contentType = response.headers.get('content-type');
+                    let result;
+                    if (!contentType || !contentType.includes('application/json')) {
+                        const text = await response.text();
+                        console.error('Non-JSON response:', text);
+                        throw new Error('Server returned non-JSON response. Please check the PHP file.');
+                    } else {
+                        result = await response.json();
+                    }
+
+                    if (result.success) {
+                        alert(result.message);
+                        closeEditFoodModal();
+                        await loadBreakfast(); // Reload the breakfast list
+                        filterBreakfast(); // Apply current filters
+                    } else {
+                        alert(result.message || 'Error deleting food item!');
+                    }
+                } catch (error) {
+                    alert('Error: ' + error.message);
+                }
+            }
+        }
+
+        // Edit Food Form submission
+        document.getElementById('editFoodForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Updating...';
+
+            try {
+                const response = await fetch('update_breakfast_item.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                // Check if response is JSON
+                const contentType = response.headers.get('content-type');
+                let result;
+                if (!contentType || !contentType.includes('application/json')) {
+                    const text = await response.text();
+                    console.error('Non-JSON response:', text);
+                    throw new Error('Server returned non-JSON response. Please check the PHP file.');
+                } else {
+                    result = await response.json();
+                }
+
+                if (result.success) {
+                    alert(result.message);
+                    closeEditFoodModal();
+                    await loadBreakfast(); // Reload the breakfast list
+                    filterBreakfast(); // Apply current filters
+                } else {
+                    alert(result.message || 'Error updating food!');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+
+        async function deleteFood(id) {
+            if (!confirm('Are you sure you want to delete this food item?')) {
+                return;
+            }
+
+            try {
+                const formData = new FormData();
+                formData.append('id', id);
+
+                const response = await fetch('delete_breakfast_item.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                // Check if response is JSON
+                const contentType = response.headers.get('content-type');
+                let result;
+                if (!contentType || !contentType.includes('application/json')) {
+                    const text = await response.text();
+                    console.error('Non-JSON response:', text);
+                    throw new Error('Server returned non-JSON response. Please check the PHP file.');
+                } else {
+                    result = await response.json();
+                }
+
+                if (result.success) {
+                    alert(result.message);
+                    await loadBreakfast(); // Reload the breakfast list
+                    filterBreakfast(); // Apply current filters
+                } else {
+                    alert(result.message || 'Error deleting food item!');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Toggle Sidebar Minimize
+        function toggleSidebar() {
+            const leftPanel = document.querySelector('.left-panel');
+            const minimizeText = document.getElementById('minimizeText');
+            const minimizeIcon = document.getElementById('minimizeIcon');
+
+            if (leftPanel.classList.contains('minimized')) {
+                leftPanel.classList.remove('minimized');
+                if (minimizeText) minimizeText.textContent = 'Minimize';
+                if (minimizeIcon) {
+                    minimizeIcon.innerHTML = '<path d="M12 5L7 10L12 15M17 5L12 10L17 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+                }
+            } else {
+                leftPanel.classList.add('minimized');
+                if (minimizeText) minimizeText.textContent = 'Expand';
+                if (minimizeIcon) {
+                    minimizeIcon.innerHTML = '<path d="M8 5L13 10L8 15M3 5L8 10L3 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+                }
+            }
+        }
+
+        // Navigation function
+        function navigateToPage(page) {
+            if (window.innerWidth <= 1024) {
+                const panel = document.querySelector('.left-panel');
+                if (panel) {
+                    panel.classList.remove('open');
+                }
+            }
+            window.location.href = page;
+        }
+
+        // Toggle sidebar on mobile (hamburger button)
+        function toggleSidebar() {
+            const panel = document.querySelector('.left-panel');
+            if (panel) {
+                panel.classList.toggle('open');
+            }
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function (event) {
+            if (window.innerWidth <= 1024) {
+                const panel = document.querySelector('.left-panel');
+                const toggleBtn = document.querySelector('.mobile-menu-toggle');
+                if (panel && panel.classList.contains('open')) {
+                    if (!panel.contains(event.target) && !toggleBtn.contains(event.target)) {
+                        panel.classList.remove('open');
+                    }
+                }
+            }
+        });
+
+        // Toggle Maintenance menu
+        function toggleSystemMaintenance() {
+            const submenu = document.getElementById('systemMaintenanceSubmenu');
+            const menuItem = document.getElementById('systemMaintenanceMenu');
+            const isOpen = submenu.classList.contains('open');
+
+            if (isOpen) {
+                submenu.classList.remove('open');
+                menuItem.classList.remove('expanded');
+            } else {
+                submenu.classList.add('open');
+                menuItem.classList.add('expanded');
+            }
+        }
+
+        // Set active menu item based on current page
+        function setActiveMenuItem() {
+            const currentPage = window.location.pathname.split('/').pop() || 'Breakfast.html';
+            const menuItems = document.querySelectorAll('.sidebar-menu-item:not(.collapsible-menu)');
+            const submenuItems = document.querySelectorAll('.submenu-item');
+
+            // Check if current page is in Maintenance submenu
+            const isSystemMaintenancePage = ['inventory.html', 'PurchaseOrder.html', 'AddItem.php'].includes(currentPage);
+
+            if (isSystemMaintenancePage) {
+                // Expand Maintenance menu
+                const submenu = document.getElementById('systemMaintenanceSubmenu');
+                const menuItem = document.getElementById('systemMaintenanceMenu');
+                if (submenu && menuItem) {
+                    submenu.classList.add('open');
+                    menuItem.classList.add('expanded');
+                }
+
+                // Set active submenu item
+                submenuItems.forEach(item => {
+                    const pageName = item.getAttribute('data-page');
+                    if (pageName === currentPage) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            } else {
+                // Set active regular menu item
+                menuItems.forEach(item => {
+                    const pageName = item.getAttribute('data-page');
+                    if (pageName === currentPage) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // Load breakfast on page load
+        document.addEventListener('DOMContentLoaded', async function () {
+            setActiveMenuItem();
+            // Load user info first, then load breakfast
+            await loadUserInfo();
+            loadBreakfast();
+        });
+
+        // Load user profile information
+        async function loadUserInfo() {
+            try {
+                const response = await fetch('get_user_info.php');
+                const result = await response.json();
+
+                if (result.success) {
+                    const displayName = result.display_name || result.first_name || result.username || 'User';
+                    const accessLevel = result.access_level || 'user';
+
+                    // Store access level globally
+                    userAccessLevel = accessLevel;
+
+                    // Update Add Food button visibility based on access level
+                    updateAddFoodButtonVisibility();
+
+                    // Update avatar with first letter
+                    const avatarEl = document.getElementById('userAvatar');
+                    if (avatarEl) {
+                        avatarEl.textContent = displayName.charAt(0).toUpperCase();
+                    }
+
+                    // Update username
+                    const nameEl = document.getElementById('userName');
+                    if (nameEl) {
+                        nameEl.textContent = displayName;
+                    }
+
+                    // Update role (format: super_admin -> Super Admin)
+                    const roleEl = document.getElementById('userRole');
+                    if (roleEl) {
+                        const formattedRole = accessLevel.split('_').map(word =>
+                            word.charAt(0).toUpperCase() + word.slice(1)
+                        ).join(' ');
+                        roleEl.textContent = formattedRole;
+                    }
+                } else {
+                    console.error('Failed to load user info');
+                }
+            } catch (error) {
+                console.error('Error loading user info:', error);
+            }
+        }
+
+        // Update Add Food button visibility
+        function updateAddFoodButtonVisibility() {
+            const addFoodBtn = document.querySelector('.add-food-btn');
+            if (addFoodBtn && userAccessLevel === 'auditor') {
+                addFoodBtn.style.opacity = '0.5';
+                addFoodBtn.style.cursor = 'not-allowed';
+                addFoodBtn.style.pointerEvents = 'none';
+                addFoodBtn.title = 'Auditors cannot add food items';
+            }
+        }
+        function toggleSidebarMinimize() {
+            const panel = document.getElementById('leftPanel');
+            const icon = document.getElementById('collapseIcon');
+            const tooltip = document.getElementById('collapseTooltip');
+            if (!panel) return;
+
+            if (panel.classList.contains('minimized')) {
+                panel.classList.remove('minimized');
+                if (icon) icon.src = 'Icon/left-arrow_minimize.svg';
+                if (tooltip) tooltip.textContent = 'Minimize';
+            } else {
+                panel.classList.add('minimized');
+                if (icon) icon.src = 'Icon/right-arrow_minimize.svg';
+                if (tooltip) tooltip.textContent = 'Expand';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

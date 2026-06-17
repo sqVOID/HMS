@@ -1,0 +1,1269 @@
+<?php
+require_once 'access_check.php';
+checkAccess('Roomlist.html');
+?>  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="Icon/MoonClaveLogo3.svg">
+    <title>Room List</title>
+    <link rel="stylesheet" href="Roomlist.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="role-based-menu.js?v=18"></script>
+    <script src="auto_logout.js" defer></script>
+    <script src="cancellation-notification.js?v=15" defer></script>
+</head>
+
+<style>
+    .room-list-table th:nth-child(1),
+    .room-list-table td:nth-child(1) {
+        min-width: 80px;
+    }
+
+    .header-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #222;
+        font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .room-list-table th:nth-child(2),
+    .room-list-table td:nth-child(2) {
+        min-width: 95px;
+    }
+
+    .room-list-table th:nth-child(3),
+    .room-list-table td:nth-child(3) {
+        min-width: 250px;
+    }
+
+    .room-list-table th:nth-child(4),
+    .room-list-table td:nth-child(4) {
+        min-width: 140px;
+    }
+
+    .room-list-table th:nth-child(6),
+    .room-list-table td:nth-child(6) {
+        min-width: 160px;
+        white-space: nowrap;
+    }
+</style>
+
+<body>
+    <!-- Mobile hamburger button -->
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">☰</button>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" onclick="toggleSidebar()"></div>
+
+    <div class="split-container">
+        <div class="left-panel" id="leftPanel">
+            <!-- DingTalk-style collapse tab -->
+            <button class="sidebar-collapse-btn" id="collapseBtn" onclick="toggleSidebarMinimize()">
+                <img id="collapseIcon" src="Icon/left-arrow_minimize.svg" alt="Minimize"
+                    style="width: 24px; height: 18px;">
+                <span class="collapse-tooltip" id="collapseTooltip">Minimize</span>
+            </button>
+            <img src="Icon/MoonClave_Logo.svg" alt="Luna Group Logo" class="logo-img">
+            <nav class="sidebar-menu">
+                <ul>
+                    <li class="sidebar-menu-item" style="display: none;" data-page="Createuser.php"
+                        onclick="navigateToPage('Createuser.php')">
+                        <img src="Icon/createaccounticon_system.svg" class="sidebar-icon" alt="Create User">
+                        <span>Create User</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Report.php" onclick="navigateToPage('Report.php')">
+                        <img src="Icon/dashboardicon_system.svg" class="sidebar-icon" alt="Dashboard">
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Booking.html" onclick="navigateToPage('Booking.html')">
+                        <img src="Icon/bookingicon_system.svg" class="sidebar-icon" alt="Booking">
+                        <span>Booking</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Modification.php"
+                        onclick="navigateToPage('Modification.php')">
+                        <img src="Icon/modicon_system.svg" class="sidebar-icon" alt="Modification">
+                        <span>Modification</span>
+
+                    </li>
+
+
+                    <li class="sidebar-menu-item" data-page="CashDeposit.php"
+                    onclick="navigateToPage('CashDeposit.php')">
+                    <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        style="display: inline-block; vertical-align: middle; margin-right: 12px; width: 20px; height: 20px;">
+                        <rect x="2" y="5" width="20" height="14" rx="2"/>
+                        <line x1="2" y1="10" x2="22" y2="10"/>
+                    </svg>
+                    <span>Running Cash</span>
+                </li>
+
+                    <li class="sidebar-menu-item" data-page="Reservationlist.php"
+                        onclick="navigateToPage('Reservationlist.php')">
+                        <img src="Icon/reservationicon_system.svg" class="sidebar-icon" alt="Reservation">
+                        <span>Reservation List</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Cancelpage.php" onclick="navigateToPage('Cancelpage.php')">
+                        <img src="Icon/cancelicon_system.svg" class="sidebar-icon" alt="Cancellation Approval">
+                        <span>Cancellation</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Roomlist.html" onclick="navigateToPage('Roomlist.html')">
+                        <img src="Icon/roomlisticon_system.svg" class="sidebar-icon" alt="Room List">
+                        <span>Room List</span>
+                    </li>
+
+                    <li class="sidebar-menu-item" data-page="Promo.html" onclick="navigateToPage('Promo.html')">
+                        <img src="Icon/promoicon_system.svg" class="sidebar-icon" alt="Promo">
+                        <span>Promo</span>
+                    </li>
+                    <li class="sidebar-menu-item collapsible-menu" id="systemMaintenanceMenu">
+                        <div class="menu-header" onclick="toggleSystemMaintenance()">
+                            <img src="Icon/systemmaitenanceicon_system.svg" class="sidebar-icon" alt="Maintenance">
+                            <span>Maintenance</span>
+                            <svg class="menu-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <ul class="submenu" id="systemMaintenanceSubmenu">
+                            <li class="submenu-item" data-page="inventory.html"
+                                onclick="navigateToPage('inventory.html')">
+                                <img src="Icon/inventoryicon_system.svg" class="sidebar-icon" alt="Inventory">
+                                <span>Inventory</span>
+                            </li>
+                            <li class="submenu-item" data-page="PurchaseOrder.html"
+                                onclick="navigateToPage('PurchaseOrder.html')">
+                                <img src="Icon/purchaseordericon_system.svg" class="sidebar-icon" alt="Purchase Order">
+                                <span>Purchase Order</span>
+                            </li>
+                            <li class="submenu-item" data-page="AddItem.php" onclick="navigateToPage('AddItem.php')">
+                                <img src="Icon/additemicon_system.svg" class="sidebar-icon" alt="Add Item">
+                                <span>Add Item</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Receive.html" onclick="navigateToPage('Receive.html')">
+                        <img src="Icon/receiveicon_system.svg" class="sidebar-icon" alt="Receive">
+                        <span>Receive</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-page="Breakfast.html" onclick="navigateToPage('Breakfast.html')">
+                        <img src="Icon/breakfasticon_system.svg" class="sidebar-icon" alt="Breakfast">
+                        <span>Meal</span>
+                    </li>
+                    <!-- <li class="sidebar-menu-item" data-page="Message.html" onclick="navigateToPage('Message.html')">
+                        <img src="Icon/messageicon_system.svg" class="sidebar-icon" alt="Message">
+                        <span>Message</span>
+                    </li>
+                    -->
+                    <li class="sidebar-menu-item" onclick="window.location.href='logout.php'">
+                        <img src="Icon/logouticon_system.svg" class="sidebar-icon" alt="Logout">
+                        <span>Logout</span>
+                    </li>
+                    <!-- <li class="sidebar-menu-item" id="minimizeBtn" onclick="toggleSidebarMinimize()">
+                        <svg class="sidebar-icon" id="minimizeIcon" width="20" height="20" viewBox="0 0 20 20"
+                            fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s ease;">
+                            <path d="M12 5L7 10L12 15M17 5L12 10L17 15" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span id="minimizeText">Minimize</span>
+                    </li> -->
+                </ul>
+            </nav>
+        </div>
+        <div class="right-panel">
+            <div class="header-bar">
+                <div class="user-profile">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div class="user-info">
+                        <div class="user-name" id="userName">Loading...</div>
+                        <div class="user-role" id="userRole">User</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-container">
+                <h2 class="header-title">Room List</h2>
+                <div class="calendar-addroom-container">
+                    <div class="search-bar-container">
+                        <input type="text" id="searchInput" class="search-bar-input" placeholder="Search"
+                            oninput="filterRooms()">
+                        <button class="search-bar-btn" onclick="filterRooms()">
+                            <img src="Icon/searchicon_system.svg" alt="Search" class="search-bar-icon">
+                        </button>
+                    </div>
+                    <div class="types-dropdown-wrapper">
+                        <button class="types-dropdown-btn" onclick="toggleTypesDropdown()">
+                            <span id="selectedType">All Types</span>
+                            <span class="types-arrow">&#9662;</span>
+                        </button>
+                        <div id="typesDropdown" class="types-dropdown-menu" style="display: none;">
+                            <div class="types-dropdown-item" onclick="selectType('All Types')">All Types</div>
+                            <div class="types-dropdown-item" onclick="selectType('Available')">Available</div>
+                            <div class="types-dropdown-item" onclick="selectType('Occupied')">Occupied</div>
+                            <div class="types-dropdown-item" onclick="selectType('Reserved')">Reserved</div>
+                            <div class="types-dropdown-item" onclick="selectType('Out of Order')">Out of Order</div>
+                        </div>
+                    </div>
+                    <button class="add-room-btn" onclick="openAddRoomModal()">
+                        <span style="font-size:18px;vertical-align:middle;margin-right:8px;">+</span>
+                        Add Room
+                    </button>
+                </div>
+                <div class="table-responsive-wrapper">
+                    <table class="room-list-table">
+                        <thead>
+                            <tr>
+                                <th>Room Image</th>
+                                <th>Room ID</th>
+                                <th>Details</th>
+                                <th>Duration Pricing</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="roomsTableBody">
+                            <!-- Rooms will be loaded dynamically from database -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Room List Table End -->
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Add Room Modal -->
+    <div id="addRoomModal" class="modal-overlay">
+        <div class="modal-container">
+            <h2 class="modal-title">Add Room</h2>
+
+            <form id="addRoomForm" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <div class="upload-section">
+                        <label class="upload-label">Upload a photo:</label>
+                        <div class="upload-placeholder" id="uploadPlaceholder"
+                            onclick="document.getElementById('room_image').click()">
+                            <img id="imagePreview" src="" alt="Preview"
+                                style="display:none; width:100%; height:100%; object-fit:cover; border-radius:8px;">
+                            <svg class="upload-icon" id="uploadIcon" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 18h18l-5-10-3 6-2-4-3 6-2-4-2 6z" fill="#888" opacity="0.6" />
+                                <path d="M5 18h14M3 18l2-4 3 6 2-4 3 6 5-10 2 4" stroke="#666" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M21 18H3" stroke="#666" stroke-width="1.5" />
+                            </svg>
+                            <input type="file" id="room_image" name="room_image" accept="image/*" style="display:none;"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="roomId" class="form-label">Room ID</label>
+                        <input type="text" id="roomId" name="room_id" class="form-input" placeholder="Room ID"
+                            pattern="[0-9]*" inputmode="numeric" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="roomType" class="form-label">Room Type</label>
+                        <input type="text" id="roomType" name="room_type" class="form-input" placeholder="Room Type"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="roomSize" class="form-label">Room Size (m²)</label>
+                        <input type="text" id="roomSize" name="room_size" class="form-input" placeholder="e.g., 25 m²"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bedType" class="form-label">Bed Type</label>
+                        <input type="text" id="bedType" name="bed_type" class="form-input" placeholder="e.g., Queen Bed"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guestCapacity" class="form-label">Guest Capacity</label>
+                        <input type="number" id="guestCapacity" name="guest_capacity" class="form-input"
+                            placeholder="e.g., 2" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Duration Pricing</label>
+                        <div id="durationPricingContainer">
+                            <!-- Duration pricing entries will be added here -->
+                        </div>
+                        <button type="button" class="add-duration-btn" onclick="addDurationPricing()"
+                            style="margin-top: 10px; padding: 8px 16px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">+
+                            Add Duration</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="roomStatus" class="form-label">Status</label>
+                        <select id="roomStatus" name="room_status" class="form-select" required>
+                            <option value="Available" selected>Available</option>
+                            <option value="Occupied">Occupied</option>
+                            <option value="Reserved">Reserved</option>
+                            <option value="Out of Order">Out of Order</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn-back" onclick="closeAddRoomModal()">Back</button>
+                    <button type="submit" class="modal-btn-next">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Room Modal -->
+    <div id="editRoomModal" class="modal-overlay">
+        <div class="modal-container">
+            <h2 class="modal-title">Edit Room</h2>
+
+            <form id="editRoomForm" enctype="multipart/form-data">
+                <input type="hidden" id="edit_room_id" name="id">
+                <input type="hidden" id="edit_original_room_id" name="original_room_id">
+
+                <div class="modal-content">
+                    <div class="upload-section">
+                        <label class="upload-label">Upload a photo:</label>
+                        <div class="upload-placeholder" id="editUploadPlaceholder"
+                            onclick="document.getElementById('edit_room_image').click()">
+                            <img id="editImagePreview" src="" alt="Preview"
+                                style="display:block; width:100%; height:100%; object-fit:cover; border-radius:8px;">
+                            <svg class="upload-icon" id="editUploadIcon" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                                <path d="M3 18h18l-5-10-3 6-2-4-3 6-2-4-2 6z" fill="#888" opacity="0.6" />
+                                <path d="M5 18h14M3 18l2-4 3 6 2-4 3 6 5-10 2 4" stroke="#666" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M21 18H3" stroke="#666" stroke-width="1.5" />
+                            </svg>
+                            <input type="file" id="edit_room_image" name="room_image" accept="image/*"
+                                style="display:none;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editRoomId" class="form-label">Room ID</label>
+                        <input type="text" id="editRoomId" name="room_id" class="form-input" placeholder="Room ID"
+                            pattern="[0-9]*" inputmode="numeric" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editRoomType" class="form-label">Room Type</label>
+                        <input type="text" id="editRoomType" name="room_type" class="form-input" placeholder="Room Type"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editRoomSize" class="form-label">Room Size (m²)</label>
+                        <input type="text" id="editRoomSize" name="room_size" class="form-input"
+                            placeholder="e.g., 25 m²" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editBedType" class="form-label">Bed Type</label>
+                        <input type="text" id="editBedType" name="bed_type" class="form-input"
+                            placeholder="e.g., Queen Bed" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editGuestCapacity" class="form-label">Guest Capacity</label>
+                        <input type="number" id="editGuestCapacity" name="guest_capacity" class="form-input"
+                            placeholder="e.g., 2" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Duration Pricing</label>
+                        <div id="editDurationPricingContainer">
+                            <!-- Duration pricing entries will be added here -->
+                        </div>
+                        <button type="button" class="add-duration-btn" onclick="addEditDurationPricing()"
+                            style="margin-top: 10px; padding: 8px 16px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">+
+                            Add Duration</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editRoomStatus" class="form-label">Status</label>
+                        <select id="editRoomStatus" name="room_status" class="form-select" required>
+                            <option value="Available">Available</option>
+                            <option value="Occupied">Occupied</option>
+                            <option value="Reserved">Reserved</option>
+                            <option value="Out of Order">Out of Order</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn-back" onclick="closeEditRoomModal()">Back</button>
+                    <button type="submit" class="modal-btn-next">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Image Viewer Modal -->
+    <div id="imageViewerModal" class="image-viewer-overlay" onclick="closeImageViewer()">
+        <div class="image-viewer-container" onclick="event.stopPropagation()">
+            <button class="image-viewer-close" onclick="closeImageViewer()">&times;</button>
+            <img id="viewerImage" src="" alt="Room Image" class="viewer-image">
+        </div>
+    </div>
+
+    <script>
+        // Global variable to store user access level
+        let userAccessLevel = 'user';
+
+        function openAddRoomModal() {
+            // Prevent auditors from adding rooms
+            if (userAccessLevel === 'auditor') {
+                alert('Auditors cannot add rooms. This action is restricted to Staff, Admin, and Super Admin only.');
+                return;
+            }
+
+            // Reset duration pricing container and add one empty entry
+            const container = document.getElementById('durationPricingContainer');
+            container.innerHTML = '';
+            durationPricingCounter = 0;
+            addDurationPricing();
+
+            document.getElementById('addRoomModal').style.display = 'flex';
+        }
+
+        function closeAddRoomModal() {
+            document.getElementById('addRoomModal').style.display = 'none';
+            document.getElementById('addRoomForm').reset();
+            document.getElementById('imagePreview').style.display = 'none';
+            document.getElementById('uploadIcon').style.display = 'block';
+            document.getElementById('durationPricingContainer').innerHTML = '';
+        }
+
+        // Duration pricing management for Add Room
+        let durationPricingCounter = 0;
+
+        function addDurationPricing(hours = '', price = '') {
+            const container = document.getElementById('durationPricingContainer');
+            const entryId = 'duration_' + durationPricingCounter++;
+
+            // Check room type to determine placeholder
+            const roomType = document.getElementById('roomType').value.trim().toLowerCase();
+            const placeholder = roomType === 'transient' ? 'Days (e.g., 1)' : 'Hours (e.g., 3)';
+
+            const entryDiv = document.createElement('div');
+            entryDiv.className = 'duration-pricing-entry';
+            entryDiv.id = entryId;
+            entryDiv.style.cssText = 'display: flex; gap: 10px; margin-bottom: 10px; align-items: center;';
+
+            entryDiv.innerHTML = `
+                <input type="number" class="form-input" placeholder="${placeholder}" min="1" value="${hours}" required style="flex: 1; min-width: 100px;">
+                <span style="font-weight: 500;">=</span>
+                <input type="number" class="form-input" placeholder="Price (₱)" min="0" step="0.01" value="${price}" required style="flex: 1; min-width: 100px;">
+                <button type="button" onclick="removeDurationPricing('${entryId}')" style="padding: 8px 12px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">Remove</button>
+            `;
+
+            container.appendChild(entryDiv);
+        }
+
+        function removeDurationPricing(entryId) {
+            const entry = document.getElementById(entryId);
+            if (entry) {
+                entry.remove();
+            }
+        }
+
+        // Duration pricing management for Edit Room
+        let editDurationPricingCounter = 0;
+
+        function addEditDurationPricing(hours = '', price = '') {
+            const container = document.getElementById('editDurationPricingContainer');
+            const entryId = 'edit_duration_' + editDurationPricingCounter++;
+
+            // Check room type to determine placeholder
+            const roomType = document.getElementById('editRoomType').value.trim().toLowerCase();
+            const placeholder = roomType === 'transient' ? 'Days (e.g., 1)' : 'Hours (e.g., 3)';
+
+            const entryDiv = document.createElement('div');
+            entryDiv.className = 'duration-pricing-entry';
+            entryDiv.id = entryId;
+            entryDiv.style.cssText = 'display: flex; gap: 10px; margin-bottom: 10px; align-items: center;';
+
+            entryDiv.innerHTML = `
+                <input type="number" class="form-input" placeholder="${placeholder}" min="1" value="${hours}" required style="flex: 1; min-width: 100px;">
+                <span style="font-weight: 500;">=</span>
+                <input type="number" class="form-input" placeholder="Price (₱)" min="0" step="0.01" value="${price}" required style="flex: 1; min-width: 100px;">
+                <button type="button" onclick="removeEditDurationPricing('${entryId}')" style="padding: 8px 12px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">Remove</button>
+            `;
+
+            container.appendChild(entryDiv);
+        }
+
+        function removeEditDurationPricing(entryId) {
+            const entry = document.getElementById(entryId);
+            if (entry) {
+                entry.remove();
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            const addModal = document.getElementById('addRoomModal');
+            const editModal = document.getElementById('editRoomModal');
+            if (event.target == addModal) {
+                closeAddRoomModal();
+            }
+            if (event.target == editModal) {
+                closeEditRoomModal();
+            }
+        }
+
+        // Restrict Room ID to numbers only (Add Room)
+        document.getElementById('roomId').addEventListener('input', function (e) {
+            // Remove any non-numeric characters
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        // Prevent paste of non-numeric characters in Room ID (Add Room)
+        document.getElementById('roomId').addEventListener('paste', function (e) {
+            e.preventDefault();
+            const paste = (e.clipboardData || window.clipboardData).getData('text');
+            const numericOnly = paste.replace(/[^0-9]/g, '');
+            this.value = numericOnly;
+        });
+
+        // Restrict Room ID to numbers only (Edit Room)
+        const editRoomIdInput = document.getElementById('editRoomId');
+
+        // Prevent typing non-numeric characters
+        editRoomIdInput.addEventListener('keypress', function (e) {
+            // Allow: backspace, delete, tab, escape, enter, decimal point
+            if ([46, 8, 9, 27, 13, 110, 190].indexOf(e.keyCode) !== -1 ||
+                // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (e.keyCode === 65 && e.ctrlKey === true) ||
+                (e.keyCode === 67 && e.ctrlKey === true) ||
+                (e.keyCode === 86 && e.ctrlKey === true) ||
+                (e.keyCode === 88 && e.ctrlKey === true) ||
+                // Allow: home, end, left, right
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+
+        // Remove any non-numeric characters on input
+        editRoomIdInput.addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        // Prevent paste of non-numeric characters in Room ID (Edit Room)
+        editRoomIdInput.addEventListener('paste', function (e) {
+            e.preventDefault();
+            const paste = (e.clipboardData || window.clipboardData).getData('text');
+            const numericOnly = paste.replace(/[^0-9]/g, '');
+            this.value = numericOnly;
+        });
+
+        // Room Type change listener for Add Room - Change label based on room type
+        document.getElementById('roomType').addEventListener('input', function (e) {
+            const roomType = this.value.trim().toLowerCase();
+            const labels = document.querySelectorAll('#addRoomModal .form-group label.form-label');
+
+            // Find the Duration Pricing label
+            labels.forEach(label => {
+                if (label.textContent.includes('Duration Pricing') || label.textContent.includes('Day\'s Pricing')) {
+                    if (roomType === 'transient') {
+                        label.textContent = 'Day\'s Pricing';
+                    } else {
+                        label.textContent = 'Duration Pricing';
+                    }
+                }
+            });
+
+            // Update placeholders in duration pricing inputs
+            const durationInputs = document.querySelectorAll('#durationPricingContainer .duration-pricing-entry input[type="number"]:first-child');
+            durationInputs.forEach(input => {
+                if (roomType === 'transient') {
+                    input.placeholder = 'Days (e.g., 1)';
+                } else {
+                    input.placeholder = 'Hours (e.g., 3)';
+                }
+            });
+        });
+
+        // Image preview functionality (Add Room)
+        document.getElementById('room_image').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                    document.getElementById('uploadIcon').style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Room Type change listener for Edit Room - Change label based on room type
+        document.getElementById('editRoomType').addEventListener('input', function (e) {
+            const roomType = this.value.trim().toLowerCase();
+            const labels = document.querySelectorAll('#editRoomModal .form-group label.form-label');
+
+            // Find the Duration Pricing label
+            labels.forEach(label => {
+                if (label.textContent.includes('Duration Pricing') || label.textContent.includes('Day\'s Pricing')) {
+                    if (roomType === 'transient') {
+                        label.textContent = 'Day\'s Pricing';
+                    } else {
+                        label.textContent = 'Duration Pricing';
+                    }
+                }
+            });
+
+            // Update placeholders in duration pricing inputs
+            const durationInputs = document.querySelectorAll('#editDurationPricingContainer .duration-pricing-entry input[type="number"]:first-child');
+            durationInputs.forEach(input => {
+                if (roomType === 'transient') {
+                    input.placeholder = 'Days (e.g., 1)';
+                } else {
+                    input.placeholder = 'Hours (e.g., 3)';
+                }
+            });
+        });
+
+        // Image preview functionality (Edit Room)
+        document.getElementById('edit_room_image').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('editImagePreview').src = e.target.result;
+                    document.getElementById('editImagePreview').style.display = 'block';
+                    document.getElementById('editUploadIcon').style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Form submission
+        document.getElementById('addRoomForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Collect duration pricing data
+            const durationEntries = document.querySelectorAll('#durationPricingContainer .duration-pricing-entry');
+            const durations = [];
+
+            durationEntries.forEach(entry => {
+                const inputs = entry.querySelectorAll('input');
+                const hours = parseInt(inputs[0].value);
+                const price = parseFloat(inputs[1].value);
+                if (hours && price && price > 0) {
+                    durations.push({ hours: hours, price: price });
+                }
+            });
+
+            if (durations.length === 0) {
+                alert('Please add at least one duration pricing entry!');
+                return;
+            }
+
+            const formData = new FormData(this);
+            formData.append('durations', JSON.stringify(durations));
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            try {
+                const response = await fetch('add_room.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                if (result.success) {
+                    alert(result.message);
+                    // Clear form and image preview before closing modal
+                    document.getElementById('addRoomForm').reset();
+                    document.getElementById('imagePreview').src = '';
+                    document.getElementById('imagePreview').style.display = 'none';
+                    document.getElementById('uploadIcon').style.display = 'block';
+                    document.getElementById('durationPricingContainer').innerHTML = '';
+                    closeAddRoomModal();
+                    // Wait for modal to close before reloading rooms
+                    setTimeout(async () => {
+                        await loadRooms(); // Reload the room list
+                        filterRooms(); // Apply current filters
+                    }, 200);
+                } else {
+                    alert(result.message || 'Error adding room!');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+
+        // Store all rooms globally for filtering
+        let allRooms = [];
+        let currentFilterType = 'All Types';
+
+        // Load rooms from database
+        async function loadRooms() {
+            try {
+                const response = await fetch('get_rooms.php');
+                const result = await response.json();
+
+                if (result.success) {
+                    allRooms = result.rooms;
+                    filterRooms();
+                }
+            } catch (error) {
+                console.error('Error loading rooms:', error);
+                const tbody = document.getElementById('roomsTableBody');
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:20px; color:red;">Error loading rooms. Please refresh the page.</td></tr>';
+            }
+        }
+
+        // Filter rooms based on search and status
+        function filterRooms() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            const tbody = document.getElementById('roomsTableBody');
+            tbody.innerHTML = '';
+
+            let filteredRooms = allRooms;
+
+            // Filter by status
+            if (currentFilterType !== 'All Types') {
+                filteredRooms = filteredRooms.filter(room => room.status === currentFilterType);
+            }
+
+            // Filter by search query (room ID or room type)
+            if (searchQuery) {
+                filteredRooms = filteredRooms.filter(room => {
+                    const roomId = String(room.room_id).toLowerCase();
+                    const roomType = String(room.room_type).toLowerCase();
+                    const fullRoomId = `${roomType} ${roomId}`.toLowerCase();
+                    return roomId.includes(searchQuery) ||
+                        roomType.includes(searchQuery) ||
+                        fullRoomId.includes(searchQuery);
+                });
+            }
+
+            // Display filtered rooms
+            if (filteredRooms.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">No rooms found matching your criteria.</td></tr>';
+            } else {
+                filteredRooms.forEach(room => {
+                    const row = document.createElement('tr');
+                    // Handle special characters in status for CSS class names
+                    let statusClass = room.status.toLowerCase().replace(/\s+/g, '-');
+                    // Clean up any special characters for CSS class names
+                    statusClass = statusClass.replace(/[^a-z0-9-]/g, '');
+
+                    // Escape single quotes and backslashes for JavaScript string
+                    const escapeForJS = (str) => {
+                        return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"');
+                    };
+
+                    // Fix image path if not absolute
+                    let imageUrl = room.room_image || '';
+                    if (imageUrl && !/^https?:\/\//.test(imageUrl) && !imageUrl.startsWith('/')) {
+                        imageUrl = imageUrl.replace(/^\.\//, '');
+                    }
+
+                    const roomSize = room.room_size || 'N/A';
+                    const bedType = room.bed_type || 'N/A';
+                    const guestCapacity = room.guest_capacity || 'N/A';
+                    // Always map durations to expected keys
+                    const durations = (room.durations || []).map(d => ({
+                        duration_hours: d.duration_hours || d.hours,
+                        price: d.price
+                    }));
+
+                    // Create details HTML with icons
+                    const detailsHTML = `
+                        <div class="details-container">
+                            <div class="detail-item">
+                              <img src="Icon/sizeicon_system.svg" alt="Size icon" class="detail-icon">
+                                <span>${escapeForJS(roomSize)}</span>
+                            </div>
+                            <div class="detail-item">
+                               <img src="Icon/bedsizeicon_system.svg" alt="Bed icon" class="detail-icon">
+                                <span>${escapeForJS(bedType)}</span>
+                            </div>
+                            <div class="detail-item">
+                               <img src="Icon/availableguesticon_system.svg" alt="Guest icon" class="detail-icon">
+                                <span>${guestCapacity} Guest${parseInt(guestCapacity) !== 1 ? 's' : ''}</span>
+                            </div>
+                        </div>
+                    `;
+
+                    // Create duration pricing HTML
+                    let durationHTML = '';
+                    if (durations.length > 0) {
+                        durationHTML = durations.map(d => {
+                            const hours = parseInt(d.duration_hours);
+                            const price = parseFloat(d.price);
+                            return `${hours} hour${hours !== 1 ? 's' : ''} = ₱${price.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                        }).join('<br>');
+                    } else {
+                        durationHTML = '<span style="color:#999;">No pricing set</span>';
+                    }
+
+                    // Store room data in data attributes to avoid JSON escaping issues
+                    const durationsJson = JSON.stringify(durations);
+
+                    row.innerHTML = `
+                        <td>
+                            ${imageUrl ? `<img src="${escapeForJS(imageUrl)}" alt="Room Image" class="room-image clickable-image" onclick="openImageViewer('${escapeForJS(imageUrl)}')" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="cursor: pointer;">` : ''}
+                            <span style="display:${imageUrl ? 'none' : 'block'}; color:#999; font-size:12px;">No Image</span>
+                        </td>
+                        <td>${room.room_type} ${room.room_id}</td>
+                        <td>${detailsHTML}</td>
+                        <td class="price-cell" style="font-size: 13px; line-height: 1.6;">${durationHTML}</td>
+                        <td>
+                            <button class="status-btn ${statusClass}">${room.status}</button>
+                        </td>
+                        <td>
+                            ${userAccessLevel === 'auditor' ? `
+                                <button class="action-btn edit" 
+                                    style="opacity: 0.5; cursor: not-allowed; pointer-events: none;"
+                                    disabled
+                                    title="Auditors cannot edit rooms">Edit</button>
+                                <button class="action-btn delete" 
+                                    style="margin-left: 5px; opacity: 0.5; cursor: not-allowed; pointer-events: none;"
+                                    disabled
+                                    title="Auditors cannot delete rooms">Delete</button>
+                            ` : `
+                                <button class="action-btn edit" 
+                                    data-room-id="${room.id}"
+                                    data-room-room-id="${escapeForJS(room.room_id)}"
+                                    data-room-type="${escapeForJS(room.room_type)}"
+                                    data-room-status="${escapeForJS(room.status)}"
+                                    data-room-image="${escapeForJS(imageUrl)}"
+                                    data-room-size="${escapeForJS(roomSize)}"
+                                    data-bed-type="${escapeForJS(bedType)}"
+                                    data-guest-capacity="${escapeForJS(guestCapacity)}"
+                                    data-durations='${durationsJson.replace(/'/g, "&#39;")}'
+                                    onclick="openEditRoomModalFromButton(this)">Edit</button>
+                                <button class="action-btn delete" onclick="deleteRoom(${room.id})" style="margin-left: 5px;">Delete</button>
+                            `}
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+        }
+
+        // Toggle types dropdown
+        function toggleTypesDropdown() {
+            const dropdown = document.getElementById('typesDropdown');
+            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Select status from dropdown
+        function selectType(status) {
+            currentFilterType = status;
+            document.getElementById('selectedType').textContent = status;
+            document.getElementById('typesDropdown').style.display = 'none';
+            filterRooms();
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (event) {
+            const dropdown = document.getElementById('typesDropdown');
+            const dropdownBtn = document.querySelector('.types-dropdown-btn');
+            if (dropdown && !dropdown.contains(event.target) && !dropdownBtn.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Edit Room Modal Functions - New version using data attributes
+        function openEditRoomModalFromButton(button) {
+            // Prevent auditors from editing rooms
+            if (userAccessLevel === 'auditor') {
+                alert('Auditors cannot edit rooms. This action is restricted to Staff, Admin, and Super Admin only.');
+                return;
+            }
+
+            const id = button.getAttribute('data-room-id');
+            const roomId = button.getAttribute('data-room-room-id');
+            const roomType = button.getAttribute('data-room-type');
+            const status = button.getAttribute('data-room-status');
+            const roomImage = button.getAttribute('data-room-image');
+            const roomSize = button.getAttribute('data-room-size');
+            const bedType = button.getAttribute('data-bed-type');
+            const guestCapacity = button.getAttribute('data-guest-capacity');
+            const durationsJson = button.getAttribute('data-durations');
+
+            openEditRoomModal(id, roomId, roomType, status, roomImage, roomSize, bedType, guestCapacity, durationsJson);
+        }
+
+        function openEditRoomModal(id, roomId, roomType, status, roomImage, roomSize, bedType, guestCapacity, durationsJson) {
+            // Populate form fields with room data
+            document.getElementById('edit_room_id').value = id;
+            document.getElementById('edit_original_room_id').value = roomId;
+
+            // Ensure Room ID only contains numbers
+            const numericRoomId = String(roomId).replace(/[^0-9]/g, '');
+            document.getElementById('editRoomId').value = numericRoomId;
+
+            document.getElementById('editRoomType').value = roomType || '';
+            document.getElementById('editRoomSize').value = roomSize || '';
+            document.getElementById('editBedType').value = bedType || '';
+            document.getElementById('editGuestCapacity').value = guestCapacity || '';
+            document.getElementById('editRoomStatus').value = status || 'Available';
+
+            if (roomImage) {
+                document.getElementById('editImagePreview').src = roomImage;
+                document.getElementById('editImagePreview').style.display = 'block';
+                document.getElementById('editUploadIcon').style.display = 'none';
+            } else {
+                document.getElementById('editImagePreview').style.display = 'none';
+                document.getElementById('editUploadIcon').style.display = 'block';
+            }
+
+            // Populate duration pricing
+            const container = document.getElementById('editDurationPricingContainer');
+            container.innerHTML = '';
+            editDurationPricingCounter = 0;
+
+            try {
+                // Handle HTML entity encoding
+                const decodedJson = durationsJson ? durationsJson.replace(/&#39;/g, "'") : '[]';
+                const durations = JSON.parse(decodedJson || '[]');
+                if (durations && durations.length > 0) {
+                    durations.forEach(d => {
+                        addEditDurationPricing(d.duration_hours || d.hours, d.price);
+                    });
+                } else {
+                    // Add one empty entry if no durations exist
+                    addEditDurationPricing();
+                }
+            } catch (e) {
+                console.error('Error parsing durations:', e);
+                // If parsing fails, add one empty entry
+                addEditDurationPricing();
+            }
+
+            // Show modal
+            document.getElementById('editRoomModal').style.display = 'flex';
+        }
+
+        function closeEditRoomModal() {
+            document.getElementById('editRoomModal').style.display = 'none';
+            document.getElementById('editRoomForm').reset();
+            document.getElementById('editImagePreview').style.display = 'block';
+            document.getElementById('editUploadIcon').style.display = 'none';
+            document.getElementById('editDurationPricingContainer').innerHTML = '';
+        }
+
+        // Edit Room Form submission
+        document.getElementById('editRoomForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Collect duration pricing data
+            const durationEntries = document.querySelectorAll('#editDurationPricingContainer .duration-pricing-entry');
+            const durations = [];
+
+            durationEntries.forEach(entry => {
+                const inputs = entry.querySelectorAll('input');
+                const hours = parseInt(inputs[0].value);
+                const price = parseFloat(inputs[1].value);
+
+                if (hours && price && price > 0) {
+                    durations.push({ hours: hours, price: price });
+                }
+            });
+
+            if (durations.length === 0) {
+                alert('Please add at least one duration pricing entry!');
+                return;
+            }
+
+            const formData = new FormData(this);
+            formData.append('durations', JSON.stringify(durations));
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Updating...';
+
+            try {
+                const response = await fetch('update_room.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(result.message);
+                    closeEditRoomModal();
+                    await loadRooms(); // Reload the room list
+                    filterRooms(); // Apply current filters
+                } else {
+                    alert(result.message || 'Error updating room!');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+
+        // Image Viewer Functions
+        function openImageViewer(imageSrc) {
+            document.getElementById('viewerImage').src = imageSrc;
+            document.getElementById('imageViewerModal').style.display = 'flex';
+        }
+
+        function closeImageViewer() {
+            document.getElementById('imageViewerModal').style.display = 'none';
+        }
+
+        // Close image viewer on ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeImageViewer();
+            }
+        });
+
+        // Navigation function
+        function navigateToPage(page) {
+            // Close sidebar on mobile when navigating
+            if (window.innerWidth <= 1024) {
+                toggleSidebar();
+            }
+            window.location.href = page;
+        }
+
+        // Toggle mobile sidebar
+        function toggleSidebar() {
+            const panel = document.querySelector('.left-panel');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+
+            if (panel) {
+                const isOpening = !panel.classList.contains('open');
+                panel.classList.toggle('open');
+
+                if (overlay) {
+                    overlay.classList.toggle('active');
+                }
+
+                // Prevent body scroll when sidebar is open on mobile
+                if (window.innerWidth <= 1024) {
+                    if (isOpening) {
+                        document.body.classList.add('sidebar-open');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.classList.remove('sidebar-open');
+                        document.body.style.overflow = '';
+                    }
+                }
+            }
+        }
+
+
+        function toggleSidebarMinimize() {
+            const panel = document.getElementById('leftPanel');
+            const icon = document.getElementById('collapseIcon');
+            const tooltip = document.getElementById('collapseTooltip');
+            if (!panel) return;
+
+            if (panel.classList.contains('minimized')) {
+                panel.classList.remove('minimized');
+                if (icon) icon.src = 'Icon/left-arrow_minimize.svg';
+                if (tooltip) tooltip.textContent = 'Minimize';
+            } else {
+                panel.classList.add('minimized');
+                if (icon) icon.src = 'Icon/right-arrow_minimize.svg';
+                if (tooltip) tooltip.textContent = 'Expand';
+            }
+        }
+
+
+        document.addEventListener('click', function (event) {
+            const panel = document.querySelector('.left-panel');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            if (window.innerWidth <= 1024 && panel && panel.classList.contains('open')) {
+                if (!panel.contains(event.target) && toggle && !toggle.contains(event.target)) {
+                    toggleSidebar();
+                }
+            }
+        });
+
+        // Set active menu item based on current page
+        // Toggle Maintenance menu
+        function toggleSystemMaintenance() {
+            const submenu = document.getElementById('systemMaintenanceSubmenu');
+            const menuItem = document.getElementById('systemMaintenanceMenu');
+            const isOpen = submenu.classList.contains('open');
+
+            if (isOpen) {
+                submenu.classList.remove('open');
+                menuItem.classList.remove('expanded');
+            } else {
+                submenu.classList.add('open');
+                menuItem.classList.add('expanded');
+            }
+        }
+
+        function setActiveMenuItem() {
+            const currentPage = window.location.pathname.split('/').pop() || 'Roomlist.html';
+            const menuItems = document.querySelectorAll('.sidebar-menu-item:not(.collapsible-menu)');
+            const submenuItems = document.querySelectorAll('.submenu-item');
+
+            // Check if current page is in Maintenance submenu
+            const isSystemMaintenancePage = ['inventory.html', 'PurchaseOrder.html', 'AddItem.php'].includes(currentPage);
+
+            if (isSystemMaintenancePage) {
+                // Expand Maintenance menu
+                const submenu = document.getElementById('systemMaintenanceSubmenu');
+                const menuItem = document.getElementById('systemMaintenanceMenu');
+                if (submenu && menuItem) {
+                    submenu.classList.add('open');
+                    menuItem.classList.add('expanded');
+                }
+
+                // Set active submenu item
+                submenuItems.forEach(item => {
+                    const pageName = item.getAttribute('data-page');
+                    if (pageName === currentPage) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            } else {
+                // Set active regular menu item
+                menuItems.forEach(item => {
+                    const pageName = item.getAttribute('data-page');
+                    if (pageName === currentPage) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // Load rooms on page load
+        document.addEventListener('DOMContentLoaded', async function () {
+            setActiveMenuItem();
+            // Load user info first, then load rooms
+            await loadUserInfo();
+            loadRooms();
+        });
+
+        // Load user profile information
+        async function loadUserInfo() {
+            try {
+                const response = await fetch('get_user_info.php');
+                const result = await response.json();
+
+                if (result.success) {
+                    const displayName = result.display_name || result.first_name || result.username || 'User';
+                    const accessLevel = result.access_level || 'user';
+
+                    // Store access level globally
+                    userAccessLevel = accessLevel;
+
+                    // Update Add Room button visibility based on access level
+                    updateAddRoomButtonVisibility();
+
+                    // Update avatar with first letter
+                    const avatarEl = document.getElementById('userAvatar');
+                    if (avatarEl) {
+                        avatarEl.textContent = displayName.charAt(0).toUpperCase();
+                    }
+
+                    // Update username
+                    const nameEl = document.getElementById('userName');
+                    if (nameEl) {
+                        nameEl.textContent = displayName;
+                    }
+
+                    // Update role (format: super_admin -> Super Admin)
+                    const roleEl = document.getElementById('userRole');
+                    if (roleEl) {
+                        const formattedRole = accessLevel.split('_').map(word =>
+                            word.charAt(0).toUpperCase() + word.slice(1)
+                        ).join(' ');
+                        roleEl.textContent = formattedRole;
+                    }
+                } else {
+                    console.error('Failed to load user info');
+                }
+            } catch (error) {
+                console.error('Error loading user info:', error);
+            }
+        }
+
+        // Update Add Room button visibility
+        function updateAddRoomButtonVisibility() {
+            const addRoomBtn = document.querySelector('.add-room-btn');
+            if (addRoomBtn && userAccessLevel === 'auditor') {
+                addRoomBtn.style.opacity = '0.5';
+                addRoomBtn.style.cursor = 'not-allowed';
+                addRoomBtn.style.pointerEvents = 'none';
+                addRoomBtn.title = 'Auditors cannot add rooms';
+            }
+        }
+
+        async function deleteRoom(id) {
+            // Prevent auditors from deleting rooms
+            if (userAccessLevel === 'auditor') {
+                alert('Auditors cannot delete rooms. This action is restricted to Staff, Admin, and Super Admin only.');
+                return;
+            }
+
+            if (!confirm('Are you sure you want to delete this room?')) {
+                return;
+            }
+
+            try {
+                const formData = new FormData();
+                formData.append('id', id);
+
+                const response = await fetch('delete_room.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(result.message);
+                    await loadRooms(); // Reload the room list
+                    filterRooms(); // Apply current filters
+                } else {
+                    alert(result.message || 'Error deleting room!');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+    </script>
+</body>
+
+</html>

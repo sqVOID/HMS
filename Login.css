@@ -1,0 +1,618 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    line-height: 1.5;
+    background: linear-gradient(to bottom right, #ffffff, #f3f4f6);
+    color: #333;
+    overflow-x: hidden;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: auto;
+    width: 100%;
+}
+
+
+.login-section {
+    width: 100%;
+    height: auto;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: fadeInLeft 0.6s ease-out;
+}
+
+.login-wrapper {
+    width: 100%;
+    margin: auto;
+    max-width: 28rem;
+}
+
+.logo-section {
+    margin-bottom: 1.5rem;
+}
+
+.logo-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.logo-img {
+    max-width: 100%;
+    margin-left: -10px;
+    height: auto;
+    max-height: 150px;
+    object-fit: contain;
+}
+
+.header-text {
+    margin-bottom: 1rem;
+}
+
+.main-title {
+    font-size: 1.5rem;
+    color: #111827;
+    font-weight: 600;
+    margin: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    display: block;
+    color: #374151;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid #dadbd1;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #aeb910;
+    box-shadow: 0 0 0 4px rgba(182, 185, 16, 0.1);
+}
+
+.form-input::placeholder {
+    color: #adaf9c;
+}
+
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.checkbox {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+    accent-color: #059669;
+}
+
+.forgot-password {
+    font-size: 0.875rem;
+    color: #2563eb;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+
+.login-button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(6, 95, 70, 0.3);
+    margin-bottom: 1rem;
+}
+
+.login-button:hover {
+    background: #5a5a5a;
+    transform: scale(1.01);
+}
+
+.login-button:active {
+    transform: scale(0.99);
+}
+
+
+.signup-text {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.signup-link {
+    color: #2563eb;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.signup-link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+.showcase-section {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(to bottom right, #fffceb, #fff8e4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: fadeInRight 0.6s ease-out;
+}
+
+.showcase-wrapper {
+    width: 100%;
+    max-width: 42rem;
+    height: auto;
+}
+
+
+.image-grid {
+    margin-bottom: 1.5rem;
+}
+
+
+.mobile-image {
+    display: block;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.mobile-image img {
+    width: 100%;
+    height: auto;
+    min-height: 16rem;
+    max-height: 20rem;
+    object-fit: cover;
+}
+
+
+.desktop-grid {
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.image-large {
+    grid-column: 1;
+    grid-row: span 2;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.image-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.image-large:hover img {
+    transform: scale(1.05);
+}
+
+.image-small {
+    aspect-ratio: 4/3;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.image-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.image-small:hover img {
+    transform: scale(1.05);
+}
+
+/* Hotel Info */
+.hotel-info {
+    text-align: center;
+}
+
+.hotel-name {
+    font-size: 1.5rem;
+    color: #111827;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    padding: 0 1rem;
+}
+
+.hotel-description {
+    color: #6b7280;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+    font-size: 0.875rem;
+}
+
+/* Carousel Navigation */
+.carousel-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.nav-button {
+    width: 2.25rem;
+    height: 2.25rem;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #374151;
+    margin-bottom: 0;
+}
+
+.nav-button:hover:not(:disabled) {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+
+.nav-button:active {
+    transform: scale(0.95);
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Carousel Dots */
+.carousel-dots {
+    display: flex;
+    gap: 0.375rem;
+}
+
+.dot {
+    height: 0.5rem;
+    width: 0.5rem;
+    background: #9ca3af;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.dot:hover {
+    background: #6b7280;
+}
+
+.dot.active {
+    width: 1.5rem;
+    background: #111827;
+}
+
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-transition {
+    animation: fadeIn 0.5s ease-out;
+}
+
+
+
+
+
+@media (min-width: 480px) {
+    .login-section {
+
+        padding: 2rem;
+    }
+
+    .showcase-section {
+        padding: 2rem;
+    }
+
+    .main-title {
+        font-size: 1.75rem;
+    }
+
+    .mobile-image img {
+        min-height: 18rem;
+        max-height: 24rem;
+    }
+}
+
+@media (min-width: 640px) {
+    .login-section {
+
+        padding: 2.5rem;
+    }
+
+
+    .logo-section {
+        margin-bottom: 2rem;
+    }
+
+    .logo-header {
+        margin-bottom: 1rem;
+    }
+
+    .header-text {
+        margin-bottom: 1.5rem;
+    }
+
+    .login-form {
+        gap: 1.5rem;
+    }
+
+    .form-input {
+        padding: 0.75rem 1rem;
+    }
+
+    .login-button {
+        padding: 0.875rem 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .showcase-section {
+        padding: 2.5rem;
+    }
+
+    .image-grid {
+        margin-bottom: 2rem;
+    }
+
+    .mobile-image {
+        display: none;
+    }
+
+    .desktop-grid {
+        display: grid;
+    }
+
+    .hotel-name {
+        font-size: 1.875rem;
+        margin-bottom: 1rem;
+    }
+
+    .hotel-description {
+        margin-bottom: 1.5rem;
+        line-height: 1.75;
+        font-size: 1rem;
+    }
+
+    .carousel-navigation {
+        gap: 1rem;
+    }
+
+    .nav-button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .carousel-dots {
+        gap: 0.5rem;
+    }
+
+    .dot.active {
+        width: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .desktop-grid {
+        gap: 0.75rem;
+    }
+    
+    
+    .login-wrapper {
+        max-width: 32rem;
+    }
+
+    .showcase-wrapper {
+        max-width: 48rem;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .container {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .login-section {
+
+        width: 50%;
+        padding: 3rem 4rem;
+        margin-top: 0;
+        justify-content: center;
+    }
+
+    .login-wrapper {
+
+        max-width: 28rem;
+    }
+
+    .showcase-section {
+        width: 50%;
+        padding: 3rem;
+        margin-top: 0;
+    }
+
+    .showcase-wrapper {
+        max-width: 100%;
+    }
+
+    .image-large {
+        border-radius: 1rem;
+    }
+
+    .image-small {
+        border-radius: 1rem;
+    }
+
+    .logo-img {
+        max-height: 70px;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .login-section {
+        padding: 4rem 5rem;
+    }
+
+    .showcase-section {
+        padding: 4rem;
+    }
+
+    .login-wrapper {
+
+        max-width: 32rem;
+    }
+}
+
+@media (max-width: 479px) {
+    .login-section {
+        border-radius: 10px;
+        border: 1px solid #d3d2d2;
+        margin-top: 150px;
+        margin-bottom: 150px;
+        margin-left: 10px;
+        width: 94%;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .showcase-section {
+        padding: 1rem;
+    }
+
+    .main-title {
+        font-size: 1.25rem;
+    }
+
+    .login-form {
+        margin-top: -10px;
+    }
+
+    .hotel-name {
+        font-size: 1.25rem;
+    }
+
+    .hotel-description {
+        font-size: 0.8125rem;
+    }
+
+    .logo-img {
+        max-height: 60px;
+    }
+}

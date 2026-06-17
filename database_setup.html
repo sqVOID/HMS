@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Setup - Hotel Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 32px;
+            text-align: center;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 20px;
+        }
+        .setup-card {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .setup-card:hover {
+            border-color: #4CAF50;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+        }
+        .setup-card h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .setup-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .setup-card ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+        .button-secondary {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+        }
+        .button-secondary:hover {
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+        }
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            color: #1976D2;
+        }
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            color: #2e7d32;
+        }
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗄️ Database Setup</h1>
+        
+        <div class="info-box">
+            <strong>ℹ️ Setup Required:</strong><br>
+            The reports table needs additional columns to store food and item charges. Follow the steps below to complete the setup.
+        </div>
+        
+        <div class="setup-card">
+            <h2><span class="step-number">1</span> Quick Setup (Recommended)</h2>
+            <p>Run the quick setup script which will automatically create users and add the missing database columns:</p>
+            <ul>
+                <li>✓ Creates user accounts (admin, staff, user)</li>
+                <li>✓ Adds additional_food column to reports table</li>
+                <li>✓ Adds additional_items column to reports table</li>
+            </ul>
+            <p><strong>Default Login:</strong> username: <code>admin</code> | password: <code>password123</code></p>
+            <button class="button" onclick="window.location.href='quick_setup.php'">
+                ► Run Quick Setup
+            </button>
+        </div>
+        
+        <div class="setup-card">
+            <h2><span class="step-number">2</span> Add Database Columns Only</h2>
+            <p>If you already have the system set up and just need to add the missing columns to the reports table:</p>
+            <ul>
+                <li>✓ Adds additional_food column</li>
+                <li>✓ Adds additional_items column</li>
+                <li>✓ Verifies columns in database</li>
+            </ul>
+            <button class="button button-secondary" onclick="window.location.href='add_columns_to_reports.php'">
+                ► Add Columns Only
+            </button>
+        </div>
+        
+        <div class="success-box">
+            <strong>✓ What These Columns Do:</strong><br>
+            • <code>additional_food</code> - Stores food items added to bookings (e.g., "1 HOTDOG = ₱120.00")<br>
+            • <code>additional_items</code> - Stores inventory items added to bookings (e.g., "1 Cover = ₱150.00")
+        </div>
+        
+        <div class="setup-card" style="background: #f0f4ff; border-color: #2196F3; margin-top: 30px;">
+            <h2><span class="step-number">✓</span> After Setup Complete</h2>
+            <p>Once the setup is complete, you can:</p>
+            <ul>
+                <li>✓ Log in to the system with your credentials</li>
+                <li>✓ Edit bookings and add additional charges</li>
+                <li>✓ View reports with food and item charges</li>
+            </ul>
+            <div class="button-group">
+                <button class="button" onclick="window.location.href='Booking.html'">
+                    → Go to Booking System
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

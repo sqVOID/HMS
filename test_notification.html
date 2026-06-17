@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Notification Badge</title>
+    <link rel="stylesheet" href="Booking.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="cancellation-notification.js?v=1" defer></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #222;
+            margin-bottom: 20px;
+        }
+        .header-bar {
+            background: #fff;
+            padding: 16px 24px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+        }
+        .info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .test-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+        button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Cancellation Notification Test</h1>
+        
+        <div class="header-bar">
+            <div class="user-profile">
+                <div class="user-avatar" id="userAvatar">A</div>
+                <div class="user-info">
+                    <div class="user-name" id="userName">Admin User</div>
+                    <div class="user-role" id="userRole">Admin</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <strong>How it works:</strong><br>
+            • The red notification badge appears on the user avatar when there are pending cancellation requests<br>
+            • Only visible to Admin and Super Admin users<br>
+            • Shows the count of pending requests (up to 99+)<br>
+            • Click the avatar to navigate to the Cancellation page<br>
+            • Updates automatically every 30 seconds<br>
+            • Badge pulses to draw attention
+        </div>
+        
+        <div class="test-buttons">
+            <button onclick="loadCancellationNotification()">Refresh Notification</button>
+            <button onclick="window.location.href='Cancelpage.php'">Go to Cancellation Page</button>
+        </div>
+    </div>
+</body>
+</html>
