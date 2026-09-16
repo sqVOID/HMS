@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Reserved! Button</title>
+    <link rel="stylesheet" href="Roomlist.css">
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            padding: 40px;
+            background: #f7f7f7;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .button-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        .label {
+            width: 120px;
+            font-weight: 500;
+            color: #555;
+        }
+        .status-btn {
+            padding: 6px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            cursor: pointer;
+            color: #fff;
+            transition: opacity 0.2s;
+        }
+        .info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e3f2fd;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
+        .info h3 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+        .info p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Room Status Button Test</h1>
+        <p style="color: #666; margin-bottom: 30px;">Testing all room status button styles</p>
+        
+        <div class="button-row">
+            <span class="label">Available:</span>
+            <button class="status-btn available">Available</button>
+        </div>
+        
+        <div class="button-row">
+            <span class="label">Occupied:</span>
+            <button class="status-btn occupied">Occupied</button>
+        </div>
+        
+        <div class="button-row">
+            <span class="label">Reserved:</span>
+            <button class="status-btn reserved">Reserved</button>
+        </div>
+        
+        <div class="button-row">
+            <span class="label">Confirming:</span>
+            <button class="status-btn confirming">Confirming</button>
+        </div>
+        
+        <div class="button-row">
+            <span class="label">Out of Order:</span>
+            <button class="status-btn out-of-order">Out of Order</button>
+        </div>
+        
+        <div class="info">
+            <h3>✅ What Was Fixed</h3>
+            <p><strong>Problem:</strong> The "Reserved" status button was showing as empty/blank.</p>
+            <p><strong>Solution:</strong> Simplified the CSS class handling.</p>
+            <p><strong>How it works now:</strong></p>
+            <p>• Status in database: "Reserved"</p>
+            <p>• CSS class applied: "reserved"</p>
+            <p>• Button displays: "Reserved"</p>
+            <p>• Button color: Orange (#ffa500)</p>
+            
+            <h3 style="margin-top: 20px;">🎨 Status Colors</h3>
+            <p>• <strong style="color: #256d27;">Available</strong> - Green</p>
+            <p>• <strong style="color: #4a9eff;">Occupied</strong> - Blue</p>
+            <p>• <strong style="color: #ffa500;">Reserved</strong> - Orange</p>
+            <p>• <strong style="color: #9c6bff;">Confirming</strong> - Purple</p>
+            <p>• <strong style="color: #fcadad;">Out of Order</strong> - Pink</p>
+        </div>
+    </div>
+</body>
+</html>

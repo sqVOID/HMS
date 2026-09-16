@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Checkout Deposit Separation</title>
+</head>
+<body>
+    <h1>Test: Checkout Deposit Separation</h1>
+    
+    <!-- Payment Section (for editChargesBreakdown) -->
+    <div id="checkoutDepositContainer" style="padding: 12px; border: 1px solid #e5e7eb;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <img src="Icon/Deposit2.0icon.svg" alt="Payment" width="20" height="20">
+                <span>Payment</span>
+            </span>
+            <span id="checkoutDeposit" style="font-weight: 600;">- ₱0.00</span>
+        </div>
+    </div>
+    
+    <!-- Reservation Section (for editDownpayment) -->
+    <div id="checkoutDownpaymentContainer" style="padding: 12px; border: 1px solid #e5e7eb; display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <img src="Icon/Deposit2.0icon.svg" alt="Reservation" width="20" height="20">
+                <span>Reservation</span>
+            </span>
+            <span id="checkoutDownpayment" style="font-weight: 600;">- ₱0.00</span>
+        </div>
+    </div>
+
+    <br>
+    
+    <!-- Edit Charges Breakdown Payment Section -->
+    <div id="editBreakdownDepositContainer" style="padding: 12px; border: 1px solid #e5e7eb;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <img src="Icon/Deposit2.0icon.svg" alt="Payment" width="20" height="20">
+                <span>Payment</span>
+            </span>
+            <span id="editBreakdownDeposit" style="font-weight: 600;">- ₱0.00</span>
+        </div>
+    </div>
+
+    <!-- Edit Charges Breakdown Reservation Section -->
+    <div id="editBreakdownDownpaymentContainer" style="padding: 12px; border: 1px solid #e5e7eb; display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <img src="Icon/Deposit2.0icon.svg" alt="Reservation" width="20" height="20">
+                <span>Reservation</span>
+            </span>
+            <span id="editBreakdownDownpayment" style="font-weight: 600;">- ₱0.00</span>
+        </div>
+    </div>
+
+    <br>
+    <button onclick="testPaymentMode()">Test Payment Mode</button>
+    <button onclick="testReservationMode()">Test Reservation Mode</button>
+
+    <script>
+        function testPaymentMode() {
+            // Show Payment sections, hide Reservation sections
+            document.getElementById('checkoutDepositContainer').style.display = 'block';
+            document.getElementById('checkoutDownpaymentContainer').style.display = 'none';
+            document.getElementById('editBreakdownDepositContainer').style.display = 'block';
+            document.getElementById('editBreakdownDownpaymentContainer').style.display = 'none';
+            
+            // Update amounts
+            document.getElementById('checkoutDeposit').textContent = '- ₱400.00';
+            document.getElementById('editBreakdownDeposit').textContent = '- ₱400.00';
+            
+            alert('Payment mode activated - showing Payment sections with Deposit2.0icon.svg');
+        }
+
+        function testReservationMode() {
+            // Show Reservation sections, hide Payment sections
+            document.getElementById('checkoutDepositContainer').style.display = 'none';
+            document.getElementById('checkoutDownpaymentContainer').style.display = 'block';
+            document.getElementById('editBreakdownDepositContainer').style.display = 'none';
+            document.getElementById('editBreakdownDownpaymentContainer').style.display = 'block';
+            
+            // Update amounts
+            document.getElementById('checkoutDownpayment').textContent = '- ₱1000.00';
+            document.getElementById('editBreakdownDownpayment').textContent = '- ₱1000.00';
+            
+            alert('Reservation mode activated - showing Reservation sections with Deposit2.0icon.svg');
+        }
+    </script>
+</body>
+</html>

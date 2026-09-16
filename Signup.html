@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="Icon/MoonClaveLogo3.svg">
+    <title>Luna Group - Hotel Management System</title>
+    <link rel="stylesheet" href="Signup.css">
+</head>
+
+<body>
+    <div class="container">
+        
+        <div class="signup-section">
+            <div class="signup-wrapper">
+                
+                <div class="logo-section">
+                    <div class="logo-container">
+                        <div class="logo-icon">
+                            <img src="Icon/logoicon_system1.svg" alt="Luna Group Logo" class="logo-img">
+                        </div>
+                   
+                    </div>
+                </div>
+
+              
+                <div class="header-text">
+                    <h1 class="main-title">Sign-up</h1>
+                </div>
+
+              
+                <form id="signupForm" class="signup-form">
+                
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="M22 7L13.03 12.7C12.7213 12.8934 12.3643 12.996 12 12.996C11.6357 12.996 11.2787 12.8934 10.97 12.7L2 7"/>
+                            </svg>
+                            <input
+                                type="email"
+                                id="email"
+                                class="form-input"
+                                placeholder="Enter your email"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0110 0v4"/>
+                            </svg>
+                            <input
+                                type="password"
+                                id="password"
+                                class="form-input"
+                                placeholder="Enter your password"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="confirm-password">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0110 0v4"/>
+                            </svg>
+                            <input
+                                type="confirm-password"
+                                id="confirm-password"
+                                class="form-input"
+                                placeholder="Enter your confirm password"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="access-level">Access Level</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 3v18M3 12h18" />
+                            </svg>
+                            <select id="access-level" class="form-input" required>
+                                <option value="" disabled selected>Select Access Level</option> 
+                                <option value="user">User</option>
+                                <option value="staff">Staff</option>
+                             
+                            </select>
+                        </div>
+                    </div>
+                    
+
+
+                    <div class="form-group">
+                        <label class="form-label" for="verification-code">Verification Code</label>
+                        <div class="input-wrapper">
+                            <img src="Icon/verificaitoncode_system.svg" alt="Verfication Code" class="input-icon">
+                            <input
+                                type="verification-code"
+                                id="verification-code"
+                                class="form-input"
+                                placeholder="Enter your Code"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <button type="submit" class="signup-button">Sign up</button>
+
+                
+                    <p class="signin-text">
+                        Already have an account? 
+                        <a href="Login.html" class="signin-link">Sign in</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="showcase-section">
+            <div class="showcase-wrapper">
+
+                <div class="image-grid" id="imageGrid">
+                    
+                    <div class="mobile-image">
+                        <img id="mobileMainImage" src="" alt="Hotel room" />
+                    </div>
+
+                    
+                    <div class="desktop-grid">
+                        <div class="image-large">
+                            <img id="mainImage" src="" alt="Hotel main view" />
+                        </div>
+                        <div class="image-small">
+                            <img id="smallImage1" src="" alt="Hotel view 2" />
+                        </div>
+                        <div class="image-small">
+                            <img id="smallImage2" src="" alt="Hotel view 3" />
+                        </div>
+                        <div class="image-small">
+                            <img id="smallImage3" src="" alt="Hotel view 4" />
+                        </div>
+                        <div class="image-small">
+                            <img id="smallImage4" src="" alt="Hotel view 5" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Info -->
+                <div class="hotel-info" id="hotelInfo">
+                    <h2 class="hotel-name" id="hotelName">Castle Bernardina Hotel</h2>
+                    <p class="hotel-description" id="hotelDescription">
+                        Experience luxury and comfort in our elegantly designed rooms with stunning city views, modern amenities, and exceptional service.
+                    </p>
+
+                
+                    <div class="carousel-navigation">
+                        <button class="nav-button" id="prevButton" aria-label="Previous hotel">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <div class="carousel-dots" id="carouselDots">
+                            <button class="dot active" data-index="0" aria-label="Go to hotel 1"></button>
+                            <button class="dot" data-index="1" aria-label="Go to hotel 2"></button>
+                        </div>
+
+                        <button class="nav-button" id="nextButton" aria-label="Next hotel">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       
+const hotels = [
+    {
+        name: 'Castle Bernardina Hotel',
+        description: 'Experience luxury and comfort in our elegantly designed rooms with stunning city views, modern amenities, and exceptional service.',
+        images: [
+            'https://images.unsplash.com/photo-1731336478850-6bce7235e320?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBob3RlbCUyMGJlZHJvb218ZW58MXx8fHwxNzY0NTM0MTQ2fDA&ixlib=rb-4.1.0&q=80&w=1080',
+            'https://images.unsplash.com/photo-1662841540530-2f04bb3291e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMHN1aXRlJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzY0NTgwMjE0fDA&ixlib=rb-4.1.0&q=80&w=1080',
+            'https://images.unsplash.com/photo-1682221568203-16f33b35e57d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGxvYmJ5JTIwbHV4dXJ5fGVufDF8fHx8MTc2NDYxNTI5M3ww&ixlib=rb-4.1.0&q=80&w=1080',
+            'https://images.unsplash.com/photo-1572177215152-32f247303126?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3RlbCUyMHJvb218ZW58MXx8fHwxNzY0NTc0MTI3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+            'https://images.unsplash.com/photo-1631049035113-4a68ecf80b1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGJlZHJvb20lMjBkZXNpZ258ZW58MXx8fHwxNzY0NjQxODM0fDA&ixlib=rb-4.1.0&q=80&w=1080',
+        ],
+    },
+    {
+        name: 'Grand Palace Resort',
+        description: 'Indulge in world-class hospitality with breathtaking ocean views, premium spa facilities, and gourmet dining experiences.',
+        images: [
+            'https://images.unsplash.com/photo-1662841540530-2f04bb3291e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMHN1aXRlJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzY0NTgwMjE0fDA&ixlib=rb-4.1.0&q=80&w=1080',
+            'https://images.unsplash.com/photo-1731336478850-6bce7235e320?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBob3RlbCUyMGJlZHJvb218ZW58MXx8fHwxNzY0NTM0MTQ2fDA&ixlib=rb-4.1.0&q=80&w=1080',
+            'https://images.unsplash.com/photo-1572177215152-32f247303126?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3RlbCUyMHJvb218ZW58MXx8fHwxNzY0NTc0MTI3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+            'https://images.unsplash.com/photo-1631049035113-4a68ecf80b1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGJlZHJvb20lMjBkZXNpZ258ZW58MXx8fHwxNzY0NjQxODM0fDA&ixlib=rb-4.1.0&q=80&w=1080',
+            'https://images.unsplash.com/photo-1682221568203-16f33b35e57d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGxvYmJ5JTIwbHV4dXJ5fGVufDF8fHx8MTc2NDYxNTI5M3ww&ixlib=rb-4.1.0&q=80&w=1080',
+        ],
+    },
+];
+
+// Current hotel index
+let currentHotelIndex = 0;
+let isAnimating = false;
+
+// Get DOM elements
+const signupForm = document.getElementById('signupForm');
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+const hotelName = document.getElementById('hotelName');
+const hotelDescription = document.getElementById('hotelDescription');
+const mobileMainImage = document.getElementById('mobileMainImage');
+const mainImage = document.getElementById('mainImage');
+const smallImage1 = document.getElementById('smallImage1');
+const smallImage2 = document.getElementById('smallImage2');
+const smallImage3 = document.getElementById('smallImage3');
+const smallImage4 = document.getElementById('smallImage4');
+const imageGrid = document.getElementById('imageGrid');
+const hotelInfo = document.getElementById('hotelInfo');
+const carouselDotsContainer = document.getElementById('carouselDots');
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    updateHotelDisplay();
+    setupEventListeners();
+});
+
+// Update hotel display
+function updateHotelDisplay() {
+    const currentHotel = hotels[currentHotelIndex];
+
+    // Add fade transition class
+    imageGrid.classList.remove('fade-transition');
+    hotelInfo.classList.remove('fade-transition');
+    
+    // Trigger reflow to restart animation
+    void imageGrid.offsetWidth;
+    void hotelInfo.offsetWidth;
+    
+    // Add transition class back
+    imageGrid.classList.add('fade-transition');
+    hotelInfo.classList.add('fade-transition');
+
+    // Update text content
+    hotelName.textContent = currentHotel.name;
+    hotelDescription.textContent = currentHotel.description;
+
+    // Update images
+    mobileMainImage.src = currentHotel.images[0];
+    mainImage.src = currentHotel.images[0];
+    smallImage1.src = currentHotel.images[1];
+    smallImage2.src = currentHotel.images[2];
+    smallImage3.src = currentHotel.images[3];
+    smallImage4.src = currentHotel.images[4];
+
+    // Update dots
+    updateDots();
+
+    // Reset animation flag after animation completes
+    setTimeout(() => {
+        isAnimating = false;
+        prevButton.disabled = false;
+        nextButton.disabled = false;
+    }, 500);
+}
+
+// Update dots
+function updateDots() {
+    const dots = carouselDotsContainer.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        if (index === currentHotelIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+// Previous hotel
+function prevHotel() {
+    if (isAnimating) return;
+    isAnimating = true;
+    prevButton.disabled = true;
+    nextButton.disabled = true;
+    currentHotelIndex = (currentHotelIndex - 1 + hotels.length) % hotels.length;
+    updateHotelDisplay();
+}
+
+// Next hotel
+function nextHotel() {
+    if (isAnimating) return;
+    isAnimating = true;
+    prevButton.disabled = true;
+    nextButton.disabled = true;
+    currentHotelIndex = (currentHotelIndex + 1) % hotels.length;
+    updateHotelDisplay();
+}
+
+// Go to specific hotel
+function goToHotel(index) {
+    if (isAnimating || index === currentHotelIndex) return;
+    isAnimating = true;
+    prevButton.disabled = true;
+    nextButton.disabled = true;
+    currentHotelIndex = index;
+    updateHotelDisplay();
+}
+
+
+
+function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const accessLevel = document.getElementById('access-level').value;
+
+    console.log('Signup attempted with:', {
+        email: email,
+        password: password,
+        accessLevel: accessLevel
+    });
+
+    alert('Signup form submitted!\nEmail: ' + email + '\nAccess Level: ' + accessLevel);
+    
+    // Optional: Reset form
+    // signupForm.reset();
+}
+
+// Setup event listeners
+function setupEventListeners() {
+    // Form submission
+    if (signupForm) {
+        signupForm.addEventListener('submit', handleFormSubmit);
+    }
+
+    // Navigation buttons
+    if (prevButton) {
+        prevButton.addEventListener('click', prevHotel);
+    }
+
+    if (nextButton) {
+        nextButton.addEventListener('click', nextHotel);
+    }
+
+    // Dots
+    const dots = carouselDotsContainer.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToHotel(index));
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevHotel();
+        } else if (e.key === 'ArrowRight') {
+            nextHotel();
+        }
+    });
+}
+
+    </script>
+</body>
+</html>

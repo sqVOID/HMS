@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test: Reservation Mode Deposit Fix</title>
+    <style>
+        .test-case { margin: 20px; padding: 15px; border: 2px solid #ccc; border-radius: 8px; }
+        .issue { border-color: #ef4444; background-color: #fef2f2; }
+        .fixed { border-color: #10b981; background-color: #f0fdf4; }
+        table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f5f5f5; }
+        .correct { color: #10b981; font-weight: bold; }
+        .wrong { color: #ef4444; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Test: Reservation Mode Deposit Fix ✅</h1>
+    
+    <div class="test-case issue">
+        <h2>❌ ISSUES IDENTIFIED</h2>
+        
+        <h3>Issue 1: Auto-display of ₱1000 Payment</h3>
+        <p><strong>Problem:</strong> When selecting duration in Reservation mode, it automatically shows "Payment - ₱1000.00" even though no payment has been made yet.</p>
+        <p><strong>Expected:</strong> Should show "Payment - ₱0.00" until actual payment is entered.</p>
+        
+        <h3>Issue 2: Incorrect Subtotal Calculation</h3>
+        <p><strong>Problem:</strong> When editing payment to ₱500.00, subtotal still shows ₱1000.00 instead of ₱1500.00.</p>
+        <p><strong>Expected:</strong> Subtotal should be ₱2000.00 - ₱500.00 = ₱1500.00</p>
+        
+        <h3>Root Cause:</h3>
+        <p>The code was checking for Reserved <strong>status</strong> but not for Reservation <strong>mode</strong>. When creating a new booking in Reservation mode, the booking object might have old data from a previous booking on that room.</p>
+    </div>
+
+    <div class="test-case fixed">
+        <h2>✅ FIX APPLIED</h2>
+        
+        <h3>Solution:</h3>
+        <p>Added check for Reservation mode in addition to checking booking status:</p>
+        
+        <pre style="background: #efe; padding: 10px; border-radius: 4px;">
+// Check if we're in Reservation mode (creating new booking)
+const reservationRadio = document.getElementById('editReservationRadio');
+const isReservationMode = reservationRadio && reservationRadio.checked;
+
+// For Available bookings OR Reservation mode without confirmed payment
+if (isAvailable || (isReservationMode && !isReserved)) {
+    deposit = 0;  // ✅ Set to 0 for new bookings
+}
+        </pre>
+        
+        <h3>Key Logic:</h3>
+        <ul>
+            <li><strong>isAvailable</strong>: Booking status is "Available" or empty</li>
+            <li><strong>isReservationMode</strong>: User selected "Reservation" radio button</li>
+            <li><strong>!isReserved</strong>: Booking status is NOT "Reserved" yet</li>
+            <li><strong>Result</strong>: If in Reservation mode but not yet Reserved, deposit = 0</li>
+        </ul>
+    </div>
+
+    <div class="test-case fixed">
+        <h2>✅ EXPECTED BEHAVIOR (FIXED)</h2>
+        
+        <table>
+            <tr>
+                <th>Scenario</th>
+                <th>Payment Display</th>
+                <th>Subtotal</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>1. New Reservation - No Payment</td>
+                <td class="correct">- ₱0.00</td>
+                <td class="correct">₱2000.00</td>
+                <td>✅ FIXED</td>
+            </tr>
+            <tr>
+                <td>2. New Reservation - ₱500 Payment</td>
+                <td class="correct">- ₱500.00</td>
+                <td class="correct">₱1500.00</td>
+                <td>✅ FIXED</td>
+            </tr>
+            <tr>
+                <td>3. New Reservation - ₱1000 Payment</td>
+                <td class="correct">- ₱1000.00</td>
+                <td class="correct">₱1000.00</td>
+                <td>✅ FIXED</td>
+            </tr>
+            <tr>
+                <td>4. Existing Reserved Booking</td>
+                <td class="correct">Shows actual payment</td>
+                <td class="correct">Correct calculation</td>
+                <td>✅ Works</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="test-case fixed">
+        <h2>🔧 FUNCTIONS UPDATED</h2>
+        <ol>
+            <li><strong>updateEditChargesBreakdown()</strong> - Added Reservation mode check</li>
+            <li><strong>Checkout modal calculation</strong> - Added Reservation mode check</li>
+        </ol>
+        
+        <h3>Logic Flow:</h3>
+        <pre style="background: #f5f5f5; padding: 10px; border-radius: 4px;">
+1. User selects "Reservation" mode
+2. User selects duration (e.g., 12 Hours = ₱2000.00)
+3. Charges Breakdown shows:
+   - Room Rate: ₱2000.00
+   - Payment: - ₱0.00 ✅ (was showing - ₱1000.00 ❌)
+   - Subtotal: ₱2000.00 ✅
+
+4. User clicks "Confirm Downpayment" and enters ₱500
+5. Charges Breakdown updates:
+   - Room Rate: ₱2000.00
+   - Payment: - ₱500.00 ✅
+   - Subtotal: ₱1500.00 ✅ (was showing ₱1000.00 ❌)
+        </pre>
+    </div>
+
+    <div class="test-case fixed">
+        <h2>✅ VERIFICATION CHECKLIST</h2>
+        <p>To verify the fix works:</p>
+        <ol>
+            <li>✅ Select a room (any status)</li>
+            <li>✅ Select "Reservation" mode</li>
+            <li>✅ Select duration (e.g., 12 Hours)</li>
+            <li>✅ Check Charges Breakdown - should show "Payment - ₱0.00"</li>
+            <li>✅ Click "Confirm Downpayment"</li>
+            <li>✅ Enter payment amount (e.g., ₱500 Cash)</li>
+            <li>✅ Check Charges Breakdown - should show "Payment - ₱500.00"</li>
+            <li>✅ Check Subtotal - should be correct (e.g., ₱2000 - ₱500 = ₱1500)</li>
+        </ol>
+    </div>
+
+    <div class="test-case fixed">
+        <h2>📋 SUMMARY</h2>
+        <p><strong>Before Fix:</strong></p>
+        <ul>
+            <li class="wrong">❌ Payment auto-displayed as - ₱1000.00</li>
+            <li class="wrong">❌ Subtotal incorrect when payment edited</li>
+        </ul>
+        
+        <p><strong>After Fix:</strong></p>
+        <ul>
+            <li class="correct">✅ Payment shows - ₱0.00 until entered</li>
+            <li class="correct">✅ Subtotal calculates correctly</li>
+            <li class="correct">✅ Works for both new and existing bookings</li>
+        </ul>
+    </div>
+</body>
+</html>

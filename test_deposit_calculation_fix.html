@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Deposit Calculation Fix</title>
+    <style>
+        .test-case { margin: 20px; padding: 15px; border: 2px solid #ccc; border-radius: 8px; }
+        .correct { border-color: #10b981; background-color: #f0fdf4; }
+        .issue { border-color: #ef4444; background-color: #fef2f2; }
+        .fixed { border-color: #3b82f6; background-color: #eff6ff; }
+    </style>
+</head>
+<body>
+    <h1>Test: Deposit Calculation Fix</h1>
+    
+    <div class="test-case issue">
+        <h2>❌ ISSUE IDENTIFIED</h2>
+        <p><strong>Problem:</strong> When adding check-in and duration to Reserved bookings, it automatically shows "Payment - ₱1000.00" even though no payment has been added yet.</p>
+        <p><strong>Expected:</strong> Should show "Payment - ₱0.00" until actual payment is made.</p>
+        <p><strong>Root Cause:</strong> Code was using <code>booking.deposit</code> for Reserved bookings, but Reserved bookings store payment info in <code>downpayment_cash</code>, <code>downpayment_gcash</code>, <code>downpayment_maya</code> fields.</p>
+    </div>
+
+    <div class="test-case fixed">
+        <h2>✅ FIX APPLIED</h2>
+        <p><strong>Solution:</strong> Updated deposit calculation logic to handle Reserved bookings differently:</p>
+        
+        <h3>Before (WRONG):</h3>
+        <pre style="background: #fee; padding: 10px; border-radius: 4px;">
+// Calculate deposit
+const deposit = parseFloat(booking.deposit) || 0;
+        </pre>
+        
+        <h3>After (FIXED):</h3>
+        <pre style="background: #efe; padding: 10px; border-radius: 4px;">
+// Calculate deposit - handle Reserved bookings differently
+let deposit = 0;
+if (booking.status === 'Reserved') {
+    // For Reserved bookings, check if there's actual payment made
+    const downpaymentCash = parseFloat(booking.downpayment_cash) || 0;
+    const downpaymentGCash = parseFloat(booking.downpayment_gcash) || 0;
+    const downpaymentMaya = parseFloat(booking.downpayment_maya) || 0;
+    deposit = downpaymentCash + downpaymentGCash + downpaymentMaya;
+} else {
+    // For non-Reserved bookings, use regular deposit
+    deposit = parseFloat(booking.deposit) || 0;
+}
+        </pre>
+    </div>
+
+    <div class="test-case correct">
+        <h2>✅ EXPECTED BEHAVIOR (FIXED)</h2>
+        
+        <h3>Scenario 1: New Reserved Booking (No Payment Yet)</h3>
+        <ul>
+            <li>✅ Room Rate: ₱2000.00</li>
+            <li>✅ Payment: - ₱0.00 (should be 0, not 1000)</li>
+            <li>✅ Subtotal: ₱2000.00 (should be full amount)</li>
+        </ul>
+
+        <h3>Scenario 2: Reserved Booking with ₱500 Payment</h3>
+        <ul>
+            <li>✅ Room Rate: ₱2000.00</li>
+            <li>✅ Payment: - ₱500.00 (actual payment amount)</li>
+            <li>✅ Subtotal: ₱1500.00 (2000 - 500)</li>
+        </ul>
+
+        <h3>Scenario 3: Regular Walk-in Booking</h3>
+        <ul>
+            <li>✅ Uses <code>booking.deposit</code> as before (no change needed)</li>
+        </ul>
+    </div>
+
+    <div class="test-case fixed">
+        <h2>🔧 FUNCTIONS UPDATED</h2>
+        <ol>
+            <li><strong>updateEditChargesBreakdown()</strong> - Fixed deposit calculation for edit modal</li>
+            <li><strong>Checkout modal calculation</strong> - Fixed depositAmount calculation</li>
+            <li><strong>calculateMissingItemFees()</strong> - Automatically fixed via window.checkoutDepositAmount</li>
+        </ol>
+    </div>
+
+    <div class="test-case correct">
+        <h2>✅ VERIFICATION CHECKLIST</h2>
+        <p>To verify the fix works:</p>
+        <ol>
+            <li>Create a new Reserved booking</li>
+            <li>Add check-in date and duration</li>
+            <li>Check Charges Breakdown - should show "Payment - ₱0.00"</li>
+            <li>Add actual payment (e.g., ₱500 Cash)</li>
+            <li>Check Charges Breakdown - should show "Payment - ₱500.00"</li>
+            <li>Check Subtotal - should update correctly (e.g., ₱2000 - ₱500 = ₱1500)</li>
+        </ol>
+    </div>
+</body>
+</html>

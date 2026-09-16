@@ -1,0 +1,516 @@
+/**
+ * Global Sidebar Styles
+ * Shared styles for sidebar, header, and notifications across all pages
+ */
+
+/* ============================================
+   LAYOUT & SPLIT CONTAINER
+   ============================================ */
+.split-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* ============================================
+   LEFT PANEL (SIDEBAR)
+   ============================================ */
+.left-panel {
+    width: 280px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s ease;
+    position: relative;
+    z-index: 1000;
+}
+
+.left-panel.minimized {
+    width: 80px;
+}
+
+.left-panel.minimized .sidebar-menu span,
+.left-panel.minimized .logo-img {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.left-panel.minimized .sidebar-icon {
+    margin-right: 0;
+}
+
+.left-panel.minimized .menu-arrow {
+    display: none;
+}
+
+/* ============================================
+   SIDEBAR COLLAPSE BUTTON
+   ============================================ */
+.sidebar-collapse-btn {
+    position: absolute;
+    top: 20px;
+    right: -12px;
+    width: 24px;
+    height: 24px;
+    background: #e0bf02;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.sidebar-collapse-btn:hover {
+    background: #f0cf12;
+    transform: scale(1.1);
+}
+
+.sidebar-collapse-btn:hover .collapse-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.collapse-tooltip {
+    position: absolute;
+    left: 32px;
+    background: #2d2d44;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+/* ============================================
+   LOGO
+   ============================================ */
+.logo-img {
+    width: 180px;
+    height: auto;
+    margin: 0 auto 32px;
+    display: block;
+    transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+/* ============================================
+   SIDEBAR MENU
+   ============================================ */
+.sidebar-menu {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-menu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu-item {
+    padding: 12px 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #b8c1ec;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.sidebar-menu-item:hover {
+    background: rgba(224, 191, 2, 0.1);
+    color: #e0bf02;
+}
+
+.sidebar-menu-item.active {
+    background: rgba(224, 191, 2, 0.15);
+    color: #e0bf02;
+    border-left: 4px solid #e0bf02;
+}
+
+.sidebar-menu-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: #e0bf02;
+}
+
+.sidebar-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    transition: margin 0.3s ease;
+    flex-shrink: 0;
+}
+
+.sidebar-menu-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+/* ============================================
+   COLLAPSIBLE MENU (MAINTENANCE)
+   ============================================ */
+.collapsible-menu {
+    flex-direction: column;
+    padding: 0;
+}
+
+.menu-header {
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.menu-header:hover {
+    background: rgba(224, 191, 2, 0.1);
+    color: #e0bf02;
+}
+
+.menu-arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.collapsible-menu.expanded .menu-arrow {
+    transform: rotate(180deg);
+}
+
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.submenu.open {
+    max-height: 500px;
+}
+
+.submenu-item {
+    padding: 10px 24px 10px 56px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #9ba4d0;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.submenu-item:hover {
+    background: rgba(224, 191, 2, 0.08);
+    color: #e0bf02;
+}
+
+.submenu-item.active {
+    background: rgba(224, 191, 2, 0.12);
+    color: #e0bf02;
+}
+
+/* ============================================
+   RIGHT PANEL
+   ============================================ */
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #f5f7fa;
+    overflow: hidden;
+}
+
+/* ============================================
+   HEADER BAR
+   ============================================ */
+.header-bar {
+    background: #ffffff;
+    padding: 20px 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.header-page-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin: 0;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e0bf02 0%, #f0cf12 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: #1a1a2e;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.user-role {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+/* ============================================
+   CONTENT CONTAINER
+   ============================================ */
+.content-container {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+}
+
+/* ============================================
+   NOTIFICATION ALERTS
+   ============================================ */
+.alert-box {
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease;
+    position: relative;
+}
+
+.alert-success {
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+    color: #155724;
+}
+
+.alert-error {
+    background: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    color: #856404;
+}
+
+.alert-info {
+    background: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+    color: #0c5460;
+}
+
+.alert-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: 700;
+    color: inherit;
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+}
+
+.alert-close:hover {
+    opacity: 1;
+}
+
+/* ============================================
+   MOBILE MENU
+   ============================================ */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+    background: #e0bf02;
+    border: none;
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+    color: #1a1a2e;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    background: #f0cf12;
+    transform: scale(1.05);
+}
+
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-menu-overlay {
+        display: block;
+    }
+
+    .left-panel {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+
+    .left-panel.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-collapse-btn {
+        display: none;
+    }
+
+    .header-bar {
+        padding: 20px 80px 20px 20px;
+    }
+
+    .content-container {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .left-panel {
+        width: 260px;
+    }
+
+    .header-bar {
+        padding: 16px 70px 16px 16px;
+    }
+
+    .user-name {
+        font-size: 13px;
+    }
+
+    .user-role {
+        font-size: 11px;
+    }
+
+    .content-container {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .left-panel {
+        width: 240px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .alert-box {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+}
+
+/* ============================================
+   ROLE-BASED VISIBILITY
+   ============================================ */
+[data-roles]:not([data-roles*="user"]) {
+    display: none;
+}
+
+/* This will be controlled by JavaScript based on user role */

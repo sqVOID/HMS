@@ -1,0 +1,500 @@
+﻿[Wed Feb 04 10:02:24.406976 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] === END PAID STATUS CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.406976 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] === DEPOSIT VALUES DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.407510 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] status: Confirmed, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.407510 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] isReservation: FALSE, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.407510 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit from POST: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.407510 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit_cash from POST: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.407510 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit_g_cash from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.407510 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit_maya from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.407510 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit_details from POST: 21,890.05 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.407510 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit_gcash_ref from POST: NULL, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.408035 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit_maya_ref from POST: NULL, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.408035 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] === VALUES FOR DATABASE ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.408035 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit_for_db: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.408035 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit_cash_for_db: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.408035 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit_g_cash_for_db: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.408035 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit_maya_for_db: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.408035 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] deposit_details_for_db: 21,890.05 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.408035 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] === END DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.894955 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1121 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.894955 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122]   deposit: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.894955 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.894955 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122]   total_amount: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.895473 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.895473 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.895473 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122]   --> Total Payments: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.895473 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122]   --> Total Charges: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.895473 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122]   --> Current paid_status: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.895473 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122]   --> Condition check: totalPayments >= totalCharges ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.895473 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:24.895473 2026] [php:notice] [pid 5348:tid 1932] [client ::1:55122]   --> currentPaidStatus !== 'Paid' ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.136626 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1121 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.136626 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349]   deposit: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.136626 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.138183 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349]   total_amount: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.138183 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.138183 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.138183 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349]   --> Total Payments: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.138183 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349]   --> Total Charges: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.138183 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349]   --> Current paid_status: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.138183 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349]   --> Condition check: totalPayments >= totalCharges ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.138729 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.138729 2026] [php:notice] [pid 5348:tid 1896] [client ::1:51349]   --> currentPaidStatus !== 'Paid' ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201213 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1121 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201213 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455]   deposit: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201213 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201213 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455]   total_amount: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201746 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201746 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201746 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455]   --> Total Payments: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201746 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455]   --> Total Charges: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201746 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455]   --> Current paid_status: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201746 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455]   --> Condition check: totalPayments >= totalCharges ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201746 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:02:25.201746 2026] [php:notice] [pid 5348:tid 1924] [client ::1:58455]   --> currentPaidStatus !== 'Paid' ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1121 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830]   deposit: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830]   total_amount: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830]   --> Total Payments: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830]   --> Total Charges: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830]   --> Current paid_status: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830]   --> Condition check: totalPayments >= totalCharges ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:06.489983 2026] [php:notice] [pid 5348:tid 1924] [client ::1:49830]   --> currentPaidStatus !== 'Paid' ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:07.821151 2026] [php:notice] [pid 5348:tid 1932] [client ::1:49384] === DELETE BOOKING INVENTORY DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:07.821151 2026] [php:notice] [pid 5348:tid 1932] [client ::1:49384] Booking ID: 1121, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:07.821688 2026] [php:notice] [pid 5348:tid 1932] [client ::1:49384] Missing Items List: , referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:07.821688 2026] [php:notice] [pid 5348:tid 1932] [client ::1:49384] No missing items to restore, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:07.821688 2026] [php:notice] [pid 5348:tid 1932] [client ::1:49384] Total items restored: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:07.821688 2026] [php:notice] [pid 5348:tid 1932] [client ::1:49384] === END DELETE BOOKING INVENTORY DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139391 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === CONFIRM_BOOKING DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139391 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] POST additional_capacity isset: YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139391 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] POST additional_capacity raw value: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139962 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Processed additional_guest value: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139962 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === DISCOUNT DATA FROM POST ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139962 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] discount_enabled: YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139962 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] discount_type: regular, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139962 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] sc_pwd_count: 1, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139962 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === END DISCOUNT DATA ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139962 2026] [php:warn] [pid 5348:tid 1896] [client ::1:54793] PHP Warning:  Undefined variable $room_price in C:\\xampp\\htdocs\\HMS\\confirm_booking.php on line 102, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139962 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === DISCOUNT CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139962 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] room_type: Premium 2 (Example Only), referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139962 2026] [php:warn] [pid 5348:tid 1896] [client ::1:54793] PHP Warning:  Undefined variable $room_price in C:\\xampp\\htdocs\\HMS\\confirm_booking.php on line 107, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.139962 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] room_price: , referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.140961 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] guest_capacity: 4, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.140961 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] discount_per_guest: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.140961 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] sc_pwd_count: 1, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.140961 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] discount_amount: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.140961 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === END DISCOUNT CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.140961 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === CONFIRM_BOOKING DEPOSIT DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.141519 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] POST deposit: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.141519 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] POST deposit_cash: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.141519 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] POST deposit_g_cash: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.141519 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] POST deposit_maya: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.141519 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] POST deposit_details: 2000.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.141519 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] POST deposit_gcash_ref: , referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142022 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] POST deposit_maya_ref: , referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142078 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Parsed deposit: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142078 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Parsed deposit_cash: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142078 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Parsed deposit_g_cash: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142078 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Parsed deposit_maya: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142078 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Parsed deposit_details: 2000.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142078 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === END DEPOSIT DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142581 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === INITIAL DEPOSIT VALUES FROM POST ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142581 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit from POST: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142581 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_cash from POST: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142581 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_g_cash from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142581 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_maya from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142581 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_details from POST: 2000.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142581 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Parsed deposit: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142581 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Parsed deposit_details: 2000.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142581 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === END INITIAL VALUES ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142581 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === DEPOSIT ADJUSTMENT DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.142581 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Original deposit: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.143580 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Original deposit_details: 2000.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.143580 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] check_in_change_amount: 109.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.143580 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Adjusted deposit: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.143580 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Adjusted deposit_details: 21,890.05 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.143580 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === CONFIRM BOOKING DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.144083 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] check_in_change_amount from POST: 109.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.144083 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] check_in_change_amount parsed: 109.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.361767 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === PROMO PRICE USED ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.361767 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Promo: Package 1 12hrs - \xe2\x82\xb12089.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.361767 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Promo price: 2089, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.361767 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === END PROMO PRICE ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362271 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === DISCOUNT CALCULATION IN BACKEND ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362271 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Room type: Premium 2 (Example Only), referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362271 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Room price: 2089, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362271 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] SC/PWD count: 1, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362271 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Discount type: regular, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362271 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Calculated discount amount: 198.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362271 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === END DISCOUNT CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362271 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === PAID STATUS CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Full booking amount (before discount): 4179, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Discount amount: 198.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Full booking amount (after discount): 3980.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Total payments: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] Setting paid_status to: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === END PAID STATUS CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === DEPOSIT VALUES DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] status: Confirmed, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] isReservation: FALSE, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit from POST: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_cash from POST: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_g_cash from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_maya from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_details from POST: 21,890.05 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_gcash_ref from POST: NULL, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_maya_ref from POST: NULL, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === VALUES FOR DATABASE ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_for_db: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_cash_for_db: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_g_cash_for_db: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.362794 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_maya_for_db: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.364331 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] deposit_details_for_db: 21,890.05 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:03:36.364331 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54793] === END DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1122 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   deposit: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   total_amount: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> Total Payments: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> Total Charges: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> Current paid_status: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> Condition check: totalPayments >= totalCharges ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.357803 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> currentPaidStatus !== 'Paid' ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.602617 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1122 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.602617 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   deposit: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.604146 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.604146 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   total_amount: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.604146 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.604146 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.604146 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> Total Payments: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.604146 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> Total Charges: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.604146 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> Current paid_status: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.604146 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> Condition check: totalPayments >= totalCharges ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.604689 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.604689 2026] [php:notice] [pid 5348:tid 1896] [client ::1:60257]   --> currentPaidStatus !== 'Paid' ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.692615 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1122 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.692615 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356]   deposit: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.692615 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.692615 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356]   total_amount: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.692615 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.692615 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.692615 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356]   --> Total Payments: 1890.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.692615 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356]   --> Total Charges: 2288.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.692615 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356]   --> Current paid_status: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.693645 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356]   --> Condition check: totalPayments >= totalCharges ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.693645 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:07.693645 2026] [php:notice] [pid 5348:tid 1940] [client ::1:62356]   --> currentPaidStatus !== 'Paid' ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:33.101692 2026] [php:notice] [pid 5348:tid 1924] [client ::1:50941] === DELETE BOOKING INVENTORY DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:33.101692 2026] [php:notice] [pid 5348:tid 1924] [client ::1:50941] Booking ID: 1122, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:33.102706 2026] [php:notice] [pid 5348:tid 1924] [client ::1:50941] Missing Items List: , referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:33.102706 2026] [php:notice] [pid 5348:tid 1924] [client ::1:50941] No missing items to restore, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:33.102706 2026] [php:notice] [pid 5348:tid 1924] [client ::1:50941] Total items restored: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:33.102706 2026] [php:notice] [pid 5348:tid 1924] [client ::1:50941] === END DELETE BOOKING INVENTORY DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.428092 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === CONFIRM_BOOKING DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.428092 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] POST additional_capacity isset: YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429093 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] POST additional_capacity raw value: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429093 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Processed additional_guest value: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429093 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === DISCOUNT DATA FROM POST ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429093 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] discount_enabled: YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429093 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] discount_type: regular, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] sc_pwd_count: 1, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === END DISCOUNT DATA ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:warn] [pid 5348:tid 1896] [client ::1:54425] PHP Warning:  Undefined variable $room_price in C:\\xampp\\htdocs\\HMS\\confirm_booking.php on line 102, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === DISCOUNT CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] room_type: Premium 2 (Example Only), referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:warn] [pid 5348:tid 1896] [client ::1:54425] PHP Warning:  Undefined variable $room_price in C:\\xampp\\htdocs\\HMS\\confirm_booking.php on line 107, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] room_price: , referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] guest_capacity: 4, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] discount_per_guest: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] sc_pwd_count: 1, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] discount_amount: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === END DISCOUNT CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === CONFIRM_BOOKING DEPOSIT DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] POST deposit: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] POST deposit_cash: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] POST deposit_g_cash: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.429598 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] POST deposit_maya: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431107 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] POST deposit_details: 2000.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431159 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] POST deposit_gcash_ref: , referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431159 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] POST deposit_maya_ref: , referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431159 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Parsed deposit: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431159 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Parsed deposit_cash: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431159 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Parsed deposit_g_cash: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431159 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Parsed deposit_maya: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431663 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Parsed deposit_details: 2000.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431663 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === END DEPOSIT DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431663 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === INITIAL DEPOSIT VALUES FROM POST ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431663 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit from POST: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431663 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_cash from POST: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.431663 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_g_cash from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432191 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_maya from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432191 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_details from POST: 2000.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432191 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Parsed deposit: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432191 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Parsed deposit_details: 2000.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432191 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === END INITIAL VALUES ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432191 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === DEPOSIT ADJUSTMENT DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432729 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Original deposit: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432729 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Original deposit_details: 2000.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432729 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] check_in_change_amount: 470.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432729 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Adjusted deposit: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432729 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Adjusted deposit_details: 21,529.05 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432729 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === CONFIRM BOOKING DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.432729 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] check_in_change_amount from POST: 470.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.433262 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] check_in_change_amount parsed: 470.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657336 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === DISCOUNT CALCULATION IN BACKEND ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657336 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Room type: Premium 2 (Example Only), referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657336 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Room price: 1690, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] SC/PWD count: 1, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Discount type: regular, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Calculated discount amount: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === END DISCOUNT CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === PAID STATUS CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Full booking amount (before discount): 1690, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Discount amount: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Full booking amount (after discount): 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Total payments: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] Setting paid_status to: Paid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === END PAID STATUS CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === DEPOSIT VALUES DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] status: Confirmed, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] isReservation: FALSE, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit from POST: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_cash from POST: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_g_cash from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_maya from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_details from POST: 21,529.05 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_gcash_ref from POST: NULL, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_maya_ref from POST: NULL, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.657858 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === VALUES FOR DATABASE ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.659383 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_for_db: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.659383 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_cash_for_db: 2000, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.659383 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_g_cash_for_db: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.659383 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_maya_for_db: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.659383 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] deposit_details_for_db: 21,529.05 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:04:56.659383 2026] [php:notice] [pid 5348:tid 1896] [client ::1:54425] === END DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1123 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108]   deposit: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108]   total_amount: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108]   --> Total Payments: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108]   --> Total Charges: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108]   --> Current paid_status: Paid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108]   --> Condition check: totalPayments >= totalCharges ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.602707 2026] [php:notice] [pid 5348:tid 1896] [client ::1:63108]   --> currentPaidStatus !== 'Paid' ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.825952 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1123 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.825952 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968]   deposit: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.825952 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.825952 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968]   total_amount: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.825952 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.825952 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.825952 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968]   --> Total Payments: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.825952 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968]   --> Total Charges: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.825952 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968]   --> Current paid_status: Paid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.826958 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968]   --> Condition check: totalPayments >= totalCharges ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.826958 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.826958 2026] [php:notice] [pid 5348:tid 1948] [client ::1:64968]   --> currentPaidStatus !== 'Paid' ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.944931 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1123 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.944931 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539]   deposit: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.944931 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.944931 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539]   total_amount: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.944931 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.944931 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.944931 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539]   --> Total Payments: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.945942 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539]   --> Total Charges: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.945942 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539]   --> Current paid_status: Paid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.945942 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539]   --> Condition check: totalPayments >= totalCharges ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.945942 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:05.945942 2026] [php:notice] [pid 5348:tid 1924] [client ::1:63539]   --> currentPaidStatus !== 'Paid' ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.191718 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === CONFIRM_BOOKING DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.191718 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] POST additional_capacity isset: YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.191718 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] POST additional_capacity raw value: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192222 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Processed additional_guest value: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192222 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === DISCOUNT DATA FROM POST ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192222 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] discount_enabled: YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192222 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] discount_type: regular, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192222 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] sc_pwd_count: 1, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192222 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === END DISCOUNT DATA ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192725 2026] [php:warn] [pid 5348:tid 1948] [client ::1:63364] PHP Warning:  Undefined variable $room_price in C:\\xampp\\htdocs\\HMS\\confirm_booking.php on line 102, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === DISCOUNT CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] room_type: Deluxe (Example Only), referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192793 2026] [php:warn] [pid 5348:tid 1948] [client ::1:63364] PHP Warning:  Undefined variable $room_price in C:\\xampp\\htdocs\\HMS\\confirm_booking.php on line 107, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] room_price: , referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] guest_capacity: 6, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] discount_per_guest: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] sc_pwd_count: 1, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] discount_amount: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === END DISCOUNT CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === CONFIRM_BOOKING DEPOSIT DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.192793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] POST deposit: 1200, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.193793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] POST deposit_cash: 1200, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.193793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] POST deposit_g_cash: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.193793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] POST deposit_maya: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.193793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] POST deposit_details: 1200.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.193793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] POST deposit_gcash_ref: , referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.193793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] POST deposit_maya_ref: , referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.193793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Parsed deposit: 1200, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.193793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Parsed deposit_cash: 1200, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.193793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Parsed deposit_g_cash: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.193793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Parsed deposit_maya: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.193793 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Parsed deposit_details: 1200.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.194791 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === END DEPOSIT DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.194791 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === INITIAL DEPOSIT VALUES FROM POST ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.194791 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit from POST: 1200, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.194791 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_cash from POST: 1200, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.194791 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_g_cash from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.194791 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_maya from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.195295 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_details from POST: 1200.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.195295 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Parsed deposit: 1200, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.195295 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Parsed deposit_details: 1200.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.195295 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === END INITIAL VALUES ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.195295 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === DEPOSIT ADJUSTMENT DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.195295 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Original deposit: 1200, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.195799 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Original deposit_details: 1200.00 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.195799 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] check_in_change_amount: 60.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.195799 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Adjusted deposit: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.195799 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Adjusted deposit_details: 11,139.14 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.195799 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === CONFIRM BOOKING DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.196343 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] check_in_change_amount from POST: 60.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.196343 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] check_in_change_amount parsed: 60.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.424524 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === PROMO PRICE USED ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.424524 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Promo: Package 1 12hrs - \xe2\x82\xb11329.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.424524 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Promo price: 1329, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.424524 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === END PROMO PRICE ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.424524 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === DISCOUNT CALCULATION IN BACKEND ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.424524 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Room type: Deluxe (Example Only), referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.424524 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Room price: 1329, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.424524 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] SC/PWD count: 1, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.424524 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Discount type: regular, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.424524 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Calculated discount amount: 189.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.425542 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === END DISCOUNT CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.425542 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === PAID STATUS CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.425542 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Full booking amount (before discount): 2659, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.425542 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Discount amount: 189.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.425542 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Full booking amount (after discount): 2469.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.425542 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Total payments: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.425542 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] Setting paid_status to: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === END PAID STATUS CALCULATION ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === DEPOSIT VALUES DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] status: Confirmed, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] isReservation: FALSE, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit from POST: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_cash from POST: 1200, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_g_cash from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_maya from POST: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_details from POST: 11,139.14 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_gcash_ref from POST: NULL, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_maya_ref from POST: NULL, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.426046 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === VALUES FOR DATABASE ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.427063 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_for_db: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.427063 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_cash_for_db: 1200, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.427063 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_g_cash_for_db: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.427063 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_maya_for_db: 0, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.427063 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] deposit_details_for_db: 11,139.14 Cash, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:42.427063 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === END DEBUG ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.786887 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1124 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.786887 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   deposit: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.786887 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.787931 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   total_amount: 1519.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.787931 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.787931 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.787931 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> Total Payments: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.787931 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> Total Charges: 1519.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.787931 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> Current paid_status: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.787931 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> Condition check: totalPayments >= totalCharges ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.787931 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.788453 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> currentPaidStatus !== 'Paid' ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.788453 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1123 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.788453 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   deposit: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.788453 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.788453 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   total_amount: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.788453 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.788453 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.788453 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> Total Payments: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.788453 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> Total Charges: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.789463 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> Current paid_status: Paid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.789463 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> Condition check: totalPayments >= totalCharges ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.789463 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:46.789463 2026] [php:notice] [pid 5348:tid 1948] [client ::1:63364]   --> currentPaidStatus !== 'Paid' ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.024320 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1124 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.024320 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   deposit: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.024320 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.024320 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   total_amount: 1519.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.025327 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.025327 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.025327 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> Total Payments: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.025327 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> Total Charges: 1519.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.025327 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> Current paid_status: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.025327 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> Condition check: totalPayments >= totalCharges ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.025327 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.025327 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> currentPaidStatus !== 'Paid' ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.025832 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1123 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.026343 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   deposit: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.026343 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.026343 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   total_amount: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.026343 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.026343 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.026343 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> Total Payments: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.026343 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> Total Charges: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.026343 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> Current paid_status: Paid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.026343 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> Condition check: totalPayments >= totalCharges ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.026343 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.026343 2026] [php:notice] [pid 5348:tid 1932] [client ::1:52151]   --> currentPaidStatus !== 'Paid' ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1124 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   deposit: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   total_amount: 1519.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> Total Payments: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> Total Charges: 1519.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> Current paid_status: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> Condition check: totalPayments >= totalCharges ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.109070 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> currentPaidStatus !== 'Paid' ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.110505 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1123 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.110505 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   deposit: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.110505 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.110505 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   total_amount: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.110505 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.110505 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.110505 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> Total Payments: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.111510 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> Total Charges: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.111510 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> Current paid_status: Paid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.111510 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> Condition check: totalPayments >= totalCharges ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.111510 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:05:47.112018 2026] [php:notice] [pid 5348:tid 1940] [client ::1:57366]   --> currentPaidStatus !== 'Paid' ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.789516 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1124 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.789516 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   deposit: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.789516 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.789516 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   total_amount: 1519.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.789516 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.789516 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.790020 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> Total Payments: 1139.14, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.790020 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> Total Charges: 1519.86, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.790020 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> Current paid_status: Unpaid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.790020 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> Condition check: totalPayments >= totalCharges ? NO, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.790020 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.790020 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> currentPaidStatus !== 'Paid' ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.790020 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096] === PAID_STATUS AUTO-UPDATE DEBUG for Booking ID: 1123 ===, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.790020 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   deposit: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.790020 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   downpayment_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.790020 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   total_amount: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.791527 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   missing_items_fees: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.791527 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   penalty_amount: 0.00, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.791527 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> Total Payments: 1529.05, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.791527 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> Total Charges: 160.95, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.791527 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> Current paid_status: Paid, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.791527 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> Condition check: totalPayments >= totalCharges ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.791527 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> totalCharges > 0 ? YES, referer: http://localhost:8080/HMS/Booking.html
+[Wed Feb 04 10:06:04.791527 2026] [php:notice] [pid 5348:tid 1912] [client ::1:59096]   --> currentPaidStatus !== 'Paid' ? NO, referer: http://localhost:8080/HMS/Booking.html

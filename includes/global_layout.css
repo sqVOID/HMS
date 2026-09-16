@@ -1,0 +1,511 @@
+/**
+ * Global Layout Styles
+ * Reusable styles for sidebar and header components
+ */
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE MENU TOGGLE
+   ═══════════════════════════════════════════════════════════ */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 22px;
+    left: 16px;
+    z-index: 1100;
+    background: #6d5425;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 9px 13px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 8px 18px rgba(109, 84, 37, 0.35);
+}
+
+@media screen and (max-width: 1024px) {
+    .mobile-menu-toggle {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SPLIT CONTAINER
+   ═══════════════════════════════════════════════════════════ */
+.split-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LEFT PANEL (SIDEBAR)
+   ═══════════════════════════════════════════════════════════ */
+.left-panel {
+    width: 240px;
+    min-width: 220px;
+    max-width: 280px;
+    background: linear-gradient(to right, #fcffd6 0%, #ffffff 100%);
+    height: 100vh;
+    border-right: 1px solid #e0e0e0;
+    position: relative;
+    flex-shrink: 0;
+    overflow: visible;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.left-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 2px;
+    height: 90px;
+    background: #fff;
+    z-index: 2;
+}
+
+/* Minimized State */
+.left-panel.minimized {
+    width: 70px;
+    min-width: 70px;
+    max-width: 70px;
+}
+
+.left-panel.minimized .logo-img {
+    display: none;
+}
+
+.left-panel.minimized .sidebar-menu span {
+    display: none;
+}
+
+.left-panel.minimized .sidebar-menu li {
+    justify-content: center;
+    padding-left: 0;
+}
+
+.left-panel.minimized .sidebar-icon {
+    margin-right: 0;
+}
+
+.left-panel.minimized .menu-arrow {
+    display: none;
+}
+
+.left-panel.minimized .submenu {
+    display: none !important;
+}
+
+.left-panel.minimized .sidebar-menu-item.collapsible-menu .menu-header {
+    justify-content: center;
+    padding-left: 0;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 1024px) {
+    .left-panel {
+        position: fixed !important;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .left-panel.open {
+        transform: translateX(0);
+    }
+
+    /* Hide collapse tab on mobile */
+    .sidebar-collapse-btn {
+        display: none !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SIDEBAR COLLAPSE BUTTON
+   ═══════════════════════════════════════════════════════════ */
+.sidebar-collapse-btn {
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 250px;
+    background: #e4dfb0;
+    border: 1px solid #d4cf9e;
+    border-left: none;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    opacity: 1;
+    pointer-events: auto;
+    transition: background 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 300;
+    padding: 0;
+    user-select: none;
+}
+
+.sidebar-collapse-btn img {
+    width: 10px;
+    height: 10px;
+    display: block;
+    pointer-events: none;
+}
+
+.sidebar-collapse-btn:hover {
+    background: #d4cf9e;
+}
+
+/* Tooltip popup shown on hover */
+.sidebar-collapse-btn .collapse-tooltip {
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 12px;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 5px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 400;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Tooltip left arrow */
+.sidebar-collapse-btn .collapse-tooltip::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-right-color: #1a1a1a;
+}
+
+.sidebar-collapse-btn:hover .collapse-tooltip {
+    opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    .sidebar-collapse-btn {
+        display: none;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LOGO
+   ═══════════════════════════════════════════════════════════ */
+.logo-img {
+    display: block;
+    margin: 15px auto 0 0px;
+    width: 100%;
+    max-width: 285px;
+    height: auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SIDEBAR MENU
+   ═══════════════════════════════════════════════════════════ */
+.sidebar-menu {
+    margin-top: 24px;
+    width: 100%;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu-item {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
+    padding: 10px 0 10px 50px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #222;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-weight: 500;
+    transition: background 0.2s, border 0.2s;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background: transparent;
+}
+
+.sidebar-menu-item.active,
+.sidebar-menu-item:hover {
+    background: #fff;
+    border: 2px solid #e6e5a2;
+    color: #222;
+    font-weight: 600;
+    box-sizing: border-box;
+}
+
+.sidebar-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sidebar-menu span {
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COLLAPSIBLE MENU
+   ═══════════════════════════════════════════════════════════ */
+.collapsible-menu {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    margin: 0 10px;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 50px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #222;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background: transparent;
+    box-sizing: border-box;
+    min-height: 44px;
+    width: 100%;
+}
+
+.menu-header:hover,
+.collapsible-menu.expanded .menu-header {
+    background: #fff;
+    border: 2px solid #e6d6a2;
+    color: #222;
+    font-weight: 600;
+}
+
+.menu-arrow {
+    margin-left: auto;
+    margin-right: 12px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #222;
+    flex-shrink: 0;
+}
+
+.collapsible-menu.expanded .menu-arrow {
+    transform: rotate(180deg);
+}
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
+}
+
+.submenu.open {
+    max-height: 300px;
+    opacity: 1;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.submenu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 80px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #555;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-weight: 500;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background: transparent;
+    margin: 2px 0;
+    position: relative;
+}
+
+.submenu-item:hover {
+    background: #f9f9ed;
+    color: #6d5425;
+    font-weight: 600;
+    padding-left: 85px;
+}
+
+.submenu-item.active {
+    background: #fff;
+    border: 2px solid #e6d6a2;
+    color: #6d5425;
+    font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RIGHT PANEL
+   ═══════════════════════════════════════════════════════════ */
+.right-panel {
+    flex: 1;
+    background: #f7f7f7;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-width: 0;
+}
+
+@media screen and (max-width: 1024px) {
+    .right-panel {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HEADER BAR
+   ═══════════════════════════════════════════════════════════ */
+.header-bar {
+    width: 100%;
+    height: 90px;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 32px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+    .header-bar {
+        padding-left: 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header-bar {
+        padding: 0 20px 0 60px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   USER PROFILE
+   ═══════════════════════════════════════════════════════════ */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #222;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.user-name {
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.2;
+}
+
+.user-role {
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .user-info {
+        display: none;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONTENT CONTAINER
+   ═══════════════════════════════════════════════════════════ */
+.content-container {
+    margin: 0;
+    padding: 10px;
+    background: #f7f7f7;
+    min-height: calc(100vh - 90px);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+    .content-container {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content-container {
+        padding: 16px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════════════════════════ */
+@media screen and (min-width: 1366px) and (max-width: 1920px) {
+    .left-panel {
+        width: 16%;
+        min-width: 220px;
+        max-width: 280px;
+    }
+
+    .logo-img {
+        max-width: 150%;
+    }
+}

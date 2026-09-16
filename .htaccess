@@ -1,0 +1,28 @@
+# Enable PHP processing in HTML files
+AddType application/x-httpd-php .html .htm
+
+# Prevent directory listing
+Options -Indexes
+
+# Case-insensitive file access for common pages
+RewriteEngine On
+RewriteBase /
+
+# Redirect lowercase breakfast.html to Breakfast.html
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s/breakfast\.html [NC]
+RewriteRule ^breakfast\.html$ Breakfast.html [R=301,L,NC]
+
+# Redirect lowercase booking.html to Booking.html
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s/booking\.html [NC]
+RewriteRule ^booking\.html$ Booking.html [R=301,L,NC]
+
+# Redirect lowercase roomlist.html to Roomlist.html
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s/roomlist\.html [NC]
+RewriteRule ^roomlist\.html$ Roomlist.html [R=301,L,NC]
+
+# Security: Prevent access to sensitive files
+<FilesMatch "^(config\.php|auth\.php|access_check\.php|\.htaccess)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+

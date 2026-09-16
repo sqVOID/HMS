@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Cancellation Status Display</title>
+    <link rel="stylesheet" href="Booking.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .status-demo {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        .status-demo h3 {
+            margin-top: 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Cancellation Status Display Test</h1>
+        
+        <div class="status-demo">
+            <h3>Normal Occupied Status:</h3>
+            <button class="booking-status-btn occupied" style="cursor: default;">
+                Occupied
+            </button>
+        </div>
+
+        <div class="status-demo">
+            <h3>Pending Cancellation Request (with scrolling text):</h3>
+            <button class="booking-status-btn pending-cancellation" style="cursor: default;">
+                <span class="scrolling-text">Pending Cancellation Request</span>
+            </button>
+        </div>
+
+        <div class="status-demo">
+            <h3>Instructions:</h3>
+            <ol>
+                <li>The "Occupied" status should display normally with orange background</li>
+                <li>The "Pending Cancellation Request" should have purple background (#9c27b0)</li>
+                <li>Both buttons should be the same height (28px) and similar width</li>
+                <li>The "Pending Cancellation Request" text should scroll from right to left continuously</li>
+                <li>After submitting a cancellation request, the booking status should change from "Occupied" to "Pending Cancellation Request"</li>
+            </ol>
+        </div>
+
+        <div class="status-demo">
+            <h3>Database Setup:</h3>
+            <p>Make sure to run <code>add_cancellation_status_column.php</code> to add the cancellation_status column to the bookings table.</p>
+        </div>
+    </div>
+</body>
+</html>
